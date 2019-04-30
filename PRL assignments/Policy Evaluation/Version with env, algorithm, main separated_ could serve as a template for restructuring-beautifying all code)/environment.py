@@ -9,13 +9,18 @@ class Gridworld:
         #Updated Q-space
         self.Q2 = np.zeros([16, 1])
 
+        self.V = np.zeros([16, 1])
+
         #Define Rewards table
         #[ 0,  1,  2,  3]
         #[ 4,  5,  6,  7]
         #[ 8,  9, 10, 11]
         #[12, 13, 14, 15]
-        self.R1 = np.asarray([[0, 0, 0, 100, 0, -10, 0, -10, 0, 0, 20, -10, 0, -10, -10, -10]])
-
+        self.R1 = np.asarray([0, 0, 0, 100, 
+                 0, -10, 0, -10, 
+                 0, 0, 20, -10, 
+                 0, -10, -10, -10])
+                 
         #Keep track of amount of loops, for discount factor
         self.amount_of_steps = 0
 

@@ -1,30 +1,39 @@
 import numpy as np
-import sys
-import os
 
 from environment import Gridworld
 from Policy_Evaluation import policy_evaluation, evaluate_policy
 from Howards_Policy_Iteration import howards_policy_iteration
 from Simple_Policy_Iteration import simple_policy_iteration
 from Value_Iteration import value_iteration
+from HiddenPrints import HiddenPrints
 
 #  Constants
 NUMBER_OF_ALGORITHMS = 3
 GAMMA_INCREMENT = 0.01
 THETA = 0.0001
 
-THETA = 0.0001 
 
-def print_results(V, policy, cycles,time):
-    print("\n A table with the final policy is shown below.")
-    print(print_moves(policy))
+def print_header(title):
+    print("\n" + "-" * (len(title) + 6))
+    print(" " * 3 + title)
+    print("-" * (len(title) + 6))
+
+def print_results(V, optimal_policy, cycles, time):
+    """
+    :param V: A 4x4 array of V values for the implemented policy.
+    :param policy: An optimal policy converged upon by the algorithm.
+    :param cycles: The amount of cycles before convergence.
+    :param time: Time elapsed while the algorithm was running.
+    """
+    if optimal_policy is not None:
+        print("\n A table with the final policy is shown below.")
+        print(print_moves(optimal_policy))
 
     print("\nThe values of all 16 states are shown below.")
     print(np.reshape(V, [4, 4]))
 
     print_number_of_cycles(cycles)
-
-    print('[ time to convergence here? ]')
+    # print('\n[ time to convergence here? ]')
 
 
 def print_moves(policy):
@@ -74,7 +83,7 @@ def run_algorithm(algorithm_index, environment):
     global final_state_values 
     global cycles_to_convergence  
     if algorithm_index == 1:
-        final_state_values, cycles_to_convergence = policy_evaluation(iceworld)  
+        final_state_values, cycles_to_convergence = policy_evaluation(ice_world)  
     return final_state_values, cycles_to_convergence
 '''
 
@@ -87,37 +96,39 @@ for gamma in gammas:
     convergence_time.append(...)
 '''
 
-{
-#  To implement: run a for loop to test different parameters for gamma.
-# gammas = np.arange(0.9,1,0.01)
-# print(gammas)
-}
-
-#  Temporary:
-gamma = 0.9
-iceworld = Gridworld()
 
 
-#####__________  Policy Evaluation (Must Have 2) __________#####
-#
-# final_state_values, cycles_to_convergence = policy_evaluation(iceworld, gamma) #, action_prob)
-# print_values(final_state_values)
-# print_number_of_cycles(cycles_to_convergence)
+#  Initialize parameters and environment
+gammas = np.arange(0.9, 1, 0.01)
+# gamma = 0.9
+ice_world = Gridworld()
 
- 
-#####__________  Value Iteration (Must Have 3) __________#####
-vi_stateval, optimal_policy, iterations = value_iteration(iceworld, gamma, THETA)
-print('\n Value_Iteration')
-print(np.reshape(vi_stateval, [4,4]))
-#print(optimal_policy)
-print(iterations)
+#  Initialize arrays for results
+V_tabs = []
+policy_tabs = []
 
-#####__________  Howard (Must Have 4) __________#####
-#
-# V, policy = howards_policy_iteration(iceworld, gamma, THETA)
-# print_results(V, policy, 10, 10)
-#
-#####           Simple Policy Iteration (5a)    #####
+for gamma in gammas:
+    #  Policy Evaluation (MH-2)
+    print_header("Random Policy Evaluation")
+    with HiddenPrints():
+        V, cycles = policy_evaluation(ice_world, gamma)
+    print_results(V, None, cycles, 10)
+    
+    #  Value Iteration (MH-3)
+    print_header("Value Iteration")
+    #with HiddenPrints():
+    V, policy, cycles = value_iteration(ice_world, gamma, THETA)
+    print_results(V, policy, cycles, 10)
+    
+    #  Howard's Policy Iteration (MH-4)
+    print_header("Howard's Policy Iteration")
+    with HiddenPrints():
+        V, policy = howards_policy_iteration(ice_world, gamma, THETA)
+    print_results(V, policy, 10, 10)
+    
+    #  Simple Policy Iteration (5a.)
+    print_header("Simple Policy Iteration")
+    with HiddenPrints():
+        V, policy = simple_policy_iteration(ice_world, gamma, THETA)
+    print_results(V, policy, 10, 10)
 
-V, policy = simple_policy_iteration(iceworld, gamma, THETA)
-print_results(V, policy,10,10)

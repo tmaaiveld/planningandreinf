@@ -12,12 +12,9 @@ def policy_evaluation(env, gamma):
 
         #  Check for Convergence
         if np.array_equal(v, V):
-            print('______-______' * 3)
-            print("The algorithm has converged.")
-            print('______-______' * 3)
-            final_Q_values = np.amax(V, axis=1)
+
             break
-    return final_Q_values, env.amount_of_steps
+    return V, env.amount_of_steps
 
 
 def evaluate_policy(env, V, policy, gamma):
@@ -27,6 +24,6 @@ def evaluate_policy(env, V, policy, gamma):
             for possible_outcome in env.transition_function(state, action):
                 trans_prob = possible_outcome[0]
                 next_state = possible_outcome[1]
-                new_state_value += policy[state, action] * trans_prob * (env.R1[next_state] + gamma * V[next_state])
+                new_state_value += policy[state, action] * trans_prob * (env.R[next_state] + gamma * V[next_state])
         V[state] = new_state_value
     return V

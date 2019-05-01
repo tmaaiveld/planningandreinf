@@ -52,7 +52,7 @@ def evaluate(env, V, policy, gamma, theta):
 					trans_prob = possible_outcome[0]
 					next_state = possible_outcome[1]
 
-					V[state] += policy[state, action] * trans_prob * (env.R1[next_state] + gamma * V[next_state])
+					V[state] += policy[state, action] * trans_prob * (env.R[next_state] + gamma * V[next_state])
 
 			delta = max(delta, abs(v - V[state]))
 
@@ -71,7 +71,6 @@ def improve(env, V, policy, gamma):
 	:param gamma: The discount factor parameter.
 	:return: The improved policy (policy), whether it is stable (policy_stable)
 	"""
-
 	policy_stable = True
 	for state in env.non_terminal_states:
 		old_policy = np.copy(policy[state])
@@ -80,7 +79,7 @@ def improve(env, V, policy, gamma):
 			for possible_outcome in env.transition_function(state, action):
 				trans_prob = possible_outcome[0]
 				next_state = possible_outcome[1]
-				action_values[action] += trans_prob * (env.R1[next_state] + gamma * V[next_state])
+				action_values[action] += trans_prob * (env.R[next_state] + gamma * V[next_state])
 
 		policy[state, np.argmax(action_values)] = 1
 		policy[state, np.arange(4) != np.argmax(action_values)] = 0

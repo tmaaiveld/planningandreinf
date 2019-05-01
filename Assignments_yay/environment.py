@@ -3,7 +3,7 @@ import time
 
 class Gridworld:
 
-    def __init__(self, gamma):
+    def __init__(self):
         self.Q1 = np.zeros([16, 1])
 
         #Updated Q-space
@@ -27,9 +27,6 @@ class Gridworld:
         self.non_terminal_states = [0,1,2,4,6,8,9,10,12]
         #action order: up, right, down, left.
         #up = 0. right = 1. down = 2. left = 3.
-
-        #Discount
-        self.GAMMA = gamma
     
     def return_stateprobabilities(self,state,action):
             state_probabilities = [[1,state]]
@@ -99,9 +96,3 @@ class Gridworld:
                 if action == 1:
                     state_probabilities =  [[1,13]]
             return state_probabilities
-
-
-
-
-
-        

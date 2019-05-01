@@ -31,6 +31,7 @@ terminal_states = [3, 5, 7, 11, 13, 14, 15]
 # up = 0. right = 1. down = 2. left = 3.
 
 # Discount
+GAMMA = 0.9
 THETA = 0.00001
 
 
@@ -175,4 +176,6 @@ while True:
 
         print("\nValue table")
         print(np.reshape(V1, [4, 4]))
-break
+        break
+
+print(policy)

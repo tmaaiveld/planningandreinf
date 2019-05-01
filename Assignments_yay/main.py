@@ -4,6 +4,8 @@ from environment import Gridworld
 from Policy_Evaluation import policy_evaluation, evaluate_policy
 from Howards_Policy_Iteration
 
+THETA = 0.0001
+
 def printing_values(values):
     print("\n The values of all 16 states are shown below")
     print(np.reshape(values, [4,4]))
@@ -17,7 +19,8 @@ def run_algorithm(algorithm_index, environment):
     global cycles_to_convergence  
     if algorithm_index == 1:
         final_state_values, cycles_to_convergence = policy_evaluation(iceworld)  
-    return final_state_values, cycles_to_convergence'''
+    return final_state_values, cycles_to_convergence
+'''
 
 gammas = np.arange(0.9,1,0.01)
 print(gammas)
@@ -35,4 +38,4 @@ printing_number_of_cycles(cycles_to_convergence)
 
 
 
-state_values_final = howard_policy_iteration(iceworld)
+state_values_final = howard_policy_iteration(iceworld, THETA)

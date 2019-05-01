@@ -2,6 +2,7 @@ import numpy as np
 
 from environment import Gridworld
 from Policy_Evaluation import policy_evaluation, evaluate_policy
+from Howards_Policy_Iteration
 
 def printing_values(values):
     print("\n The values of all 16 states are shown below")
@@ -26,10 +27,12 @@ iceworld = Gridworld()
 
 #####__________  Policy Evaluation (Must Have 2) __________#####
  
-# final_state_values, cycles_to_convergence = policy_evaluation(iceworld) #, action_prob)
-# printing_values(final_state_values)
-# printing_number_of_cycles(cycles_to_convergence)
+final_state_values, cycles_to_convergence = policy_evaluation(iceworld) #, action_prob)
+printing_values(final_state_values)
+printing_number_of_cycles(cycles_to_convergence)
 
 #####__________  Howard (Must Have 4) __________#####
 
-#state_values_final = howard_policy_iteration(iceworld)
+
+
+state_values_final = howard_policy_iteration(iceworld)

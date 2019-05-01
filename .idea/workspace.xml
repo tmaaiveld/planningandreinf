@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a485f6f-fd24-44d8-a5df-b4d22c57ca38" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignments_yay/environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignments_yay/environment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignments_yay/HowardsPolicyIteration.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignments_yay/MC_try.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assignments_yay/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignments_yay/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assignments_yay/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="68">
+              <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -52,10 +51,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assignments_yay/HowardsPolicyIteration.py">
+        <entry file="file://$PROJECT_DIR$/Assignments_yay/Howards_Policy_Iteration.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -86,16 +85,35 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="836" />
+    <option name="x" value="590" />
+    <option name="y" value="99" />
     <option name="width" value="949" />
-    <option name="height" value="1047" />
+    <option name="height" value="658" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="planningandreinf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="planningandreinf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="planningandreinf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="planningandreinf" type="462c0819:PsiDirectoryNode" />
+              <item name="Assignments_yay" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -252,15 +270,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="836" y="0" width="949" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="590" y="99" width="949" height="658" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2496329" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.5192097" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2560175" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4457143" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -299,16 +316,6 @@
     <entry file="file://$PROJECT_DIR$/PRL Assignments/Howard_s Policy Iteration/Howard_Whitney_nofunctions_knowwhatit_sdoingbutneedsmoreworkandalsodebuggingnow.py" />
     <entry file="file://$PROJECT_DIR$/PRL Assignments/Value Iteration/MC_try.py" />
     <entry file="file://$PROJECT_DIR$/PRL Assignments/environment.py" />
-    <entry file="file://$PROJECT_DIR$/Assignments_yay/HowardsPolicyIteration.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assignments_yay/environment.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-65">
@@ -329,10 +336,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assignments_yay/Howards_Policy_Iteration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assignments_yay/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="68">
+          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

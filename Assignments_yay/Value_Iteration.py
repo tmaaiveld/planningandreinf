@@ -32,4 +32,4 @@ def value_iteration(env, gamma, theta):
 				delta = max(delta, abs(v - V[state]))
 		if delta < theta:
 			break
-		return V, pi_star, env.amount_of_steps
+	return V, pi_star, env.amount_of_steps

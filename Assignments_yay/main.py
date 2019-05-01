@@ -6,12 +6,14 @@ from environment import Gridworld
 from Policy_Evaluation import policy_evaluation, evaluate_policy
 from Howards_Policy_Iteration import howards_policy_iteration
 from Simple_Policy_Iteration import simple_policy_iteration
+from Value_Iteration import value_iteration
 
 #  Constants
 NUMBER_OF_ALGORITHMS = 3
 GAMMA_INCREMENT = 0.01
 THETA = 0.0001
 
+THETA = 0.0001 
 
 def print_results(V, policy, cycles,time):
     print("\n A table with the final policy is shown below.")
@@ -102,6 +104,13 @@ iceworld = Gridworld()
 # print_values(final_state_values)
 # print_number_of_cycles(cycles_to_convergence)
 
+ 
+#####__________  Value Iteration (Must Have 3) __________#####
+vi_stateval, optimal_policy, iterations = value_iteration(iceworld, gamma, THETA)
+print('\n Value_Iteration')
+print(np.reshape(vi_stateval, [4,4]))
+#print(optimal_policy)
+print(iterations)
 
 #####__________  Howard (Must Have 4) __________#####
 #
@@ -111,4 +120,4 @@ iceworld = Gridworld()
 #####           Simple Policy Iteration (5a)    #####
 
 V, policy = simple_policy_iteration(iceworld, gamma, THETA)
-print_results()
+print_results(V, policy,10,10)

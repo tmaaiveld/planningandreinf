@@ -4,17 +4,15 @@ import numpy as np
 def policy_evaluation(env, gamma):
     #  Initialize a random policy
     V, policy = env.initialize()
-
+    print(policy)
     while True:
         env.amount_of_steps += 1
         v = np.copy(V)
-        evaluate_policy(env, V, policy, gamma)
+        V = evaluate_policy(env, V, policy, gamma)
 
         #  Check for Convergence
         if np.array_equal(v, V):
-
-            break
-    return V, env.amount_of_steps
+            return V, env.amount_of_steps
 
 
 def evaluate_policy(env, V, policy, gamma):

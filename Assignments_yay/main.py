@@ -99,8 +99,8 @@ for gamma in gammas:
 
 
 #  Initialize parameters and environment
-gammas = np.arange(0.9, 1, 0.01)
-# gamma = 0.9
+# gammas = np.arange(0.9, 1, 0.01)
+gammas = np.array([0.9])
 ice_world = Gridworld()
 
 #  Initialize arrays for results

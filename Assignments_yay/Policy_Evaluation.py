@@ -6,7 +6,7 @@ def policy_evaluation(env):
     policy = np.ones([16, 4]) * 0.25  # terminal states won't be picked
     
     while True:
-        env.amount_of_steps +=1 
+        env.amount_of_steps += 1
         v = np.copy(env.V) 
         for i in env.non_terminal_states:
                 env.V[i] = evaluate_policy(env, i, policy)

@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a485f6f-fd24-44d8-a5df-b4d22c57ca38" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assignments_yay/Howard_Old.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignments_yay/Howards_Policy_Iteration.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignments_yay/Howards_Policy_Iteration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assignments_yay/Policy_Evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignments_yay/Policy_Evaluation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignments_yay/environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignments_yay/environment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignments_yay/Simple_Policy_Iteration.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignments_yay/Simple_Policy_Iteration.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assignments_yay/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignments_yay/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignments_yay/todo" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,17 +16,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assignments_yay/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="-394">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <element signature="e#503#765#0" />
                 <element signature="e#597#1043#0" />
                 <element signature="e#608#655#0" />
                 <element signature="e#1299#1391#0" />
+                <element signature="e#915#1201#1" />
+                <element signature="e#1606#1614#1" />
+                <element signature="e#2353#2477#1" />
               </folding>
             </state>
           </provider>
@@ -38,6 +40,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="298">
               <caret line="36" column="18" lean-forward="true" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assignments_yay/Policy_Evaluation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -60,32 +71,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assignments_yay/Simple_Policy_Iteration.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="359">
+              <caret line="80" column="45" lean-forward="true" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
               <folding>
                 <element signature="e#54#811#0" />
                 <element signature="e#674#700#0" />
                 <element signature="e#1064#2110#0" />
-                <element signature="e#2150#3107#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assignments_yay/Policy_Evaluation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assignments_yay/Value_Iteration.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="-295">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -124,14 +125,14 @@
     <findStrings>
       <find>p</find>
       <find>amount_</find>
-      <find>env.V</find>
       <find>return_stateprobabilities</find>
+      <find>env.V</find>
     </findStrings>
     <replaceStrings>
       <replace>i</replace>
       <replace>v</replace>
-      <replace>V</replace>
       <replace>transition_function</replace>
+      <replace>V</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -146,18 +147,19 @@
         <option value="$PROJECT_DIR$/Assignments_yay/Archived/todo" />
         <option value="$PROJECT_DIR$/Assignments_yay/todo" />
         <option value="$PROJECT_DIR$/Assignments_yay/Value_Iteration.py" />
-        <option value="$PROJECT_DIR$/Assignments_yay/main.py" />
         <option value="$PROJECT_DIR$/Assignments_yay/Howards_Policy_Iteration.py" />
         <option value="$PROJECT_DIR$/Assignments_yay/environment.py" />
         <option value="$PROJECT_DIR$/Assignments_yay/Simple_Policy_Iteration.py" />
         <option value="$PROJECT_DIR$/Assignments_yay/Policy_Evaluation.py" />
+        <option value="$PROJECT_DIR$/Assignments_yay/main.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-50" />
+    <option name="y" value="257" />
     <option name="width" value="1235" />
-    <option name="height" value="1047" />
+    <option name="height" value="658" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -345,15 +347,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-50" y="0" width="1235" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23809524" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15015806" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.51750547" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25135428" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -406,24 +408,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignments_yay/main.py">
+    <entry file="file://$PROJECT_DIR$/Assignments_yay/Value_Iteration.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="-295">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#503#765#0" />
-            <element signature="e#597#1043#0" />
-            <element signature="e#608#655#0" />
-            <element signature="e#1299#1391#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignments_yay/environment.py">
+    <entry file="file://$PROJECT_DIR$/Assignments_yay/Simple_Policy_Iteration.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="36" column="18" lean-forward="true" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+        <state relative-caret-position="359">
+          <caret line="80" column="45" lean-forward="true" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
+          <folding>
+            <element signature="e#54#811#0" />
+            <element signature="e#674#700#0" />
+            <element signature="e#1064#2110#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -440,32 +443,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignments_yay/Simple_Policy_Iteration.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="e#54#811#0" />
-            <element signature="e#674#700#0" />
-            <element signature="e#1064#2110#0" />
-            <element signature="e#2150#3107#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assignments_yay/Policy_Evaluation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+        <state relative-caret-position="320">
+          <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assignments_yay/Value_Iteration.py">
+    <entry file="file://$PROJECT_DIR$/Assignments_yay/environment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="298">
+          <caret line="36" column="18" lean-forward="true" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assignments_yay/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-394">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#503#765#0" />
+            <element signature="e#597#1043#0" />
+            <element signature="e#608#655#0" />
+            <element signature="e#1299#1391#0" />
+            <element signature="e#915#1201#1" />
+            <element signature="e#1606#1614#1" />
+            <element signature="e#2353#2477#1" />
           </folding>
         </state>
       </provider>

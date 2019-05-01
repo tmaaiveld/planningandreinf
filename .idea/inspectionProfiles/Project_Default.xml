@@ -9,5 +9,15 @@
         </list>
       </option>
     </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="Assignments_yay.main.environment" />
+          <option value="Assignments_yay.main.Policy_Evaluation" />
+          <option value="Assignments_yay.main.Howards_Policy_Iteration" />
+          <option value="Assignments_yay.main.Simple_Policy_Iteration" />
+        </list>
+      </option>
+    </inspection_tool>
   </profile>
 </component>

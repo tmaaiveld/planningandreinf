@@ -1,18 +1,16 @@
 import numpy as np
+import sys
+import os
 
 from environment import Gridworld
 from Policy_Evaluation import policy_evaluation, evaluate_policy
 from Howards_Policy_Iteration import howards_policy_iteration
+from Simple_Policy_Iteration import simple_policy_iteration
 
 #  Constants
 NUMBER_OF_ALGORITHMS = 3
 GAMMA_INCREMENT = 0.01
 THETA = 0.0001
-
-
-
-
-
 
 
 def print_results(V, policy, cycles,time):
@@ -87,9 +85,11 @@ for gamma in gammas:
     convergence_time.append(...)
 '''
 
+{
 #  To implement: run a for loop to test different parameters for gamma.
 # gammas = np.arange(0.9,1,0.01)
 # print(gammas)
+}
 
 #  Temporary:
 gamma = 0.9
@@ -97,14 +97,18 @@ iceworld = Gridworld()
 
 
 #####__________  Policy Evaluation (Must Have 2) __________#####
+#
+# final_state_values, cycles_to_convergence = policy_evaluation(iceworld, gamma) #, action_prob)
+# print_values(final_state_values)
+# print_number_of_cycles(cycles_to_convergence)
 
-final_state_values, cycles_to_convergence = policy_evaluation(iceworld, gamma) #, action_prob)
-print_values(final_state_values)
-print_number_of_cycles(cycles_to_convergence)
 
-
-#####            something (Must Have 3)        ####
 #####__________  Howard (Must Have 4) __________#####
+#
+# V, policy = howards_policy_iteration(iceworld, gamma, THETA)
+# print_results(V, policy, 10, 10)
+#
+#####           Simple Policy Iteration (5a)    #####
 
-V, policy = howards_policy_iteration(iceworld, gamma, THETA)
-print_results(V,policy,10, 10)
+V, policy = simple_policy_iteration(iceworld, gamma, THETA)
+print_results()

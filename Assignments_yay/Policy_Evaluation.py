@@ -3,13 +3,13 @@ import numpy as np
 
 def policy_evaluation(env, gamma):
     #  Initialize a random policy
-    policy = np.ones([16, 4]) * 0.25  # terminal states won't be picked
-    
+    V, policy = env.initialize()
+
     while True:
         env.amount_of_steps += 1
-        v = np.copy(env.V) 
-        for i in env.non_terminal_states:
-                env.V[i] = evaluate_policy(env, i, policy, gamma)
+        v = np.copy(V)
+        for state in env.non_terminal_states:
+                V[state] = evaluate_policy(env, state, policy, gamma)
 
         #  Check for Convergence
         if np.array_equal(v, env.V):
@@ -23,9 +23,9 @@ def policy_evaluation(env, gamma):
                 
 def evaluate_policy(env, state, policy, gamma):
     new_state_value = 0
-    for j in range(4):
-            for possible_outcome in env.transition_function(state, j):
+    for action in range(4):
+            for possible_outcome in env.transition_function(state, action):
                 trans_prob = possible_outcome[0]
                 next_state = possible_outcome[1]
-                new_state_value += policy[state, j] * trans_prob * (env.R1[next_state] + gamma * env.V[next_state])
+                new_state_value += policy[state, action] * trans_prob * (env.R1[next_state] + gamma * env.V[next_state])
     return new_state_value

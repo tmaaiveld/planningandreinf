@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def howards_policy_iteration(env, gamma, theta):
+def simple_policy_iteration(env, gamma, theta):
 	"""
 	:param env: An implementation of the game rules.
 	:param gamma: The discount factor.
@@ -89,7 +89,3 @@ def improve(env, V, policy, gamma):
 			policy_stable = False
 
 	return policy, policy_stable
-
-
-
-

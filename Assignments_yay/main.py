@@ -2,7 +2,7 @@ import numpy as np
 
 from environment import Gridworld
 from Policy_Evaluation import policy_evaluation, evaluate_policy
-from Howards_Policy_Iteration import how_pol
+from Howards_Policy_Iteration import howards_policy_iteration
 
 #  Constants
 NUMBER_OF_ALGORITHMS = 3
@@ -103,7 +103,8 @@ print_values(final_state_values)
 print_number_of_cycles(cycles_to_convergence)
 
 
+#####            something (Must Have 3)        ####
 #####__________  Howard (Must Have 4) __________#####
 
-V, policy = how_pol(iceworld, gamma, THETA)
+V, policy = howards_policy_iteration(iceworld, gamma, THETA)
 print_results(V,policy,10, 10)

@@ -27,7 +27,16 @@ class Gridworld:
         self.non_terminal_states = [0,1,2,4,6,8,9,10,12]
         #  action order: up, right, down, left.
         #  up = 0. right = 1. down = 2. left = 3.
-    
+
+    def initialize(self):
+        """
+        Initializes an empty policy table
+        """
+        V = np.zeros([16, 1])  # Initialize an empty value table
+        policy = np.ones([16, 4]) * 0.25  # Initialize a random policy
+        return V, policy
+
+
     def transition_function(self, state, action):
             state_probabilities = [[1,state]]
             if state == 0:

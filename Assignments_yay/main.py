@@ -98,9 +98,10 @@ iceworld = Gridworld()
 
 #####__________  Policy Evaluation (Must Have 2) __________#####
 
-# final_state_values, cycles_to_convergence = policy_evaluation(iceworld, gamma) #, action_prob)
-# print_values(final_state_values)
-# print_number_of_cycles(cycles_to_convergence)
+final_state_values, cycles_to_convergence = policy_evaluation(iceworld, gamma) #, action_prob)
+print_values(final_state_values)
+print_number_of_cycles(cycles_to_convergence)
+
 
 #####__________  Howard (Must Have 4) __________#####
 

@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def how_pol(env, gamma, theta):
 	"""
 	:param env: An implementation of the game rules.

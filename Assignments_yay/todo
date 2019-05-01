@@ -1,0 +1,8 @@
+
+Tommy
+- fix Howie
+    - run the program, then try V and policy as globals
+
+- renumber table to reduce iterations ([3,2,1,0],...)
+
+- rename some more variables later (R1 -> R, etc.) (consistency with report/pseudocode)

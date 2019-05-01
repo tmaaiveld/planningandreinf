@@ -1,6 +1,4 @@
 import numpy as np
-import time
-import random
 
 # Initial Q-space, #Initial V-space
 # Q1 = np.zeros([16, 4])
@@ -20,10 +18,7 @@ R1 = np.asarray([0, 0, 0, 100,
                  0, -10, -10, -10])
 
 # Initialize a random policy
-policy = np.ones([16, 4]) * 0.25  # terminal states won't be picked anyway
-
-# Keep track of amount of loops, for discount factor
-amount_of_steps = 0
+policy = np.ones([16, 4]) * 0.25  # terminal states won't be picked
 
 non_terminal_states = [0, 1, 2, 4, 6, 8, 9, 10, 12]
 terminal_states = [3, 5, 7, 11, 13, 14, 15]
@@ -35,7 +30,7 @@ GAMMA = 0.9
 THETA = 0.00001
 
 
-def return_stateprobabilities(state, action):
+def transition_function(state, action):
     state_probabilities = [[1, state]]
     if state == 0:
         if action == 1:
@@ -133,7 +128,7 @@ while True:
             v = np.copy(V1[state])
             V1[state] = 0
             for action in range(4):
-                for possible_outcome in return_stateprobabilities(state, action):
+                for possible_outcome in transition_function(state, action):
                     trans_prob = possible_outcome[0]
                     next_state = possible_outcome[1]
 
@@ -153,7 +148,7 @@ while True:
         old_policy = np.copy(policy[state])
         action_values = np.zeros([4, 1])
         for action in range(4):
-            for possible_outcome in return_stateprobabilities(state, action):
+            for possible_outcome in transition_function(state, action):
                 trans_prob = possible_outcome[0]
                 next_state = possible_outcome[1]
                 action_values[action] += trans_prob * (R1[next_state] + GAMMA * V1[next_state])

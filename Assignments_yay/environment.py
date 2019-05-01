@@ -28,7 +28,7 @@ class Gridworld:
         #  action order: up, right, down, left.
         #  up = 0. right = 1. down = 2. left = 3.
     
-    def return_stateprobabilities(self, state, action):
+    def transition_function(self, state, action):
             state_probabilities = [[1,state]]
             if state == 0:
                 if action == 1:

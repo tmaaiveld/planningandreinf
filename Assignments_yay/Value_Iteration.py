@@ -25,7 +25,7 @@ non_terminal_states = [0,1,2,4,6,8,9,10,12]
 GAMMA = 0.9
 
 
-def return_stateprobabilities(state,action):
+def transition_function(state,action):
 	state_probabilities = [[1,state]]
 	if state == 0:
 		if action == 1:
@@ -100,7 +100,7 @@ while True:
 	Q1 = np.copy(Q2) 
 	for i in non_terminal_states:
 			for j in range(4):
-				statevalues = return_stateprobabilities(i,j)
+				statevalues = transition_function(i,j)
 				state_value_update = 0
 				for k in statevalues:
 					state_value_update += (GAMMA * (k[0] * (np.max(Q1[k[1]])))) + k[0] * R1[0,k[1]]

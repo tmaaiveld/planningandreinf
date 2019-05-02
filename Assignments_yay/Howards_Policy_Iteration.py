@@ -74,15 +74,15 @@ def improve(env, V, policy, gamma):
 	policy_stable = True
 	for state in env.non_terminal_states:
 		old_policy = np.copy(policy[state])
-		action_values = np.zeros([4, 1])
+		Q = np.zeros([4, 1])
 		for action in range(4):
 			for possible_outcome in env.transition_function(state, action):
 				trans_prob = possible_outcome[0]
 				next_state = possible_outcome[1]
-				action_values[action] += trans_prob * (env.R[next_state] + gamma * V[next_state])
+				Q[action] += trans_prob * (env.R[next_state] + gamma * V[next_state])
 
-		policy[state, np.argmax(action_values)] = 1
-		policy[state, np.arange(4) != np.argmax(action_values)] = 0
+		policy[state, np.argmax(Q)] = 1
+		policy[state, np.arange(4) != np.argmax(Q)] = 0
 
 		if not np.array_equal(old_policy, policy[state]):
 			policy_stable = False

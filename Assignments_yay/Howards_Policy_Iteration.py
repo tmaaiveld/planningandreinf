@@ -1,4 +1,5 @@
 import numpy as np
+import time
 
 
 def howards_policy_iteration(env, gamma, theta):
@@ -9,27 +10,22 @@ def howards_policy_iteration(env, gamma, theta):
 	:return: A table of value estimations (V), and a matrix of tables and actions representing the final (policy).
 	"""
 	#  Initialization
+	t = time.process_time()
 	V, policy = env.initialize()
-	i = 0
+	loop_counter = 0
 
 	while True:
+		loop_counter += 1
+
 		#  Evaluation
 		V, eval_counter = evaluate(env, V, policy, gamma, theta)
 
 		#  Improvement
 		policy, policy_stable = improve(env, V, policy, gamma)
 
-		i += 1
-		print("I've completed {} full loop(s).".format(i))
-
 		if policy_stable is True:
-			return V, policy
-			# print("\n final policy")
-			# print(solution_set(policy))
-			#
-			# print("\nValue table")
-			# print(np.reshape(V1, [4,4]))
-			# break
+			elapsed_time = time.process_time() - t
+			return V, policy, loop_counter, elapsed_time
 
 
 def evaluate(env, V, policy, gamma, theta):
@@ -57,7 +53,6 @@ def evaluate(env, V, policy, gamma, theta):
 			delta = max(delta, abs(v - V[state]))
 
 		evaluation_counter += 1
-		print('I have completed {} evaluation loop(s).'.format(evaluation_counter))
 
 		if delta < theta:
 			return V, evaluation_counter

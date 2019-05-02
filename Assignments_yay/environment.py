@@ -22,6 +22,7 @@ class Gridworld:
         self.non_terminal_states = [2,1,0,6,4,12,10,9,8]
         #  action order: up, right, down, left.
         #  up = 0. right = 1. down = 2. left = 3.
+        #  States ordered from top right, descending: [[3,2,1,0],...]
 
     def initialize(self):
         """

@@ -30,7 +30,7 @@ def print_results(V, optimal_policy, cycles, time, gamma):
     """
     if optimal_policy is not None:
         print("\n A table with the final policy is shown below.")
-        print(np.array2string(print_moves(optimal_policy), separator=',', formatter={'str_kind': lambda x: x}))
+        print_policy(optimal_policy)
 
     print("\nThe values of all 16 states are shown below (gamma = {}).".format(gamma))
     print(np.round(np.reshape(V, [4, 4]), 2))
@@ -38,6 +38,17 @@ def print_results(V, optimal_policy, cycles, time, gamma):
     print('\nCompleted ' + str(cycles) + ' cycle(s)')
     print("Time to convergence: " + str(round(time * 1000, 2)) + " ms")
 
+
+def print_policy(policy):
+    if type(policy) != list:
+        print(np.array2string(print_moves(policy), separator=',', formatter={'str_kind': lambda x: x}))
+
+    else:
+        pols = []
+        for pol in policy:
+            pols.append(print_moves(pol))
+        pols = np.array(pols)
+        print(np.array2string(np.flip(pols,axis=0), separator=',', formatter={'str_kind': lambda x: x}))
 
 def print_moves(policy):
     solution_matrix = []
@@ -87,7 +98,7 @@ def plot_runtime_gamma():
 ice_world = Gridworld() 
 
 gammas = np.arange(GAMMA_RANGE[0], GAMMA_RANGE[1], GAMMA_INCREMENT)
-# gammas = np.array([0.9]) <- use if you only want to see a single value for gamma.
+# gammas = np.array([0.9]) # use if you only want to see a single value for gamma.
 
 
 #  Initialize arrays for results
@@ -127,9 +138,11 @@ for gamma in np.flip(gammas):
     print_results(V, policy, cycles, time, gamma)
     append_results(ALGORITHMS[3], V, policy, cycles, time)
 
-
 #  Results
 V_tabs = np.array(V_tabs)
-# print(convergence_times) 
+
 print(convergence_times[1]) 
 plot_runtime_gamma()
+
+print_policy(policy_tabs[1])
+

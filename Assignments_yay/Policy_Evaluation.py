@@ -28,6 +28,3 @@ def evaluate_policy(env, V, policy, gamma):
                 new_state_value += policy[state, action] * trans_prob * (env.R[next_state] + gamma * V[next_state])
         V[state] = new_state_value
     return V
-
-
-

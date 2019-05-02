@@ -80,8 +80,11 @@ def improve(env, V, policy, gamma):
         policy[state, np.argmax(action_values)] = 1
         policy[state, np.arange(4) != np.argmax(action_values)] = 0
 
-        if not np.array_equal(old_policy, policy[state]):
+        if not improvable(old_policy, policy[state]):
             policy_stable = False
             break
 
     return policy, policy_stable
+
+def improvable(old_policy, state):
+    return np.array_equal(old_policy, state)

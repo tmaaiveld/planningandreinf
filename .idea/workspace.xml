@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a485f6f-fd24-44d8-a5df-b4d22c57ca38" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/Assignments_yay/Value_Iteration.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignments_yay/Value_Iteration.py" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignments_yay/.todo" beforeDir="false" afterPath="$PROJECT_DIR$/Assignments_yay/.todo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignments_yay/Howards_Policy_Iteration.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignments_yay/Howards_Policy_Iteration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignments_yay/Policy_Evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignments_yay/Policy_Evaluation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignments_yay/Simple_Policy_Iteration.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignments_yay/Simple_Policy_Iteration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignments_yay/Value_Iteration.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignments_yay/Value_Iteration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignments_yay/environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignments_yay/environment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assignments_yay/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignments_yay/main.py" afterDir="false" />
+>>>>>>> 2a7f4cdc008db3963f2153f5163be9fc32c5c20d
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,11 +23,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assignments_yay/main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="578">
               <caret line="117" column="10" lean-forward="true" selection-start-line="117" selection-start-column="10" selection-end-line="117" selection-end-column="10" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assignments_yay/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="118" column="64" lean-forward="true" selection-start-line="118" selection-start-column="64" selection-end-line="118" selection-end-column="64" />
+>>>>>>> 2a7f4cdc008db3963f2153f5163be9fc32c5c20d
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <element signature="e#522#619#0" />
@@ -61,8 +80,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assignments_yay/Value_Iteration.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="391">
               <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+=======
+            <state relative-caret-position="116">
+              <caret line="18" column="30" lean-forward="true" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="31" />
+>>>>>>> 2a7f4cdc008db3963f2153f5163be9fc32c5c20d
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -148,6 +172,10 @@
         <option value="$PROJECT_DIR$/Assignments_yay/Policy_Evaluation.py" />
         <option value="$PROJECT_DIR$/Assignments_yay/Howards_Policy_Iteration.py" />
         <option value="$PROJECT_DIR$/Assignments_yay/Simple_Policy_Iteration.py" />
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/Assignments_yay/Value_Iteration.py" />
+>>>>>>> 2a7f4cdc008db3963f2153f5163be9fc32c5c20d
         <option value="$PROJECT_DIR$/Assignments_yay/main.py" />
         <option value="$PROJECT_DIR$/Assignments_yay/Value_Iteration.py" />
       </list>
@@ -447,6 +475,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Assignments_yay/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -457,6 +486,14 @@
             <element signature="e#678#1269#0" />
             <element signature="e#1301#1747#0" />
             <element signature="e#2185#2559#0" />
+=======
+    <entry file="file://$PROJECT_DIR$/Assignments_yay/Value_Iteration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="18" column="30" lean-forward="true" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+>>>>>>> 2a7f4cdc008db3963f2153f5163be9fc32c5c20d
           </folding>
         </state>
       </provider>
@@ -473,10 +510,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assignments_yay/Value_Iteration.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="391">
           <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+=======
+        <state relative-caret-position="459">
+          <caret line="118" column="64" lean-forward="true" selection-start-line="118" selection-start-column="64" selection-end-line="118" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#522#619#0" />
+            <element signature="e#678#1269#0" />
+            <element signature="e#1301#1747#0" />
+            <element signature="e#2185#2559#0" />
+>>>>>>> 2a7f4cdc008db3963f2153f5163be9fc32c5c20d
           </folding>
         </state>
       </provider>

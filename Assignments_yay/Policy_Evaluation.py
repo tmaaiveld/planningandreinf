@@ -1,18 +1,21 @@
 import numpy as np
+import time
 
 
 def policy_evaluation(env, gamma):
-    #  Initialize a random policy
+    t = time.process_time()
     V, policy = env.initialize()
-    print(policy)
+    loop_counter = 0
+
     while True:
-        env.amount_of_steps += 1
+        loop_counter += 1
         v = np.copy(V)
         V = evaluate_policy(env, V, policy, gamma)
 
-        #  Check for Convergence
+        #  Check for convergence
         if np.array_equal(v, V):
-            return V, env.amount_of_steps
+            elapsed_time = time.process_time() - t
+            return V, None, loop_counter, elapsed_time
 
 
 def evaluate_policy(env, V, policy, gamma):
@@ -25,3 +28,6 @@ def evaluate_policy(env, V, policy, gamma):
                 new_state_value += policy[state, action] * trans_prob * (env.R[next_state] + gamma * V[next_state])
         V[state] = new_state_value
     return V
+
+
+

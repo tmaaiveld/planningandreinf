@@ -9,6 +9,7 @@ from Assignments_yay.HiddenPrints import HiddenPrints
 
 #  Constants
 ALGORITHMS = ["Random Policy Evaluation", "Value Iteration", "Howard's Policy Iteration", "Simple Policy Iteration"]
+GAMMA_RANGE = [0.9, 1]
 GAMMA_INCREMENT = 0.01
 THETA = 0.0001
 
@@ -19,7 +20,7 @@ def print_header(title):
     print("-" * (len(title) + 6))
 
 
-def print_results(V, optimal_policy, cycles, time):
+def print_results(V, optimal_policy, cycles, time, gamma):
     """
     :param V: A 4x4 array of V values for the implemented policy.
     :param policy: An optimal policy converged upon by the algorithm.
@@ -30,10 +31,10 @@ def print_results(V, optimal_policy, cycles, time):
         print("\n A table with the final policy is shown below.")
         print(print_moves(optimal_policy))
 
-    print("\nThe values of all 16 states are shown below.")
+    print("\nThe values of all 16 states are shown below (gamma = {}).".format(gamma))
     print(np.reshape(V, [4, 4]))
 
-    print_number_of_cycles(cycles)
+    print_cycles(cycles)
     # print('\n[ time to convergence here? ]')
 
 
@@ -55,15 +56,8 @@ def print_moves(policy):
     return np.reshape(solution_matrix, [4,4])
 
 
-def print_number_of_cycles(cycles):
+def print_cycles(cycles):
     print('Completed ' + str(cycles) + ' cycle(s)')
-
-
-# # this function is now redundant, print_results does the same. However, it needs some more arguments, so some adaptation
-# # is necessary.
-# def print_values(values):
-#     print("\n The values of all 16 states are shown below")
-#     print(np.reshape(values, [4, 4]))
 
 
 def append_results(algorithm, V, policy, cycles, convergence_time):
@@ -76,50 +70,50 @@ def append_results(algorithm, V, policy, cycles, convergence_time):
     convergence_times[ALGORITHMS.index(algorithm)].append(convergence_time)
 
 
-#  Initialize parameters and environment
-# gammas = np.arange(0.9, 1, 0.01)
-
-gammas = np.array([0.9])
+#  Initialize environment and parameters (must-have 1)
 ice_world = Gridworld()
+
+gammas = np.arange(GAMMA_RANGE[0], GAMMA_RANGE[1], GAMMA_INCREMENT)
+# gammas = np.array([0.9]) <- use if you only want to see a single value for gamma.
+
 
 #  Initialize arrays for results
 global V_tabs, policy_tabs, cycle_counts, convergence_times
-V_tabs = [[], [], [], []]
+V_tabs = [[], [], [], []]  # 4-D arrays. Dimensions: table.x, table.y, iteration, algorithm index.
 policy_tabs = [[], [], [], []]
-cycle_counts = [[], [], [], []]
+
+cycle_counts = [[], [], [], []]  # 3-D arrays. Dimensions: value, iteration, algorithm index.
 convergence_times = [[], [], [], []]
 
-# I did try to implement parameter tuning, but it seems useless. Algos break for most values.
-for gamma in gammas:
+# I did implement parameter tuning, but it seems useless. Algos break for all values over 0.91 (Down on cell [2,3]).
+for gamma in np.flip(gammas):
+    gamma = round(gamma, len(str(GAMMA_INCREMENT))-2)
+    print("\n\n*** Running for gamma = {} ***".format(gamma))
+
     #  Policy Evaluation (MH-2)
     print_header(ALGORITHMS[0])
-    with HiddenPrints():
-        V, cycles = policy_evaluation(ice_world, gamma)
-    print_results(V, None, cycles, 10)
-    append_results(ALGORITHMS[0], V, None, cycles, 10)
+    V, policy, cycles, time = policy_evaluation(ice_world, gamma)
+    print_results(V, policy, cycles, time, gamma)
+    append_results(ALGORITHMS[0], V, policy, cycles, time)
 
     #  Value Iteration (MH-3)
     print_header(ALGORITHMS[1])
-    with HiddenPrints():
-        V, policy, cycles = value_iteration(ice_world, gamma, THETA)
-    print(policy)
-    print_results(V, policy, cycles, 10)
-    append_results(ALGORITHMS[1], V, None, cycles, 10)
+    V, policy, cycles, time = value_iteration(ice_world, gamma, THETA)
+    print_results(V, policy, cycles, time, gamma)
+    append_results(ALGORITHMS[1], V, policy, cycles, time)
 
     #  Howard's Policy Iteration (MH-4)
     print_header(ALGORITHMS[2])
-    with HiddenPrints():
-        V, policy = howards_policy_iteration(ice_world, gamma, THETA)
-    print_results(V, policy, 10, 10)
-    append_results(ALGORITHMS[2], V, None, cycles, 10)
+    V, policy, cycles, time = howards_policy_iteration(ice_world, gamma, THETA)
+    print_results(V, policy, cycles, time, gamma)
+    append_results(ALGORITHMS[2], V, policy, cycles, time)
 
     #  Simple Policy Iteration (5a.)
     print_header(ALGORITHMS[3])
-    with HiddenPrints():
-        V, policy = simple_policy_iteration(ice_world, gamma, THETA)
-    print_results(V, policy, 10, 10)
-    append_results(ALGORITHMS[3], V, None, cycles, 10)
-
-# V_tabs = np.array(V_tabs)
+    V, policy, cycles, time = simple_policy_iteration(ice_world, gamma, THETA)
+    print_results(V, policy, cycles, time, gamma)
+    append_results(ALGORITHMS[3], V, policy, cycles, time)
 
 
+#  Results
+V_tabs = np.array(V_tabs)

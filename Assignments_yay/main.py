@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 from environment import Gridworld
 from Policy_Evaluation import policy_evaluation
@@ -29,7 +30,7 @@ def print_results(V, optimal_policy, cycles, time, gamma):
     """
     if optimal_policy is not None:
         print("\n A table with the final policy is shown below.")
-        print(print_moves(optimal_policy))
+        print(np.array2string(print_moves(optimal_policy), separator=',', formatter={'str_kind': lambda x: x}))
 
     print("\nThe values of all 16 states are shown below (gamma = {}).".format(gamma))
     print(np.round(np.reshape(V, [4, 4]), 2))
@@ -42,15 +43,16 @@ def print_moves(policy):
     solution_matrix = []
     for row in policy:
         if row[0] == 0.25:
-            solution_matrix.append("T")
+            solution_matrix.append(u"\u00D7")
         elif row[0] == 1:
-            solution_matrix.append("U")
+            solution_matrix.append(u"\u2191")
         elif row[1] == 1:
-            solution_matrix.append("R")
+            solution_matrix.append(u"\u2192")
         elif row[2] == 1:
-            solution_matrix.append("D")
+            solution_matrix.append(u"\u2193")
         elif row[3] == 1:
-            solution_matrix.append("L")
+            solution_matrix.append(u"\u2190")
+    solution_matrix[3] = u"\u2691"
     return np.array(np.reshape(solution_matrix, [4,4]))
 
 
@@ -63,9 +65,26 @@ def append_results(algorithm, V, policy, cycles, convergence_time):
     cycle_counts[ALGORITHMS.index(algorithm)].append(cycles)
     convergence_times[ALGORITHMS.index(algorithm)].append(convergence_time)
 
+def plot_runtime_gamma():
+    runtime_gamma = plt.figure()
+    for algorithm_index in range(4):    
+    #ax = plt.axes()
+    #ax.plot(np.flip(gammas), convergence_times[algorithm_index]) 
+        plt.plot(np.flip(gammas), convergence_times[algorithm_index], label= str(ALGORITHMS[algorithm_index])) 
+        plt.legend()
+    plt.xlabel("gamma")
+    plt.ylabel("run time (sec)")
+    plt.show()
+
+    # plt.savefig(runtime_gamma, dpi=None, facecolor='w', edgecolor='w',
+    #     orientation='portrait', papertype=None, format='eps',
+    #     transparent=False, bbox_inches=None, pad_inches=0.1,
+    #     frameon=None, metadata=None)
+
+
 
 #  Initialize environment and parameters (must-have 1)
-ice_world = Gridworld()
+ice_world = Gridworld() 
 
 gammas = np.arange(GAMMA_RANGE[0], GAMMA_RANGE[1], GAMMA_INCREMENT)
 # gammas = np.array([0.9]) <- use if you only want to see a single value for gamma.
@@ -111,4 +130,6 @@ for gamma in np.flip(gammas):
 
 #  Results
 V_tabs = np.array(V_tabs)
-# print(convergence_times)
+# print(convergence_times) 
+print(convergence_times[1]) 
+plot_runtime_gamma()

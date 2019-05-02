@@ -32,28 +32,26 @@ def print_results(V, optimal_policy, cycles, time, gamma):
         print(print_moves(optimal_policy))
 
     print("\nThe values of all 16 states are shown below (gamma = {}).".format(gamma))
-    print(np.reshape(V, [4, 4]))
+    print(np.round(np.reshape(V, [4, 4]), 2))
 
-    print('Completed ' + str(cycles) + ' cycle(s)')
-    print("Time to convergence: " + str(time))
+    print('\nCompleted ' + str(cycles) + ' cycle(s)')
+    print("Time to convergence: " + str(round(time * 1000, 2)) + " ms")
 
 
 def print_moves(policy):
-    solution_matrix = np.chararray([16])
-    i = 0
+    solution_matrix = []
     for row in policy:
         if row[0] == 0.25:
-            solution_matrix[i] = "T"
+            solution_matrix.append("T")
         elif row[0] == 1:
-            solution_matrix[i] = "U"
+            solution_matrix.append("U")
         elif row[1] == 1:
-            solution_matrix[i] = "R"
+            solution_matrix.append("R")
         elif row[2] == 1:
-            solution_matrix[i] = "D"
+            solution_matrix.append("D")
         elif row[3] == 1:
-            solution_matrix[i] = "L"
-        i += 1
-    return np.reshape(solution_matrix, [4,4])
+            solution_matrix.append("L")
+    return np.array(np.reshape(solution_matrix, [4,4]))
 
 
 def append_results(algorithm, V, policy, cycles, convergence_time):
@@ -113,4 +111,4 @@ for gamma in np.flip(gammas):
 
 #  Results
 V_tabs = np.array(V_tabs)
-print(convergence_times)
+# print(convergence_times)

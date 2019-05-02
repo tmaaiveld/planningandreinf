@@ -3,7 +3,7 @@ import time
 
 
 def policy_evaluation(env, gamma):
-    t = time.process_time()
+    t = time.perf_counter()
     V, policy = env.initialize()
     loop_counter = 0
 
@@ -14,7 +14,7 @@ def policy_evaluation(env, gamma):
 
         #  Check for convergence
         if np.array_equal(v, V):
-            elapsed_time = time.process_time() - t
+            elapsed_time = time.perf_counter() - t
             return V, None, loop_counter, elapsed_time
 
 

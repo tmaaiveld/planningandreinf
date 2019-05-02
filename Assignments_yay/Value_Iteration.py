@@ -3,7 +3,7 @@ import time
 
 
 def value_iteration(env, gamma, theta):
-	t = time.process_time()
+	t = time.perf_counter()
 	V, policy = env.initialize()
 	loop_counter = 0
 
@@ -12,7 +12,7 @@ def value_iteration(env, gamma, theta):
 		V, policy, converged = update(env, V, policy, gamma, theta)
 
 		if converged:
-			elapsed_time = time.process_time() - t
+			elapsed_time = time.perf_counter() - t
 			return V, policy, loop_counter, elapsed_time
 
 

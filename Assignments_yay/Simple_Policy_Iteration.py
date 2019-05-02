@@ -10,7 +10,7 @@ def simple_policy_iteration(env, gamma, theta):
 	:return: A table of value estimations (V), and a matrix of tables and actions representing the final (policy).
 	"""
     #  Initialization
-    t = time.process_time()
+    t = time.perf_counter()
     V, policy = env.initialize()
     loop_counter = 0
 
@@ -24,7 +24,7 @@ def simple_policy_iteration(env, gamma, theta):
         policy, policy_stable = improve(env, V, policy, gamma)
 
         if policy_stable is True:
-            elapsed_time = time.process_time() - t
+            elapsed_time = time.perf_counter() - t
             return V, policy, loop_counter, elapsed_time
 
 

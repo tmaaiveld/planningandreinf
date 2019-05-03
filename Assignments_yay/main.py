@@ -77,6 +77,7 @@ def append_results(algorithm, V, policy, cycles, convergence_time):
     cycle_counts[ALGORITHMS.index(algorithm)].append(cycles)
     convergence_times[ALGORITHMS.index(algorithm)].append(convergence_time)
 
+
 def create_plot(name, x, x_title, y, y_title): 
     fig = plt.figure()
     for algorithm_index in range(4):    
@@ -86,6 +87,7 @@ def create_plot(name, x, x_title, y, y_title):
     plt.ylabel(y_title)  
     plt.savefig(str(name)+'.eps')   # remove/comment before submission
     plt.show()
+
 
 #  Initialize environment and parameters (must-have 1)
 ice_world = Gridworld() 
@@ -154,3 +156,6 @@ for run in range(NUMBER_OF_RUNS):
  
 create_plot('Iterations_gammas', gammas, 'gamma', cycle_counts, 'iterations')
 create_plot('Runtime_gammas', gammas, 'gamma', running_averages, 'runtime (sec)')
+
+
+

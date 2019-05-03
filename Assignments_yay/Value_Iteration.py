@@ -22,6 +22,7 @@ def update(env, V, policy, gamma, theta):
 		v = np.copy(V[state])
 		Q = np.zeros([4, 1])
 
+		# generate new values and a new policy
 		for action in range(4):
 			for possible_outcome in env.transition_function(state, action):
 				trans_prob = possible_outcome[0]
@@ -32,6 +33,7 @@ def update(env, V, policy, gamma, theta):
 		policy[state] = np.zeros([4])
 		policy[state, np.argmax(Q)] = 1
 
+		# check for convergence of values
 		delta = max(delta, abs(v - V[state]))
 	return V, policy, (delta < theta)
 

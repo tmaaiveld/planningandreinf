@@ -12,7 +12,7 @@ ALGORITHMS = ["Random Policy Evaluation", "Value Iteration", "Howard's Policy It
 GAMMA_RANGE = [0.9, 1]
 GAMMA_INCREMENT = 0.01
 THETA = 0.0001 
-NUMBER_OF_RUNS = 3
+NUMBER_OF_RUNS = 100
 
 
 def print_header(title):
@@ -77,39 +77,21 @@ def append_results(algorithm, V, policy, cycles, convergence_time):
     cycle_counts[ALGORITHMS.index(algorithm)].append(cycles)
     convergence_times[ALGORITHMS.index(algorithm)].append(convergence_time)
 
-
-def plot_iterations_gamma():
-    cycles_gamma = plt.figure() 
+def create_plot(name, x, x_title, y, y_title): 
+    fig = plt.figure()
     for algorithm_index in range(4):    
-    #ax = plt.axes()
-    #ax.plot(np.flip(gammas), cycle_counts[algorithm_index]) 
-        plt.plot(np.flip(gammas), cycle_counts[algorithm_index], label= str(ALGORITHMS[algorithm_index])) 
+        plt.plot(np.flip(x), y[algorithm_index], label= str(ALGORITHMS[algorithm_index])) 
         plt.legend()
-    plt.xlabel("gamma")
-    plt.ylabel("iterations")
-    plt.savefig('Iterations_gamma.eps')
+    plt.xlabel(x_title)
+    plt.ylabel(y_title)  
+    plt.savefig(str(name)+'.eps')   # remove/comment before submission
     plt.show()
-
-
-def plot_runtime_gamma():
-    runtime_gamma = plt.figure()
-    for algorithm_index in range(4):    
-    #ax = plt.axes()
-    #ax.plot(np.flip(gammas), convergence_times[algorithm_index]) 
-        plt.plot(np.flip(gammas), convergence_times[algorithm_index], label= str(ALGORITHMS[algorithm_index])) 
-        plt.legend()
-    plt.xlabel("gamma")
-    plt.ylabel("run time (sec)")
-    plt.savefig('runtimes_gamma.eps')
-    plt.show()
-
 
 #  Initialize environment and parameters (must-have 1)
 ice_world = Gridworld() 
 
 gammas = np.arange(GAMMA_RANGE[0], GAMMA_RANGE[1], GAMMA_INCREMENT)
 # gammas = np.array([0.9]) # use if you only want to see a single value for gamma.
-
 
 #  Initialize arrays for results
 global V_tabs, policy_tabs, cycle_counts, convergence_times
@@ -124,8 +106,8 @@ running_averages = np.zeros([len(ALGORITHMS),int(round((GAMMA_RANGE[1]-GAMMA_RAN
 
 for run in range(NUMBER_OF_RUNS):
 
-    print('\n _ __ _  This is the ' + str(run) + 'th run   _ __ _  ')
- 
+    print('\n ====================== This is the ' + str(run) + 'th run ====================== ')
+     
     i = 0
     for gamma in np.flip(gammas):
         gamma = round(gamma, len(str(GAMMA_INCREMENT))-2)
@@ -157,31 +139,18 @@ for run in range(NUMBER_OF_RUNS):
 
         # store runtimes for each gamma
         for algorithm in range(len(ALGORITHMS)):
-            running_averages[algorithm][i] = convergence_times[algorithm][i] * (1 / NUMBER_OF_RUNS)
+            running_averages[algorithm][i] += convergence_times[algorithm][i] * (1 / NUMBER_OF_RUNS)
         i += 1
 
     #  Results
     V_tabs = np.array(V_tabs)
 
     #  Empty the results of this run to start the next one fresh
-    V_tabs = [[], [], [], []]  # 4-D arrays. Dimensions: table.x, table.y, iteration, algorithm index.
-    policy_tabs = [[], [], [], []]
-
-    cycle_counts = [[], [], [], []]  # 3-D arrays. Dimensions: value, iteration, algorithm index.
-    convergence_times = [[], [], [], []]
-
-print(running_averages)
-exit()
-
-#  Print run times for all algos and all gammas (averages)
-runtime_gamma_average = plt.figure()
-for algorithm_index in range(4): 
-    plt.plot(np.flip(gammas), averages_runtimes[algorithm_index], label= str(ALGORITHMS[algorithm_index])) 
-    plt.legend()
-plt.xlabel("gamma")
-plt.ylabel('runtime (sec)')
-plt.savefig('runtimes_gamma_multipleruns.eps')
-plt.show()
-
-# plot_iterations_gamma()
-# plot_runtime_gamma()
+    if not NUMBER_OF_RUNS - 1 == run:
+        V_tabs = [[], [], [], []]  # 4-D arrays. Dimensions: table.x, table.y, iteration, algorithm index.
+        policy_tabs = [[], [], [], []]
+        cycle_counts = [[], [], [], []]  # 3-D arrays. Dimensions: value, iteration, algorithm index.
+        convergence_times = [[], [], [], []]
+ 
+create_plot('Iterations_gammas', gammas, 'gamma', cycle_counts, 'iterations')
+create_plot('Runtime_gammas', gammas, 'gamma', running_averages, 'runtime (sec)')

@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from environment import Gridworld
-from Policy_Evaluation import policy_evaluation
+from Random_Policy import policy_evaluation
 from Howards_Policy_Iteration import howards_policy_iteration
 from Simple_Policy_Iteration import simple_policy_iteration
 from Value_Iteration import value_iteration

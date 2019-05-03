@@ -11,8 +11,6 @@ def value_iteration(env, gamma, theta):
 		loop_counter += 1
 		V, policy, converged = update(env, V, policy, gamma, theta)
 
-
-
 		if converged:
 			elapsed_time = time.perf_counter() - t
 			return V, policy, loop_counter, elapsed_time

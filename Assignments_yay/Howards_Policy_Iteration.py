@@ -17,12 +17,11 @@ def howards_policy_iteration(env, gamma, theta):
 	while True:
 		loop_counter += 1
 
-		#  Evaluation
+		#  Evaluation step
 		V, eval_counter = evaluate(env, V, policy, gamma, theta)
 
-		#  Improvement
+		#  Improvement step
 		policy, policy_stable = improve(env, V, policy, gamma)
-
 		if policy_stable is True:
 			elapsed_time = time.perf_counter() - t
 			return V, policy, loop_counter, elapsed_time

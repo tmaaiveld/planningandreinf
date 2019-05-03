@@ -16,9 +16,6 @@ class Gridworld:
                              0,  0, 20,-10,
                              0,-10,-10,-10])
 
-        #  Keep track of amount of loops, for discount factor
-        self.amount_of_steps = 0
-
         self.non_terminal_states = [2,1,0,6,4,12,10,9,8]
         #  action order: up, right, down, left.
         #  up = 0. right = 1. down = 2. left = 3.
@@ -26,10 +23,10 @@ class Gridworld:
 
     def initialize(self):
         """
-        Initializes an empty policy table
+        Initializes an empty value table and policy table
         """
-        V = np.zeros([len(self.R), 1])  # Initialize an empty value table
-        policy = np.ones([len(self.R), 4]) * 0.25  # Initialize a random policy
+        V = np.zeros([len(self.R), 1])
+        policy = np.ones([len(self.R), 4]) * 0.25
         return V, policy
 
 

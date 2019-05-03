@@ -1,6 +1,0 @@
-
-- Final code cleanups - remove print statements inside algorithm functions and remove the with HiddenPrints() statements.
-
-- still need to implement counters for the last two methods.
-- implement timers.
-- Clean up comments for submission.

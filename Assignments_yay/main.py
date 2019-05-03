@@ -12,7 +12,7 @@ ALGORITHMS = ["Random Policy Evaluation", "Value Iteration", "Howard's Policy It
 GAMMA_RANGE = [0.85, 1]
 GAMMA_INCREMENT = 0.005
 THETA = 0.0001 
-NUMBER_OF_RUNS = 100
+NUMBER_OF_RUNS = 1
 
 
 def print_header(title):
@@ -82,7 +82,7 @@ def create_plot(name, x, x_title, y, y_title):
         plt.legend()
     plt.xlabel(x_title)
     plt.ylabel(y_title)  
-    plt.savefig(str(name)+'.eps')   # remove/comment before submission
+    plt.savefig(str(name)+'.eps')
     plt.show()
 
 
@@ -90,7 +90,6 @@ def create_plot(name, x, x_title, y, y_title):
 ice_world = Gridworld() 
 
 gammas = np.arange(GAMMA_RANGE[0], (GAMMA_RANGE[1]-GAMMA_INCREMENT), GAMMA_INCREMENT)
-# gammas = np.array([0.9]) # use if you only want to see a single value for gamma.
 
 #  Initialize arrays for results
 global V_tabs, policy_tabs, cycle_counts, convergence_times
@@ -130,7 +129,7 @@ for run in range(NUMBER_OF_RUNS):
         print_results(V, policy, cycles, time, gamma)
         append_results(ALGORITHMS[2], V, policy, cycles, time)
 
-        #  Simple Policy Iteration (5a.)
+        #  Simple Policy Iteration (Opt. 5a.)
         print_header(ALGORITHMS[3])
         V, policy, cycles, time = simple_policy_iteration(ice_world, gamma, THETA)
         print_results(V, policy, cycles, time, gamma)
@@ -144,11 +143,11 @@ for run in range(NUMBER_OF_RUNS):
     #  Results
     V_tabs = np.array(V_tabs)
 
-    #  Empty the results of this run to start the next one fresh
+    #  Empty the results
     if not NUMBER_OF_RUNS - 1 == run:
-        V_tabs = [[], [], [], []]  # 4-D arrays. Dimensions: table.x, table.y, iteration, algorithm index.
+        V_tabs = [[], [], [], []]
         policy_tabs = [[], [], [], []]
-        cycle_counts = [[], [], [], []]  # 3-D arrays. Dimensions: value, iteration, algorithm index.
+        cycle_counts = [[], [], [], []]
         convergence_times = [[], [], [], []]
  
 create_plot('Iterations_gammas', gammas, 'gamma', cycle_counts, 'iterations')

@@ -11,6 +11,8 @@ def value_iteration(env, gamma, theta):
 		loop_counter += 1
 		V, policy, converged = update(env, V, policy, gamma, theta)
 
+
+
 		if converged:
 			elapsed_time = time.perf_counter() - t
 			return V, policy, loop_counter, elapsed_time
@@ -28,7 +30,6 @@ def update(env, V, policy, gamma, theta):
 				trans_prob = possible_outcome[0]
 				next_state = possible_outcome[1]
 				Q[action] += trans_prob * (env.R[next_state] + gamma * V[next_state])
-
 		V[state] = np.amax(Q)
 		policy[state] = np.zeros([4])
 		policy[state, np.argmax(Q)] = 1

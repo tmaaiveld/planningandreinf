@@ -9,8 +9,8 @@ from Value_Iteration import value_iteration
 
 #  Constants
 ALGORITHMS = ["Random Policy Evaluation", "Value Iteration", "Howard's Policy Iteration", "Simple Policy Iteration"]
-GAMMA_RANGE = [0.9, 1]
-GAMMA_INCREMENT = 0.01
+GAMMA_RANGE = [0.85, 1]
+GAMMA_INCREMENT = 0.005
 THETA = 0.0001 
 NUMBER_OF_RUNS = 100
 
@@ -69,9 +69,6 @@ def print_moves(policy):
 
 
 def append_results(algorithm, V, policy, cycles, convergence_time):
-    """
-    There's probably a much easier way to do this with Pandas or even NumPy, but this works fine.
-    """
     V_tabs[ALGORITHMS.index(algorithm)].append(np.reshape(V,[4,4]))
     policy_tabs[ALGORITHMS.index(algorithm)].append(policy)
     cycle_counts[ALGORITHMS.index(algorithm)].append(cycles)
@@ -92,7 +89,7 @@ def create_plot(name, x, x_title, y, y_title):
 #  Initialize environment and parameters (must-have 1)
 ice_world = Gridworld() 
 
-gammas = np.arange(GAMMA_RANGE[0], GAMMA_RANGE[1], GAMMA_INCREMENT)
+gammas = np.arange(GAMMA_RANGE[0], (GAMMA_RANGE[1]-GAMMA_INCREMENT), GAMMA_INCREMENT)
 # gammas = np.array([0.9]) # use if you only want to see a single value for gamma.
 
 #  Initialize arrays for results

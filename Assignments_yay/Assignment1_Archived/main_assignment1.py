@@ -8,8 +8,8 @@ from Simple_Policy_Iteration import simple_policy_iteration
 from Value_Iteration import value_iteration
 
 #  Constants
-ALGORITHMS = ["qlearning"]
-GAMMA_RANGE = [0.9]
+ALGORITHMS = ["Random Policy Evaluation", "Value Iteration", "Howard's Policy Iteration", "Simple Policy Iteration"]
+GAMMA_RANGE = [0.85, 1]
 GAMMA_INCREMENT = 0.005
 THETA = 0.0001 
 NUMBER_OF_RUNS = 1
@@ -111,14 +111,29 @@ for run in range(NUMBER_OF_RUNS):
         gamma = round(gamma, len(str(GAMMA_INCREMENT))-2)
         print("\n\n*** Running for gamma = {} ***".format(gamma))
 
-  
-        #  Q-learning  (MH-8)
+        #  Policy Evaluation (MH-2)
         print_header(ALGORITHMS[0])
-        V, policy, cycles, time = qlearning(ice_world, gamma)
+        V, policy, cycles, time = policy_evaluation(ice_world, gamma)
         print_results(V, policy, cycles, time, gamma)
         append_results(ALGORITHMS[0], V, policy, cycles, time)
 
-        
+        #  Value Iteration (MH-3)
+        print_header(ALGORITHMS[1])
+        V, policy, cycles, time = value_iteration(ice_world, gamma, THETA)
+        print_results(V, policy, cycles, time, gamma)
+        append_results(ALGORITHMS[1], V, policy, cycles, time)
+
+        #  Howard's Policy Iteration (MH-4)
+        print_header(ALGORITHMS[2])
+        V, policy, cycles, time = howards_policy_iteration(ice_world, gamma, THETA)
+        print_results(V, policy, cycles, time, gamma)
+        append_results(ALGORITHMS[2], V, policy, cycles, time)
+
+        #  Simple Policy Iteration (Opt. 5a.)
+        print_header(ALGORITHMS[3])
+        V, policy, cycles, time = simple_policy_iteration(ice_world, gamma, THETA)
+        print_results(V, policy, cycles, time, gamma)
+        append_results(ALGORITHMS[3], V, policy, cycles, time)
 
         # store runtimes for each gamma
         for algorithm in range(len(ALGORITHMS)):

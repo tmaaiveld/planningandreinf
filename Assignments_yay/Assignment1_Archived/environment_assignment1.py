@@ -1,6 +1,6 @@
 import numpy as np
 
-'''Might write a rewards counter or perhaps in algo module itself. Anyway this line is mostly just to introduce a change in this file so it can be pushed'''
+
 class Gridworld:
 
     def __init__(self):

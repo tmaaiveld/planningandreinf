@@ -25,7 +25,7 @@ class Gridworld:
         #  States ordered from top right, descending: [[3,2,1,0],...]
  
 
-    def initialize(self, epsilon):    # Might rewrite this, don't need V and Policy really
+    def initialize(self):    # Might rewrite this, don't need V and Policy really
         """
         Initializes an empty value table and policy table
         """

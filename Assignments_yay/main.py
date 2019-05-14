@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from environment import Gridworld
 from Qlearning_draft import qlearning
 from SARSA_draft import sarsa
+from Value_Iteration import value_iteration
 
 #  Constants
 ALGORITHMS = ["Q-learning", "SARSA"]
@@ -13,7 +14,7 @@ EPSILON_RANGE = 0.05
 ALPHA_RANGE = 0.01
 THETA = 0.0001 
 NUMBER_OF_RUNS = 1
-NUMBER_OF_GAMES =  500000
+NUMBER_OF_GAMES = 10000
 
 
 def print_header(title):
@@ -114,21 +115,24 @@ for run in range(NUMBER_OF_RUNS):
         gamma = round(gamma, len(str(GAMMA_INCREMENT))-2)
         print("\n\n*** Running for gamma = {} ***".format(gamma))
 
-        #  Q-learning  (MH-8)
+        # Value Iteration (optimal policy benchmark)
+        V_pi = value_iteration(ice_world, gamma, THETA)
+
+        #  Q-learning (MH-8)
         print_header(ALGORITHMS[0])
-        Q, cycles, time = qlearning(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES)
+        Q, cycles, time, RMSE_QL = qlearning(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
         print_results(Q, cycles, time, ALGORITHMS[0])
-        #print_results(V, policy, cycles, time, gamma)
-        #append_results(ALGORITHMS[0], V, policy, cycles, time)
+        # print_results(V, policy, cycles, time, gamma)
+        # append_results(ALGORITHMS[0], V, policy, cycles, time)
 
         # Softmax Exploration Strategy (MH-9)
 
-        #  SARSA (parilla) (MH-10)
+        #  SARSA (MH-10)
         print_header(ALGORITHMS[1])
-        Q, cycles, time = sarsa(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES)
+        Q, cycles, time, RMSE_SARSA = sarsa(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
         print_results(Q, cycles, time, ALGORITHMS[1])
-        #print_results(V, policy, cycles, time, gamma)
-        #append_results(ALGORITHMS[0], V, policy, cycles, time)
+        # print_results(V, policy, cycles, time, gamma)
+        # append_results(ALGORITHMS[0], V, policy, cycles, time)
 
         # store runtimes for each gamma
         # for algorithm in range(len(ALGORITHMS)):
@@ -144,6 +148,12 @@ for run in range(NUMBER_OF_RUNS):
         policy_tabs = [[], [], [], []]
         cycle_counts = [[], [], [], []]
         convergence_times = [[], [], [], []]
- 
+
+# Making an X-Y plot of the RMSE over iterations:
+myplot = plt.plot(range(0, NUMBER_OF_GAMES), RMSE_QL,    'r--',
+                  range(0, NUMBER_OF_GAMES), RMSE_SARSA, 'b--')
+plt.show(myplot)
+
+
 #create_plot('Iterations_gammas', gammas, 'gamma', cycle_counts, 'iterations')
 #create_plot('Runtime_gammas', gammas, 'gamma', running_averages, 'runtime (sec)')

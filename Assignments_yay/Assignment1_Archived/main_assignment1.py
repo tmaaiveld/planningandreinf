@@ -118,10 +118,10 @@ for run in range(NUMBER_OF_RUNS):
         append_results(ALGORITHMS[0], V, policy, cycles, time)
 
         #  Value Iteration (MH-3)
-        print_header(ALGORITHMS[1])
+        print_header(ALGORITHMS[2])
         V, policy, cycles, time = value_iteration(ice_world, gamma, THETA)
         print_results(V, policy, cycles, time, gamma)
-        append_results(ALGORITHMS[1], V, policy, cycles, time)
+        append_results(ALGORITHMS[2], V, policy, cycles, time)
 
         #  Howard's Policy Iteration (MH-4)
         print_header(ALGORITHMS[2])

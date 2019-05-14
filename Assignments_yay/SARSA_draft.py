@@ -1,13 +1,14 @@
 import numpy as np
 import time
+import math
 
-def sarsa(env, gamma, epsilon, alpha, number_of_episodes):
+def sarsa(env, gamma, epsilon, alpha, number_of_episodes, V_pi):
     t = time.perf_counter()
     episode_count = 0
-    #cumulative_reward = 0
+    RMSE = []
 
-    Q, V, policy = env.initialize(epsilon)  # don't need policy and V
-    print(number_of_episodes)
+    Q, V, policy = env.initialize()  # don't need policy and V
+
     for i in range(number_of_episodes):      #while not done / loop for each episode / while not_converged:
         episode_count += 1
 
@@ -20,5 +21,14 @@ def sarsa(env, gamma, epsilon, alpha, number_of_episodes):
             Q[state,action] = Q[state,action] + alpha*(R + gamma*Q[next_state, next_action] - Q[state,action])
             state = next_state
             action = next_action
+
+        V = np.zeros([16, 1])
+        for state in range(16):
+            V[state] = np.amax(Q[state])
+
+        # print(np.reshape(V, [4,4])) # Watch the algorithm converge
+
+        RMSE.append(math.sqrt(((V - V_pi) ** 2).mean(axis=None)))
+
     elapsed_time = time.perf_counter() - t
-    return Q, episode_count, elapsed_time
+    return Q, episode_count, elapsed_time, RMSE

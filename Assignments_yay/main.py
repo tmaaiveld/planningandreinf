@@ -19,8 +19,14 @@ def print_header(title):
     print(" " * 3 + title)
     print("-" * (len(title) + 6))
 
+def print_results2(Q, episode_count, time): # gamma, alpha, eps
+    print(Q)
+    print(episode_count)
+    print(time)
 
-def print_results(V, optimal_policy, cycles, time, gamma):
+
+
+def print_results1(V, optimal_policy, cycles, time, gamma): # Assignment 1 
     """
     :param V: A 4x4 array of V values for the implemented policy.
     :param policy: An optimal policy converged upon by the algorithm.
@@ -28,8 +34,10 @@ def print_results(V, optimal_policy, cycles, time, gamma):
     :param time: Time elapsed while the algorithm was running.
     """
     if optimal_policy is not None:
-        print("\n A table with the final policy is shown below.")
-        print_policy(optimal_policy)
+        #print("\n A table with the final policy is shown below.")
+        #print_policy(optimal_policy)
+        print("\n An ugly table with the final policy is shown below.")
+        print(optimal_policy) # 
 
     print("\nThe values of all 16 states are shown below (gamma = {}).".format(gamma))
     print(np.round(np.reshape(V, [4, 4]), 2))
@@ -50,21 +58,25 @@ def print_policy(policy):
         print(np.array2string(np.flip(pols,axis=0), separator=',', formatter={'str_kind': lambda x: x}))
 
 
-def print_moves(policy):
-    solution_matrix = []
-    for row in policy:
-        if row[0] == 0.25:
-            solution_matrix.append(u"\u00D7")
-        elif row[0] == 1:
-            solution_matrix.append(u"\u2191")
-        elif row[1] == 1:
-            solution_matrix.append(u"\u2192")
-        elif row[2] == 1:
-            solution_matrix.append(u"\u2193")
-        elif row[3] == 1:
-            solution_matrix.append(u"\u2190")
-    solution_matrix[3] = u"\u2691"
-    return np.array(np.reshape(solution_matrix, [4,4]))
+# def print_moves(policy): # needs to be rewritten 
+    # print('Print policy in an ugly way for now:')
+    # print(policy)
+    # solution_matrix = []
+    # for row in policy:
+    #     if row[0] == 0.25:
+    #         solution_matrix.append(u"\u00D7")
+    #     elif row[0] == 1:
+    #         solution_matrix.append(u"\u2191")
+    #     elif row[1] == 1:
+    #         solution_matrix.append(u"\u2192")
+    #     elif row[2] == 1:
+    #         solution_matrix.append(u"\u2193")
+    #     elif row[3] == 1:
+    #         solution_matrix.append(u"\u2190")
+    # print('Print solution_matrix:')
+    # print(solution_matrix)
+    # solution_matrix[3] = u"\u2691"
+    # return np.array(np.reshape(solution_matrix, [4,4])) 
 
 
 def append_results(algorithm, V, policy, cycles, convergence_time):
@@ -117,9 +129,10 @@ for run in range(NUMBER_OF_RUNS):
 
         #  Q-learning  (MH-8)
         print_header(ALGORITHMS[0])
-        V, policy, cycles, time = qlearning(ice_world, epsilon, alpha, gamma) #, THETA)
-        print_results(V, policy, cycles, time, gamma)
-        append_results(ALGORITHMS[0], V, policy, cycles, time)
+        Q, cycles, time = qlearning(ice_world, epsilon, alpha, gamma) #, THETA)
+        print_results2(Q, cycles, time)
+        #print_results(V, policy, cycles, time, gamma)
+        #append_results(ALGORITHMS[0], V, policy, cycles, time)
 
 
 
@@ -138,5 +151,5 @@ for run in range(NUMBER_OF_RUNS):
         cycle_counts = [[], [], [], []]
         convergence_times = [[], [], [], []]
  
-create_plot('Iterations_gammas', gammas, 'gamma', cycle_counts, 'iterations')
+#create_plot('Iterations_gammas', gammas, 'gamma', cycle_counts, 'iterations')
 #create_plot('Runtime_gammas', gammas, 'gamma', running_averages, 'runtime (sec)')

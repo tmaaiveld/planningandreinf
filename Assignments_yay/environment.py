@@ -40,13 +40,33 @@ class Gridworld:
         return initial_state
 
 
-    def e_greedy_action_selection(self, Q, state, epsilon):
+    def e_greedy_action_selection(self, Q, state, policy, epsilon):
         """
         Chooses an action for a given state according to an epsilon-greedy policy
         """
-        policy[state, np.argmax(Q[state])] = 1 - epsilon
 
-        chosen_action = np.random.choice(4, 1, p = policy[state]) 
+        
+        best_action = 
+
+        if random.uniform(0,1) < epsilon:
+            best action = None
+            if the 
+            best_action = 
+            actions = range(4)
+            action_options = actions.remove(best_action) if best_action!=None else actions 
+            chosen_action = random.choices(action_options)
+        else: 
+            chosen_action = the best one 
+            
+
+        chosen_action = random.choices(4)
+
+        if not then: '
+            policy[state, np.argmax(Q[state])] = 1 - epsilon
+        #print(policy[state])
+            chosen_action = random.choices(range(4), policy[state], k=1) 
+        # chosen_action = np.random.choice(4, 1, p = policy[state]) 
+        
         return chosen_action
 
     
@@ -58,7 +78,8 @@ class Gridworld:
 		# 		trans_prob = possible_outcome[0]
 		# 		next_state = possible_outcome[1]
         # ### choose randomly if there's multiple outcomes
-        next_state = transition_function(state, action)[1]
+        possible_outcome = self.transition_function(state, action)
+        next_state = random.choices([possible_outcome[0][1],possible_outcome[-1][1]], [possible_outcome[0][0],possible_outcome[-1][0]], k=1)
 
         reward = self.R[next_state]
     

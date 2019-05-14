@@ -1,8 +1,9 @@
 ========== TO-DO's =======
 
 MH-8 Q-Learning
-- How to format the output of the state-values, now it's giving these 'e's T_____T
 - While loop instead of for loop: need convergence criterium
+# i think this is fine now. Changed it to a definable constant amount of loops. The
+# plot gives a good idea when to terminate.
 - cumulative rewards counter
 
 Ask
@@ -10,6 +11,10 @@ Ask
 (2) How to evaluate the algorithms? ''Typically planning and reinforcement learning algorithms are 
 evaluated in terms of quality (e.g., accumulated rewards, error with respect to the 
 optimal policy, regret, etc.) as a function of runtime.''
+# I've now implemented error w.r.t opt. policy and created a plot for it. This was done
+# as a function of loops because this had to do with the question for that MH, but
+# of course runtime would also be interesting (implemented by saving t's in a list).
+
 - Based on answers to these questions, adjust Main.py etc. 
 
 Start on other MH's

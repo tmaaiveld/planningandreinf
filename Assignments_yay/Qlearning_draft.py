@@ -4,7 +4,18 @@ import math
 import random
  
 
-def qlearning(env, gamma, epsilon, alpha, number_of_games, V_pi): # theta): ####)
+def qlearning(env, gamma, param, alpha, number_of_games, V_pi):
+    """
+    :param env: Environment object
+    :param gamma: Step size parameter
+    :param param: Epsilon for greedy exploration (input as a positive number)
+                  Temperature for softmax (input as a negative number)
+    :param alpha: learning rate
+    :param number_of_games: desired number of episodes
+    :param V_pi: Optimal policy learned through value iteration
+    :return: A Q-table, number of episodes, elapsed time, and a list of
+             RMSE measurements.
+    """
     t = time.perf_counter()
     episode_count = 0
     RMSE = []
@@ -15,7 +26,11 @@ def qlearning(env, gamma, epsilon, alpha, number_of_games, V_pi): # theta): ####
         episode_count += 1
         state = env.initialize_state()
         while state in env.non_terminal_states: # in other words: loop for each episode)
-            action = env.e_greedy_action_selection(Q, state, epsilon) 
+            if param > 0:
+                action = env.e_greedy_action_selection(Q, state, param)
+            else:
+                action = env.softmax_action_selection(Q, state, -param)
+
             R, next_state = env.take(state, action) 
             Q[state,action] = Q[state,action] + alpha*(R + gamma*Q[next_state, np.argmax(Q[next_state])] - Q[state,action])
             state = next_state

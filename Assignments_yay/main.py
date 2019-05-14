@@ -7,10 +7,11 @@ from SARSA_draft import sarsa
 from Value_Iteration import value_iteration
 
 #  Constants
-ALGORITHMS = ["Q-learning", "SARSA"]
+ALGORITHMS = ["Q-learning (\u03B5-greedy)", "Q-learning (Softmax)", "SARSA"]
 GAMMA_RANGE = [0.9]
 GAMMA_INCREMENT = 0.005
-EPSILON_RANGE = 0.05
+EPSILON_RANGE = 0.1
+TEMPERATURE_RANGE = 10
 ALPHA_RANGE = 0.01
 THETA = 0.0001 
 NUMBER_OF_RUNS = 1
@@ -24,9 +25,9 @@ def print_header(title):
 
 
 def print_results(Q, episode_count, time, algorithm):
-    '''
+    """
     The state-values and optimal policies are extracted from the Qs and printed here
-    '''
+    """
     V = np.zeros([16, 1])
     for state in range(16):
         V[state] = np.amax(Q[state])
@@ -94,6 +95,7 @@ gammas = GAMMA_RANGE
 # gammas = np.arange(GAMMA_RANGE[0], (GAMMA_RANGE[1]-GAMMA_INCREMENT), GAMMA_INCREMENT)
 epsilon = EPSILON_RANGE
 alpha = ALPHA_RANGE
+temperature = TEMPERATURE_RANGE
 
 #  Initialize arrays for results
 global V_tabs, policy_tabs, cycle_counts, convergence_times
@@ -120,17 +122,22 @@ for run in range(NUMBER_OF_RUNS):
 
         #  Q-learning (MH-8)
         print_header(ALGORITHMS[0])
-        Q, cycles, time, RMSE_QL = qlearning(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
+        Q, cycles, time, RMSE_QLG = qlearning(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
         print_results(Q, cycles, time, ALGORITHMS[0])
         # print_results(V, policy, cycles, time, gamma)
         # append_results(ALGORITHMS[0], V, policy, cycles, time)
 
         # Softmax Exploration Strategy (MH-9)
+        print_header(ALGORITHMS[1])
+        Q, cycles, time, RMSE_QLS = qlearning(ice_world, gamma, -temperature, alpha, NUMBER_OF_GAMES, V_pi)
+        print_results(Q, cycles, time, ALGORITHMS[1])
+        # print_results(V, policy, cycles, time, gamma)
+        # append_results(ALGORITHMS[1], V, policy, cycles, time)
 
         #  SARSA (MH-10)
-        print_header(ALGORITHMS[1])
+        print_header(ALGORITHMS[2])
         Q, cycles, time, RMSE_SARSA = sarsa(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
-        print_results(Q, cycles, time, ALGORITHMS[1])
+        print_results(Q, cycles, time, ALGORITHMS[2])
         # print_results(V, policy, cycles, time, gamma)
         # append_results(ALGORITHMS[0], V, policy, cycles, time)
 
@@ -150,9 +157,11 @@ for run in range(NUMBER_OF_RUNS):
         convergence_times = [[], [], [], []]
 
 # Making an X-Y plot of the RMSE over iterations:
-myplot = plt.plot(range(0, NUMBER_OF_GAMES), RMSE_QL,    'r--',
-                  range(0, NUMBER_OF_GAMES), RMSE_SARSA, 'b--')
-plt.show(myplot)
+plt.plot(range(0, NUMBER_OF_GAMES), RMSE_QLG,   'r--', label=ALGORITHMS[0])
+plt.plot(range(0, NUMBER_OF_GAMES), RMSE_QLS,   'g--', label=ALGORITHMS[1])
+plt.plot(range(0, NUMBER_OF_GAMES), RMSE_SARSA, 'b--', label=ALGORITHMS[2])
+plt.legend()
+plt.show()
 
 
 #create_plot('Iterations_gammas', gammas, 'gamma', cycle_counts, 'iterations')

@@ -1,7 +1,6 @@
 import numpy as np
 import random
- 
- 
+
 class Gridworld:
 
     def __init__(self):
@@ -45,16 +44,36 @@ class Gridworld:
         Chooses an action for a given state according to an epsilon-greedy policy      
         """
         best_action = np.argmax(Q[state]) if not all(action == Q[state][0] for action in Q[state]) else random.randint(0,3)
-            
         chosen_action = self.explore(best_action) if random.uniform(0,1) < epsilon else best_action
-                   
         return chosen_action
 
+
     def explore(self, greedy_action):
-        actions = list(range(4))  
-        actions.remove(greedy_action) 
+        actions = list(range(4))
+        actions.remove(greedy_action)
         exploratory_action = random.choices(actions)
         return exploratory_action[0]
+
+
+    def softmax_action_selection(self, Q, state, temperature):
+        probabilities = self.softmax(Q[state], temperature)
+        # print(probabilities)
+        chosen_action = self.weighted_choice(probabilities)
+        return chosen_action
+
+
+    def softmax(self, x, T):
+        """Transform list contents to softmax values."""
+        # print(x/T)
+        soft_x = np.exp(x/T) / np.sum(np.exp(x/T), axis=0)
+        # print(soft_x)
+        return soft_x
+
+
+    def weighted_choice(self, weights):
+        totals = np.cumsum(weights)
+        throw = np.random.rand()
+        return np.searchsorted(totals, throw)
 
 
     def take(self, state, action):

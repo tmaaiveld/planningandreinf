@@ -5,7 +5,7 @@ from Environment import Gridworld
 from Qlearning_draft import qlearning
 
 #  Constants
-ALGORITHMS = ["qlearning"]
+ALGORITHMS = ["Q-learning"]
 GAMMA_RANGE = [0.9]
 GAMMA_INCREMENT = 0.005
 EPSILON_RANGE = 0.05
@@ -19,65 +19,51 @@ def print_header(title):
     print(" " * 3 + title)
     print("-" * (len(title) + 6))
 
-def print_results2(Q, episode_count, time): # gamma, alpha, eps
-    print(Q)
-    print(episode_count)
-    print(time)
 
-
-
-def print_results1(V, optimal_policy, cycles, time, gamma): # Assignment 1 
-    """
-    :param V: A 4x4 array of V values for the implemented policy.
-    :param policy: An optimal policy converged upon by the algorithm.
-    :param cycles: The amount of cycles before convergence.
-    :param time: Time elapsed while the algorithm was running.
-    """
-    if optimal_policy is not None:
-        #print("\n A table with the final policy is shown below.")
-        #print_policy(optimal_policy)
-        print("\n An ugly table with the final policy is shown below.")
-        print(optimal_policy) # 
-
-    print("\nThe values of all 16 states are shown below (gamma = {}).".format(gamma))
+def print_results(Q, episode_count, time):
+    '''
+    The state-values and optimal policies are extracted from the Qs and printed here
+    '''
+    V = np.zeros([16, 1])
+    for state in range(16):
+        V[state] = np.amax(Q[state])
+    print('\n The values of all 16 states are shown below')
     print(np.round(np.reshape(V, [4, 4]), 2))
 
-    print('\nCompleted ' + str(cycles) + ' episode(s)')
+    optimal_policy = np.empty([16,1])
+    for state in range(16):
+        optimal_policy[state] = np.argmax(Q[state]) 
+    print('\n This should output optimal policies nicely')
+    print_moves(optimal_policy) 
+    
+    print('\nCompleted ' + str(episode_count) + ' episode(s)')
     print("Time to convergence: " + str(round(time * 1000, 2)) + " ms")
 
 
-def print_policy(policy):
-    if type(policy) != list:
-        print(np.array2string(print_moves(policy), separator=',', formatter={'str_kind': lambda x: x}))
-
-    else:
-        pols = []
-        for pol in policy:
-            pols.append(print_moves(pol))
-        pols = np.array(pols)
-        print(np.array2string(np.flip(pols,axis=0), separator=',', formatter={'str_kind': lambda x: x}))
-
-
-# def print_moves(policy): # needs to be rewritten 
-    # print('Print policy in an ugly way for now:')
-    # print(policy)
-    # solution_matrix = []
-    # for row in policy:
-    #     if row[0] == 0.25:
-    #         solution_matrix.append(u"\u00D7")
-    #     elif row[0] == 1:
-    #         solution_matrix.append(u"\u2191")
-    #     elif row[1] == 1:
-    #         solution_matrix.append(u"\u2192")
-    #     elif row[2] == 1:
-    #         solution_matrix.append(u"\u2193")
-    #     elif row[3] == 1:
-    #         solution_matrix.append(u"\u2190")
-    # print('Print solution_matrix:')
-    # print(solution_matrix)
-    # solution_matrix[3] = u"\u2691"
-    # return np.array(np.reshape(solution_matrix, [4,4])) 
-
+def print_moves(policy):  
+    '''
+    This prints the optimal policies in symbols (arrows and stuff), 
+    quite different from Assignment 1's print_moves though
+    '''
+    non_terminal_states = [2,1,0,6,4,12,10,9,8]
+    solution_matrix = []
+    state = 0
+    for move in policy:
+        if state not in non_terminal_states:
+            solution_matrix.append(u"\u00D7")
+        else:
+            if move == [0]:
+                solution_matrix.append(u"\u2191")
+            elif move == [1]:
+                solution_matrix.append(u"\u2192")
+            elif move == [2]:
+                solution_matrix.append(u"\u2193")
+            elif move == [3]:
+                solution_matrix.append(u"\u2190")
+        state += 1 
+    solution_matrix[3] = u"\u2691"
+    print(np.array(np.reshape(solution_matrix, [4,4])))
+  
 
 def append_results(algorithm, V, policy, cycles, convergence_time):
     V_tabs[ALGORITHMS.index(algorithm)].append(np.reshape(V,[4,4]))
@@ -130,7 +116,7 @@ for run in range(NUMBER_OF_RUNS):
         #  Q-learning  (MH-8)
         print_header(ALGORITHMS[0])
         Q, cycles, time = qlearning(ice_world, epsilon, alpha, gamma) #, THETA)
-        print_results2(Q, cycles, time)
+        print_results(Q, cycles, time)
         #print_results(V, policy, cycles, time, gamma)
         #append_results(ALGORITHMS[0], V, policy, cycles, time)
 

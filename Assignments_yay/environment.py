@@ -1,7 +1,7 @@
 import numpy as np
 import random
-
-'''Might write a rewards counter or perhaps in algo module itself'''
+ 
+ 
 class Gridworld:
 
     def __init__(self):
@@ -25,14 +25,14 @@ class Gridworld:
         #  States ordered from top right, descending: [[3,2,1,0],...]
  
 
-    def initialize(self, epsilon):
+    def initialize(self, epsilon):    # Might rewrite this, don't need V and Policy really
         """
         Initializes an empty value table and policy table
         """
         Q = np.zeros([len(self.R), 4])
         V = np.zeros([len(self.R), 1])
-        policy = np.ones([len(self.R), 4]) * (epsilon/4)
-        return Q, V, policy #, V, policy
+        policy = np.ones([len(self.R), 4]) * 0.25
+        return Q, V, policy 
 
 
     def initialize_state(self):
@@ -40,44 +40,27 @@ class Gridworld:
         return initial_state
 
 
-    def e_greedy_action_selection(self, Q, state, policy, epsilon):
+    def e_greedy_action_selection(self, Q, state, epsilon):   
         """
-        Chooses an action for a given state according to an epsilon-greedy policy
+        Chooses an action for a given state according to an epsilon-greedy policy      
         """
-
-        
-        best_action = 
-
-        if random.uniform(0,1) < epsilon:
-            best action = None
-            if the 
-            best_action = 
-            actions = range(4)
-            action_options = actions.remove(best_action) if best_action!=None else actions 
-            chosen_action = random.choices(action_options)
-        else: 
-            chosen_action = the best one 
+        best_action = np.argmax(Q[state]) if not all(action == Q[state][0] for action in Q[state]) else random.randint(0,3)
             
-
-        chosen_action = random.choices(4)
-
-        if not then: '
-            policy[state, np.argmax(Q[state])] = 1 - epsilon
-        #print(policy[state])
-            chosen_action = random.choices(range(4), policy[state], k=1) 
-        # chosen_action = np.random.choice(4, 1, p = policy[state]) 
-        
+        chosen_action = self.explore(best_action) if random.uniform(0,1) < epsilon else best_action
+                   
         return chosen_action
 
-    
+    def explore(self, greedy_action):
+        actions = list(range(4))  
+        actions.remove(greedy_action) 
+        exploratory_action = random.choices(actions)
+        return exploratory_action[0]
+
+
     def take(self, state, action):
         '''
-        Take some action from some state and observe the reward and next state
+        Take some action from some state and observe the reward and next state 
         '''
-        #  for possible_outcome in transition_function(state, action):  # not sure if this will work
-		# 		trans_prob = possible_outcome[0]
-		# 		next_state = possible_outcome[1]
-        # ### choose randomly if there's multiple outcomes
         possible_outcome = self.transition_function(state, action)
         next_state = random.choices([possible_outcome[0][1],possible_outcome[-1][1]], [possible_outcome[0][0],possible_outcome[-1][0]], k=1)
 

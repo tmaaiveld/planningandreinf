@@ -1,0 +1,15 @@
+========== TO-DO's =======
+
+MH-8 Q-Learning
+- How to format the output of the state-values, now it's giving these 'e's T_____T
+- While loop instead of for loop: need convergence criterium
+- cumulative rewards counter
+
+Ask
+(1) the range of different alphas and different epsilons we should try for the different algos
+(2) How to evaluate the algorithms? ''Typically planning and reinforcement learning algorithms are 
+evaluated in terms of quality (e.g., accumulated rewards, error with respect to the 
+optimal policy, regret, etc.) as a function of runtime.''
+- Based on answers to these questions, adjust Main.py etc. 
+
+Start on other MH's

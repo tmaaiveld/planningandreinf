@@ -61,11 +61,16 @@ class Gridworld:
         '''
         Take some action from some state and observe the reward and next state 
         '''
+        if type(state) == list:
+            state = state[0]
+
         possible_outcome = self.transition_function(state, action)
         next_state = random.choices([possible_outcome[0][1],possible_outcome[-1][1]], [possible_outcome[0][0],possible_outcome[-1][0]], k=1)
 
         reward = self.R[next_state]
-    
+
+        if type(next_state) == list:
+            next_state = next_state[0]
         return reward, next_state
         
 

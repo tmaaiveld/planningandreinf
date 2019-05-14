@@ -1,17 +1,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from Environment import Gridworld
+from environment import Gridworld
 from Qlearning_draft import qlearning
+from SARSA_draft import sarsa
 
 #  Constants
-ALGORITHMS = ["Q-learning"]
+ALGORITHMS = ["Q-learning", "SARSA"]
 GAMMA_RANGE = [0.9]
 GAMMA_INCREMENT = 0.005
 EPSILON_RANGE = 0.05
 ALPHA_RANGE = 0.01
 THETA = 0.0001 
 NUMBER_OF_RUNS = 1
+NUMBER_OF_GAMES =  500000
 
 
 def print_header(title):
@@ -20,7 +22,7 @@ def print_header(title):
     print("-" * (len(title) + 6))
 
 
-def print_results(Q, episode_count, time):
+def print_results(Q, episode_count, time, algorithm):
     '''
     The state-values and optimal policies are extracted from the Qs and printed here
     '''
@@ -33,7 +35,7 @@ def print_results(Q, episode_count, time):
     optimal_policy = np.empty([16,1])
     for state in range(16):
         optimal_policy[state] = np.argmax(Q[state]) 
-    print('\n This should output optimal policies nicely')
+    print('\n The optimal policy found by ' + algorithm + ' is as follows:')
     print_moves(optimal_policy) 
     
     print('\nCompleted ' + str(episode_count) + ' episode(s)')
@@ -112,15 +114,21 @@ for run in range(NUMBER_OF_RUNS):
         gamma = round(gamma, len(str(GAMMA_INCREMENT))-2)
         print("\n\n*** Running for gamma = {} ***".format(gamma))
 
-
         #  Q-learning  (MH-8)
         print_header(ALGORITHMS[0])
-        Q, cycles, time = qlearning(ice_world, epsilon, alpha, gamma) #, THETA)
-        print_results(Q, cycles, time)
+        Q, cycles, time = qlearning(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES)
+        print_results(Q, cycles, time, ALGORITHMS[0])
         #print_results(V, policy, cycles, time, gamma)
         #append_results(ALGORITHMS[0], V, policy, cycles, time)
 
+        # Softmax Exploration Strategy (MH-9)
 
+        #  SARSA (parilla) (MH-10)
+        print_header(ALGORITHMS[1])
+        Q, cycles, time = sarsa(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES)
+        print_results(Q, cycles, time, ALGORITHMS[1])
+        #print_results(V, policy, cycles, time, gamma)
+        #append_results(ALGORITHMS[0], V, policy, cycles, time)
 
         # store runtimes for each gamma
         # for algorithm in range(len(ALGORITHMS)):

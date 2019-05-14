@@ -1,16 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from environment import Gridworld
-from Random_Policy import policy_evaluation
-from Howards_Policy_Iteration import howards_policy_iteration
-from Simple_Policy_Iteration import simple_policy_iteration
-from Value_Iteration import value_iteration
+from Environment import Gridworld
+from Qlearning_draft import qlearning
 
 #  Constants
 ALGORITHMS = ["qlearning"]
 GAMMA_RANGE = [0.9]
 GAMMA_INCREMENT = 0.005
+EPSILON_RANGE = 0.05
+ALPHA_RANGE = 0.01
 THETA = 0.0001 
 NUMBER_OF_RUNS = 1
 
@@ -35,7 +34,7 @@ def print_results(V, optimal_policy, cycles, time, gamma):
     print("\nThe values of all 16 states are shown below (gamma = {}).".format(gamma))
     print(np.round(np.reshape(V, [4, 4]), 2))
 
-    print('\nCompleted ' + str(cycles) + ' cycle(s)')
+    print('\nCompleted ' + str(cycles) + ' episode(s)')
     print("Time to convergence: " + str(round(time * 1000, 2)) + " ms")
 
 
@@ -89,7 +88,11 @@ def create_plot(name, x, x_title, y, y_title):
 #  Initialize environment and parameters (must-have 1)
 ice_world = Gridworld() 
 
-gammas = np.arange(GAMMA_RANGE[0], (GAMMA_RANGE[1]-GAMMA_INCREMENT), GAMMA_INCREMENT)
+
+gammas = GAMMA_RANGE
+# gammas = np.arange(GAMMA_RANGE[0], (GAMMA_RANGE[1]-GAMMA_INCREMENT), GAMMA_INCREMENT)
+epsilon = EPSILON_RANGE
+alpha = ALPHA_RANGE
 
 #  Initialize arrays for results
 global V_tabs, policy_tabs, cycle_counts, convergence_times
@@ -100,7 +103,7 @@ cycle_counts = [[], [], [], []]  # 3-D arrays. Dimensions: value, iteration, alg
 convergence_times = [[], [], [], []]
 
 #  Create lists that stores averages of runtimes
-running_averages = np.zeros([len(ALGORITHMS),int(round((GAMMA_RANGE[1]-GAMMA_RANGE[0])/GAMMA_INCREMENT))])
+#running_averages = np.zeros([len(ALGORITHMS),int(round((GAMMA_RANGE[1]-GAMMA_RANGE[0])/GAMMA_INCREMENT))])
 
 for run in range(NUMBER_OF_RUNS):
 
@@ -111,19 +114,19 @@ for run in range(NUMBER_OF_RUNS):
         gamma = round(gamma, len(str(GAMMA_INCREMENT))-2)
         print("\n\n*** Running for gamma = {} ***".format(gamma))
 
-  
+
         #  Q-learning  (MH-8)
         print_header(ALGORITHMS[0])
-        V, policy, cycles, time = qlearning(ice_world, gamma)
+        V, policy, cycles, time = qlearning(ice_world, epsilon, alpha, gamma) #, THETA)
         print_results(V, policy, cycles, time, gamma)
         append_results(ALGORITHMS[0], V, policy, cycles, time)
 
-        
+
 
         # store runtimes for each gamma
-        for algorithm in range(len(ALGORITHMS)):
-            running_averages[algorithm][i] += convergence_times[algorithm][i] * (1 / NUMBER_OF_RUNS)
-        i += 1
+        # for algorithm in range(len(ALGORITHMS)):
+        #     running_averages[algorithm][i] += convergence_times[algorithm][i] * (1 / NUMBER_OF_RUNS)
+        # i += 1
 
     #  Results
     V_tabs = np.array(V_tabs)
@@ -136,7 +139,4 @@ for run in range(NUMBER_OF_RUNS):
         convergence_times = [[], [], [], []]
  
 create_plot('Iterations_gammas', gammas, 'gamma', cycle_counts, 'iterations')
-create_plot('Runtime_gammas', gammas, 'gamma', running_averages, 'runtime (sec)')
-
-
-
+#create_plot('Runtime_gammas', gammas, 'gamma', running_averages, 'runtime (sec)')

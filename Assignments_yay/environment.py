@@ -1,9 +1,12 @@
 import numpy as np
+import random
 
-'''Might write a rewards counter or perhaps in algo module itself. Anyway this line is mostly just to introduce a change in this file so it can be pushed'''
+'''Might write a rewards counter or perhaps in algo module itself'''
 class Gridworld:
 
     def __init__(self):
+        self.Q = np.zeros([16, 4])
+
         self.V = np.zeros([16, 1])
 
         #  Define Rewards table
@@ -20,15 +23,47 @@ class Gridworld:
         #  action order: up, right, down, left.
         #  up = 0. right = 1. down = 2. left = 3.
         #  States ordered from top right, descending: [[3,2,1,0],...]
+ 
 
-    def initialize(self):
+    def initialize(self, epsilon):
         """
         Initializes an empty value table and policy table
         """
+        Q = np.zeros([len(self.R), 4])
         V = np.zeros([len(self.R), 1])
-        policy = np.ones([len(self.R), 4]) * 0.25
-        return V, policy
+        policy = np.ones([len(self.R), 4]) * (epsilon/4)
+        return Q, V, policy #, V, policy
 
+
+    def initialize_state(self):
+        initial_state = random.choice(self.non_terminal_states)
+        return initial_state
+
+
+    def e_greedy_action_selection(self, Q, state, epsilon):
+        """
+        Chooses an action for a given state according to an epsilon-greedy policy
+        """
+        policy[state, np.argmax(Q[state])] = 1 - epsilon
+
+        chosen_action = np.random.choice(4, 1, p = policy[state]) 
+        return chosen_action
+
+    
+    def take(self, state, action):
+        '''
+        Take some action from some state and observe the reward and next state
+        '''
+        #  for possible_outcome in transition_function(state, action):  # not sure if this will work
+		# 		trans_prob = possible_outcome[0]
+		# 		next_state = possible_outcome[1]
+        # ### choose randomly if there's multiple outcomes
+        next_state = transition_function(state, action)[1]
+
+        reward = self.R[next_state]
+    
+        return reward, next_state
+        
 
     def transition_function(self, state, action):
         state_probabilities = [[1,state]]

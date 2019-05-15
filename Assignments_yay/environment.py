@@ -39,6 +39,11 @@ class Gridworld:
         return initial_state
 
 
+    def initialize_action(self):
+        initial_action = random.randint(0,3)
+        return initial_action
+
+
     def e_greedy_action_selection(self, Q, state, epsilon):   
         """
         Chooses an action for a given state according to an epsilon-greedy policy      

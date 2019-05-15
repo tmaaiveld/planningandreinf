@@ -6,6 +6,7 @@ def sarsa(env, gamma, epsilon, alpha, number_of_episodes, V_pi):
     t = time.perf_counter()
     episode_count = 0
     RMSE = []
+    times = []
 
     Q, V, policy = env.initialize()  # don't need policy and V
 
@@ -27,8 +28,8 @@ def sarsa(env, gamma, epsilon, alpha, number_of_episodes, V_pi):
             V[state] = np.amax(Q[state])
 
         # print(np.reshape(V, [4,4])) # Watch the algorithm converge
-
         RMSE.append(math.sqrt(((V - V_pi) ** 2).mean(axis=None)))
+        times.append(time.perf_counter() - t)
 
-    elapsed_time = time.perf_counter() - t
-    return Q, episode_count, elapsed_time, RMSE
+    elapsed_time = time.perf_counter() - t  # redundant, can just take last value of times
+    return Q, episode_count, elapsed_time, RMSE, times

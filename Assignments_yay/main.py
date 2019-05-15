@@ -2,17 +2,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from environment import Gridworld
-from Qlearning_draft import qlearning
-from SARSA_draft import sarsa
+from Qlearning import qlearning, qlearning_watkins
+from SARSA import sarsa
 from Value_Iteration import value_iteration
 
-#  Constants
-ALGORITHMS = ["Q-learning (\u03B5-greedy)", "Q-learning (Softmax)", "SARSA"]
+ALGORITHMS = ["Q-learning (\u03B5-greedy)", "Q-learning (Softmax)", "SARSA", "Q-learning (Eligibility Traces)"]
 GAMMA_RANGE = [0.9]
 GAMMA_INCREMENT = 0.005
 EPSILON_RANGE = 0.1
 TEMPERATURE_RANGE = 10
 ALPHA_RANGE = 0.01
+LABDA_RANGE = 0.1
 THETA = 0.0001 
 NUMBER_OF_RUNS = 1
 NUMBER_OF_GAMES = 10000
@@ -45,10 +45,10 @@ def print_results(Q, episode_count, time, algorithm):
 
 
 def print_moves(policy):  
-    '''
+    """
     This prints the optimal policies in symbols (arrows and stuff), 
     quite different from Assignment 1's print_moves though
-    '''
+    """
     non_terminal_states = [2,1,0,6,4,12,10,9,8]
     solution_matrix = []
     state = 0
@@ -67,46 +67,46 @@ def print_moves(policy):
         state += 1 
     solution_matrix[3] = u"\u2691"
     print(np.array(np.reshape(solution_matrix, [4,4])))
-  
-
-def append_results(algorithm, V, policy, cycles, convergence_time):
-    V_tabs[ALGORITHMS.index(algorithm)].append(np.reshape(V,[4,4]))
-    policy_tabs[ALGORITHMS.index(algorithm)].append(policy)
-    cycle_counts[ALGORITHMS.index(algorithm)].append(cycles)
-    convergence_times[ALGORITHMS.index(algorithm)].append(convergence_time)
 
 
 def create_plot(name, x, x_title, y, y_title): 
-    fig = plt.figure()
-    for algorithm_index in range(4):    
-        plt.plot(np.flip(x), y[algorithm_index], label= str(ALGORITHMS[algorithm_index])) 
-        plt.legend()
+    # fig = plt.figure()
+    colors = ['r--', 'g--', 'b--', 'y--']
+    for algorithm_index in range(len(ALGORITHMS)):
+        plt.plot(x[algorithm_index], y[algorithm_index], colors[algorithm_index], label=ALGORITHMS[algorithm_index])
     plt.xlabel(x_title)
-    plt.ylabel(y_title)  
+    plt.ylabel(y_title)
+    plt.legend()
     plt.savefig(str(name)+'.eps')
     plt.show()
 
 
-#  Initialize environment and parameters (must-have 1)
+#  Initialize environment and parameters
 ice_world = Gridworld() 
 
 
 gammas = GAMMA_RANGE
-# gammas = np.arange(GAMMA_RANGE[0], (GAMMA_RANGE[1]-GAMMA_INCREMENT), GAMMA_INCREMENT)
 epsilon = EPSILON_RANGE
 alpha = ALPHA_RANGE
 temperature = TEMPERATURE_RANGE
+labda = LABDA_RANGE
 
 #  Initialize arrays for results
-global V_tabs, policy_tabs, cycle_counts, convergence_times
-V_tabs = [[], [], [], []]  # 4-D arrays. Dimensions: table.x, table.y, iteration, algorithm index.
-policy_tabs = [[], [], [], []]
-
-cycle_counts = [[], [], [], []]  # 3-D arrays. Dimensions: value, iteration, algorithm index.
-convergence_times = [[], [], [], []]
-
+{
+# global V_tabs, policy_tabs, cycle_counts, convergence_times
+# V_tabs = [[], [], [], []]  # 4-D arrays. Dimensions: table.x, table.y, iteration, algorithm index.
+# policy_tabs = [[], [], [], []]
+#
+# cycle_counts = [[], [], [], []]  # 3-D arrays. Dimensions: value, iteration, algorithm index.
+# convergence_times = [[], [], [], []]
+#
 #  Create lists that stores averages of runtimes
 #running_averages = np.zeros([len(ALGORITHMS),int(round((GAMMA_RANGE[1]-GAMMA_RANGE[0])/GAMMA_INCREMENT))])
+}
+
+global RMSE_tabs
+RMSE_tabs = [[], [], [], []]
+
 
 for run in range(NUMBER_OF_RUNS):
 
@@ -122,47 +122,37 @@ for run in range(NUMBER_OF_RUNS):
 
         #  Q-learning (MH-8)
         print_header(ALGORITHMS[0])
-        Q, cycles, time, RMSE_QLG = qlearning(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
+        Q, cycles, time, RMSE_QLG, times_QLG = qlearning(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
         print_results(Q, cycles, time, ALGORITHMS[0])
-        # print_results(V, policy, cycles, time, gamma)
-        # append_results(ALGORITHMS[0], V, policy, cycles, time)
+        RMSE_tabs[0].append(RMSE_QLG)
 
         # Softmax Exploration Strategy (MH-9)
         print_header(ALGORITHMS[1])
-        Q, cycles, time, RMSE_QLS = qlearning(ice_world, gamma, -temperature, alpha, NUMBER_OF_GAMES, V_pi)
+        Q, cycles, time, RMSE_QLS, times_QLS = qlearning(ice_world, gamma, -temperature, alpha, NUMBER_OF_GAMES, V_pi)
         print_results(Q, cycles, time, ALGORITHMS[1])
-        # print_results(V, policy, cycles, time, gamma)
-        # append_results(ALGORITHMS[1], V, policy, cycles, time)
+        RMSE_tabs[1].append(RMSE_QLS)
 
         #  SARSA (MH-10)
         print_header(ALGORITHMS[2])
-        Q, cycles, time, RMSE_SARSA = sarsa(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
+        Q, cycles, time, RMSE_SARSA, times_SARSA = sarsa(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
         print_results(Q, cycles, time, ALGORITHMS[2])
-        # print_results(V, policy, cycles, time, gamma)
-        # append_results(ALGORITHMS[0], V, policy, cycles, time)
+        RMSE_tabs[2].append(RMSE_SARSA)
 
-        # store runtimes for each gamma
-        # for algorithm in range(len(ALGORITHMS)):
-        #     running_averages[algorithm][i] += convergence_times[algorithm][i] * (1 / NUMBER_OF_RUNS)
-        # i += 1
+        # Q-Learning (Eligibility Traces) (O-12)
+        print_header(ALGORITHMS[3])
+        Q, cycles, time, RMSE_QLE, times_QLE = qlearning_watkins(ice_world, gamma, epsilon, alpha, labda, NUMBER_OF_GAMES, V_pi)
+        print_results(Q, cycles, time, ALGORITHMS[3])
+        RMSE_tabs[3].append(RMSE_QLE)
 
-    #  Results
-    V_tabs = np.array(V_tabs)
+RMSE_means = np.mean(RMSE_tabs, axis=1)
 
-    #  Empty the results
-    if not NUMBER_OF_RUNS - 1 == run:
-        V_tabs = [[], [], [], []]
-        policy_tabs = [[], [], [], []]
-        cycle_counts = [[], [], [], []]
-        convergence_times = [[], [], [], []]
-
-# Making an X-Y plot of the RMSE over iterations:
-plt.plot(range(0, NUMBER_OF_GAMES), RMSE_QLG,   'r--', label=ALGORITHMS[0])
-plt.plot(range(0, NUMBER_OF_GAMES), RMSE_QLS,   'g--', label=ALGORITHMS[1])
-plt.plot(range(0, NUMBER_OF_GAMES), RMSE_SARSA, 'b--', label=ALGORITHMS[2])
-plt.legend()
-plt.show()
-
+# visualise results
+create_plot("RMSE plot", 4 * [range(0, NUMBER_OF_GAMES)], 'Iterations',
+            RMSE_means, 'RMSE, averaged over states')
+create_plot("time plot", [times_QLG, times_QLS, times_SARSA, times_QLE], 'elapsed time (seconds)',
+            RMSE_means, 'RMSE, averaged over states')
+# the time plot looks nicer if you terminate after a given timespan.
+# also, averaging over 100 runs will give much more consistent results.
 
 #create_plot('Iterations_gammas', gammas, 'gamma', cycle_counts, 'iterations')
 #create_plot('Runtime_gammas', gammas, 'gamma', running_averages, 'runtime (sec)')

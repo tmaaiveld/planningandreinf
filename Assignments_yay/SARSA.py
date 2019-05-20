@@ -5,17 +5,20 @@ import math
 def sarsa(env, gamma, epsilon, alpha, number_of_episodes, V_pi):
     t = time.perf_counter()
     episode_count = 0
-    RMSE = []
+    RMSE = [] 
     times = []
+    cumulative_rewards = np.empty([number_of_episodes])
 
     Q, V, policy = env.initialize()  # don't need policy and V
 
     for i in range(number_of_episodes):      #while not done / loop for each episode / while not_converged:
         episode_count += 1
+        cumulative_reward = 0
+        step_count = 0 
 
         state = env.initialize_state()
         action = env.e_greedy_action_selection(Q, state, epsilon)
-        while state in env.non_terminal_states: # in other words: loop for each episode)
+        while state in env.non_terminal_states: # in other words: loop for each step in episode
             R, next_state = env.take(state, action)
             next_action = env.e_greedy_action_selection(Q, next_state, epsilon)
 
@@ -23,13 +26,18 @@ def sarsa(env, gamma, epsilon, alpha, number_of_episodes, V_pi):
             state = next_state
             action = next_action
 
+            cumulative_reward += (R*(gamma**step_count))
+            step_count += 1
+
         V = np.zeros([16, 1])
         for state in range(16):
             V[state] = np.amax(Q[state])
+ 
 
-        # print(np.reshape(V, [4,4])) # Watch the algorithm converge
+        # print(np.reshape(V, [4,4])) # Watch the algorithm converge    
+        cumulative_rewards[i] = cumulative_reward
         RMSE.append(math.sqrt(((V - V_pi) ** 2).mean(axis=None)))
         times.append(time.perf_counter() - t)
 
     elapsed_time = time.perf_counter() - t  # redundant, can just take last value of times
-    return Q, episode_count, elapsed_time, RMSE, times
+    return Q, episode_count, elapsed_time, RMSE, times, cumulative_rewards

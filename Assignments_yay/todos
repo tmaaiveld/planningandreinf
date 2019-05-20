@@ -1,3 +1,14 @@
+OUTDATED (see Google doc for any to-do's, notes etc.)
+
+
+
+
+
+
+
+
+
+
 ========== TO-DO's =======
 
 MH-8 Q-Learning
@@ -18,3 +29,7 @@ optimal policy, regret, etc.) as a function of runtime.''
 - Based on answers to these questions, adjust Main.py etc. 
 
 Start on other MH's
+
+___
+
+Optimal policy found across different runs: no need right, state value RMSE sufficient (optimal policies are based on state values)

@@ -8,7 +8,7 @@ from DoubleQLearning import doubleqlearning
 from Value_Iteration import value_iteration
 
 
-ALGORITHMS = ["Q-learning (\u03B5-greedy)", "Q-learning (Softmax)", "SARSA", "Q-learning (Eligibility Traces)", 'Double Q-learning']
+ALGORITHMS = ["Q-learning (\u03B5-greedy)", "Q-learning (Softmax)", "SARSA", "Q-learning (Eligibility Traces)", 'Double Q-learning (\u03B5-greedy)', 'Double Q-learning (Softmax)']
 GAMMA_RANGE = [0.9]
 GAMMA_INCREMENT = 0.005
 EPSILON_RANGE = 0.1
@@ -16,7 +16,7 @@ TEMPERATURE_RANGE = 10
 ALPHA_RANGE = 0.01
 LABDA_RANGE = 0.1
 THETA = 0.0001 
-NUMBER_OF_RUNS = 2
+NUMBER_OF_RUNS = 1
 NUMBER_OF_GAMES = 10000
 
 
@@ -73,7 +73,7 @@ def print_moves(policy):
 
 def create_plot(name, x, x_title, y, y_title): 
     # fig = plt.figure()
-    colors = ['r--', 'g--', 'b--', 'y--', 'm--']
+    colors = ['r--', 'g--', 'b--', 'y--', 'm--', 's--']
     for algorithm_index in range(len(ALGORITHMS)):
         plt.plot(x[algorithm_index], y[algorithm_index], colors[algorithm_index], label=ALGORITHMS[algorithm_index])
     plt.xlabel(x_title)
@@ -120,7 +120,7 @@ labda = LABDA_RANGE
 }
 
 global RMSE_tabs, online_rewards_tabs
-RMSE_tabs = [[], [], [], [], []]
+RMSE_tabs = [[], [], [], [], [], []]
 online_rewards_tabs = [] # assuming that we only do this for SARSA
 
 
@@ -136,13 +136,13 @@ for run in range(NUMBER_OF_RUNS):
         # Value Iteration (optimal policy benchmark)
         V_pi = value_iteration(ice_world, gamma, THETA)
 
-        #  Q-learning (MH-8)
+        #  Q-learning with \u03B5-greedy Exporation Strategy  (MH-8)
         print_header(ALGORITHMS[0])
         Q, cycles, time, RMSE_QLG, times_QLG = qlearning(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
         print_results(Q, cycles, time, ALGORITHMS[0])
         RMSE_tabs[0].append(RMSE_QLG)
 
-        # Softmax Exploration Strategy (MH-9)
+        # Q-learning with Softmax Exploration Strategy (MH-9)
         print_header(ALGORITHMS[1])
         Q, cycles, time, RMSE_QLS, times_QLS = qlearning(ice_world, gamma, -temperature, alpha, NUMBER_OF_GAMES, V_pi)
         print_results(Q, cycles, time, ALGORITHMS[1])
@@ -162,11 +162,18 @@ for run in range(NUMBER_OF_RUNS):
         print_results(Q, cycles, time, ALGORITHMS[3])
         RMSE_tabs[3].append(RMSE_QLE)
 
-        # Double Q-Learning (O-14)
+        # Double Q-Learning with \u03B5-greedy Exploration Strategy (O-14)
         print_header(ALGORITHMS[4])
-        Q, cycles, time, RMSE_DQL, times_DQL = doubleqlearning(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
+        Q, cycles, time, RMSE_DQLg, times_DQLg = doubleqlearning(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
         print_results(Q, cycles, time, ALGORITHMS[4])
-        RMSE_tabs[4].append(RMSE_DQL) 
+        RMSE_tabs[4].append(RMSE_DQLg) 
+
+        # Double Q-Learning with \u03B5-greedy Exploration Strategy (O-14)
+        print_header(ALGORITHMS[5])
+        Q, cycles, time, RMSE_DQLs, times_DQLs = doubleqlearning(ice_world, gamma, -temperature, alpha, NUMBER_OF_GAMES, V_pi)
+        print_results(Q, cycles, time, ALGORITHMS[5])
+        RMSE_tabs[5].append(RMSE_DQLs) 
+
 
 
 # print('\n  online rewards tabs')
@@ -179,9 +186,9 @@ RMSE_means = np.mean(RMSE_tabs, axis=1)
 # visualise results
 create_single_plot("Cumulative reward during learning", range(0, NUMBER_OF_GAMES), 'Episode', 
             online_rewards_means, 'Average cumulative reward SARSA', 2) # Algo_index 2, Sarsa
-create_plot("RMSE plot", 5 * [range(0, NUMBER_OF_GAMES)], 'Episode',
+create_plot("RMSE plot", 6 * [range(0, NUMBER_OF_GAMES)], 'Episode',
             RMSE_means, 'RMSE, averaged over states')
-create_plot("time plot", [times_QLG, times_QLS, times_SARSA, times_QLE, times_DQL], 'elapsed time (seconds)',
+create_plot("time plot", [times_QLG, times_QLS, times_SARSA, times_QLE, times_DQLg, times_DQLs], 'elapsed time (seconds)',
             RMSE_means, 'RMSE, averaged over states')
 # the time plot looks nicer if you terminate after a given timespan.
 # also, averaging over 100 runs will give much more consistent results.

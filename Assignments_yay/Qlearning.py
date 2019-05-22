@@ -156,8 +156,7 @@ def dynaq(env, gamma, param, alpha, number_of_games, V_pi, planning_steps):
                 action = random.randint(0,3)
 
                 if model[state, action][2] == 1:  # if the state/action pair was previously taken
-                    next_state = model[state,action][0]
-                    R = model[state,action][1]
+                    R, next_state = env.take(state, action)
                     Q[state, action] = Q[state, action] + alpha * (
                                 R + gamma * Q[next_state, np.argmax(Q[next_state])] - Q[state, action])
                     break

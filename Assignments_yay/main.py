@@ -21,7 +21,7 @@ LABDA_RANGE = 0.1
 THETA = 0.0001 
 NUMBER_OF_RUNS = 1
 NUMBER_OF_GAMES = 10000
-PLANNING_STEPS = 200  # hyperparameter for Dyna-Q
+PLANNING_STEPS = 10  # hyperparameter for Dyna-Q
 
 
 def print_header(title):

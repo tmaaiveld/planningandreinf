@@ -21,13 +21,13 @@ def doubleqlearning(env, gamma, param, alpha, number_of_games, V_pi):
     times = []
     t = time.perf_counter()
 
-    Q1, V, policy = env.initialize() # V and policy actually not used, can think about removing it from the function in the env if none of the algos needi t
-    Q2, V2, policy2 = env.initialize()   # idem
+    Q1, V, policy = env.initialize()
+    Q2, V2, policy2 = env.initialize()
 
-    for i in range(number_of_games):      # loop for each episode
+    for i in range(number_of_games):
         episode_count += 1 
         state = env.initialize_state()
-        while state in env.non_terminal_states: # in other words: loop for each step
+        while state in env.non_terminal_states:
             if param > 0:
                 action = env.e_greedy_action_selection(Q1+Q2, state, param)    
             else:
@@ -40,20 +40,14 @@ def doubleqlearning(env, gamma, param, alpha, number_of_games, V_pi):
                 Q2[state,action] = Q2[state,action] + alpha*(R + gamma*Q1[next_state, np.argmax(Q2[next_state])] - Q2[state,action])
             
             state = next_state
-            
-
 
         V = np.zeros([16, 1])
         Q_avg = (Q1+Q2)/2
         for state in range(16):
             V[state] = np.amax(Q_avg[state])  
 
-        
-
-        # print(np.reshape(V, [4,4])) # Watch the algorithm converge
-
         RMSE.append(math.sqrt(((V - V_pi) ** 2).mean(axis=None)))
         times.append(time.perf_counter() - t)
 
-    elapsed_time = time.perf_counter() - t  # redundant, can just take last value of times
+    elapsed_time = time.perf_counter() - t
     return Q_avg, episode_count, elapsed_time, RMSE, times

@@ -21,7 +21,7 @@ LABDA_RANGE = 0.1
 THETA = 0.0001 
 NUMBER_OF_RUNS = 1
 NUMBER_OF_GAMES = 10000
-PLANNING_STEPS = 200  # hyperparameter for Dyna-Q
+PLANNING_STEPS = 10  # hyperparameter for Dyna-Q
 
 
 def print_header(title):
@@ -31,9 +31,6 @@ def print_header(title):
 
 
 def print_results(Q, episode_count, time, algorithm):
-    """
-    The state-values and optimal policies are extracted from the Qs and printed here
-    """
     V = np.zeros([16, 1])
     for state in range(16):
         V[state] = np.amax(Q[state])
@@ -51,10 +48,6 @@ def print_results(Q, episode_count, time, algorithm):
 
 
 def print_moves(policy):
-    """
-    This prints the optimal policies in symbols (arrows and stuff),
-    quite different from Assignment 1's print_moves though
-    """
     non_terminal_states = [2,1,0,6,4,12,10,9,8]
     solution_matrix = []
     state = 0
@@ -73,7 +66,6 @@ def print_moves(policy):
         state += 1
     solution_matrix[3] = u"\u2691"
     print(np.array(np.reshape(solution_matrix, [4,4])))
-
 
 
 def create_plot(name, x, x_title, y, y_title, algorithms):
@@ -100,10 +92,6 @@ def create_time_plot(name, x, x_title, y, y_title, algorithms):
 
 
 def create_single_plot(name, x, x_title, y, y_title, algorithm_index):
-    '''
-    This works when a plot is to be created for one algorithm only. I'm sure there's a better way
-    but this works for now.
-    '''
     colors = ['r--', 'g--', 'b--', 'y--', 'm--', 'c--']
     plt.plot(x, y, colors[algorithm_index]) #, label=ALGORITHMS[algorithm_index])
     plt.xlabel(x_title)
@@ -202,8 +190,8 @@ CR_means = np.mean(CR_tabs, axis=1)
 print("-----")
 print(len(ALGORITHMS))
 print(len(RMSE_means))
-# visualise results
 
+# visualise results
 create_plot("RMSE plot", len(ALGORITHMS) * [range(0, 10000)], 'Episode',
             RMSE_means[:,0:10000], 'RMSE, averaged over states', ALGORITHMS)
 create_time_plot("time plot", [times_QLG[0:10000], times_QLS[0:10000],

@@ -19,14 +19,14 @@ def qlearning(env, gamma, param, alpha, number_of_games, V_pi):
     episode_count = 0
     RMSE = [] 
     times = []
-    ep_V = []  # record the optimal policy's value table for each loop
+    ep_V = []
     cum_rew = []
     reward = 0
     t = time.perf_counter()
 
     Q, V, policy = env.initialize()
 
-    for i in range(number_of_games):      # loop for each episode
+    for i in range(number_of_games):
         episode_count += 1 
         state = env.initialize_state()
 
@@ -45,7 +45,6 @@ def qlearning(env, gamma, param, alpha, number_of_games, V_pi):
         V = np.zeros([16, 1])
         for state in range(16):
             V[state] = np.amax(Q[state])
-        # print(np.reshape(V, [4,4])) # Watch the algorithm converge
 
         RMSE.append(math.sqrt(((V - V_pi) ** 2).mean(axis=None)))
         times.append(time.perf_counter() - t)
@@ -76,12 +75,12 @@ def qlearning_watkins(env, gamma, param, alpha, labda, number_of_games, V_pi):
     Q, V, policy = env.initialize()
     e = np.zeros([16,4])
 
-    for i in range(number_of_games):  # loop for each episode
+    for i in range(number_of_games):
         episode_count += 1
         state = env.initialize_state()
         action = env.initialize_action()
 
-        while state in env.non_terminal_states:  # for each step of the episode)
+        while state in env.non_terminal_states:
             R, next_state = env.take(state, action)
             if param > 0:
                 next_action = env.e_greedy_action_selection(Q, next_state, param)
@@ -107,11 +106,10 @@ def qlearning_watkins(env, gamma, param, alpha, labda, number_of_games, V_pi):
         for state in range(16):
             V[state] = np.amax(Q[state])
 
-        # print(np.reshape(V, [4,4])) # Watch the algorithm converge
         RMSE.append(math.sqrt(((V - V_pi) ** 2).mean(axis=None)))
         times.append(time.perf_counter() - t)
 
-    elapsed_time = time.perf_counter() - t  # redundant, can just take last value of times
+    elapsed_time = time.perf_counter() - t
     return Q, episode_count, elapsed_time, RMSE, times
 
 
@@ -131,8 +129,7 @@ def dynaq(env, gamma, param, alpha, number_of_games, V_pi, planning_steps):
     episode_count = 0
     RMSE = []
     times = []
-    ep_V = []  # record the optimal policy's value table for each loop
-    observed_states = []
+    ep_V = []
     t = time.perf_counter()
 
     Q, V, policy = env.initialize()
@@ -155,7 +152,7 @@ def dynaq(env, gamma, param, alpha, number_of_games, V_pi, planning_steps):
                 state = random.randint(0,15)
                 action = random.randint(0,3)
 
-                if model[state, action][2] == 1:  # if the state/action pair was previously taken
+                if model[state, action][2] == 1:
                     next_state = model[state,action][0]
                     R = model[state,action][1]
                     Q[state, action] = Q[state, action] + alpha * (
@@ -165,11 +162,10 @@ def dynaq(env, gamma, param, alpha, number_of_games, V_pi, planning_steps):
         V = np.zeros([16, 1])
         for state in range(16):
             V[state] = np.amax(Q[state])
-        # print(np.reshape(V, [4,4])) # Watch the algorithm converge
 
         RMSE.append(math.sqrt(((V - V_pi) ** 2).mean(axis=None)))
         times.append(time.perf_counter() - t)
         ep_V.append(V[8])
-        elapsed_time = time.perf_counter() - t  # redundant, can just take last value of times
+        elapsed_time = time.perf_counter() - t
 
     return Q, episode_count, elapsed_time, RMSE, times, ep_V

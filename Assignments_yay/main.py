@@ -13,15 +13,15 @@ ALGORITHMS = ["Q-learning (\u03B5-greedy)", "Q-learning (Softmax)", "SARSA",
               "Double Q-learning (\u03B5-greedy)", "Double Q-learning (Softmax)"]
 
 GAMMA_RANGE = [0.9]
-GAMMA_INCREMENT = 0.005
-EPSILON_RANGE = 0.1
+GAMMA_INCREMENT = 0
+EPSILON_RANGE = 0.12
 TEMPERATURE_RANGE = 10
 ALPHA_RANGE = 0.01
 LABDA_RANGE = 0.1
 THETA = 0.0001 
 NUMBER_OF_RUNS = 1
 NUMBER_OF_GAMES = 10000
-PLANNING_STEPS = 10  # hyperparameter for Dyna-Q
+PLANNING_STEPS = 200  # hyperparameter for Dyna-Q
 
 
 def print_header(title):
@@ -86,6 +86,19 @@ def create_plot(name, x, x_title, y, y_title, algorithms):
     plt.savefig(str(name)+'.eps')
     plt.show()
 
+
+def create_time_plot(name, x, x_title, y, y_title, algorithms):
+    colors = ['r--', 'g--', 'b--', 'y--', 'm--', 'k--', 'c--']
+    for algorithm_index in range(len(algorithms)):
+        plt.plot(x[algorithm_index], y[algorithm_index], colors[algorithm_index], label=algorithms[algorithm_index])
+    plt.xlabel(x_title)
+    plt.ylabel(y_title)
+    plt.xlim(0,6)
+    plt.legend()
+    plt.savefig(str(name)+'.eps')
+    plt.show()
+
+
 def create_single_plot(name, x, x_title, y, y_title, algorithm_index):
     '''
     This works when a plot is to be created for one algorithm only. I'm sure there's a better way
@@ -100,19 +113,20 @@ def create_single_plot(name, x, x_title, y, y_title, algorithm_index):
     plt.show()
 
 
-def create_state_plot(V_tabs_QLG, NUMBER_OF_GAMES, V_pi):
+def create_state_plot(name, V_tabs_QLG, NUMBER_OF_GAMES, V_pi):
     plt.plot(range(1, NUMBER_OF_GAMES + 1), V_tabs_QLG, 'b')
     plt.hlines(y=74.85948625, xmin=0, xmax=NUMBER_OF_GAMES, colors='r')
     plt.xlabel("Episodes")
     plt.ylabel("State value")
     plt.legend()
+    plt.savefig(str(name)+'.eps')
     plt.show()
 
 #  Initialize environment and parameters
 ice_world = Gridworld()
 
 
-gammas = GAMMA_RANGE
+gamma = 0.9
 epsilon = EPSILON_RANGE
 alpha = ALPHA_RANGE
 temperature = TEMPERATURE_RANGE
@@ -125,66 +139,62 @@ CR_tabs = [[], [], []]
 for run in range(NUMBER_OF_RUNS):
 
     print('\n ====================== This is the ' + str(run+1) + 'th run ====================== ')
-
     i = 0
-    for gamma in np.flip(gammas):
-        gamma = round(gamma, len(str(GAMMA_INCREMENT))-2)
-        print("\n\n*** Running for gamma = {} ***".format(gamma))
 
-        # Value Iteration (optimal policy benchmark)
-        V_pi = value_iteration(ice_world, gamma, THETA)
-        print("Optimal policy found by Value Iteration:")
-        print(np.reshape(V_pi,[4,4]))
+    # Value Iteration (optimal policy benchmark)
+    V_pi = value_iteration(ice_world, gamma, THETA)
+    print("Optimal policy found by Value Iteration:")
+    print(np.reshape(V_pi,[4,4]))
 
-        #  Q-learning with \u03B5-greedy Exporation Strategy  (MH-8)
-        print_header(ALGORITHMS[0])
-        Q, cycles, time, RMSE_QLG, times_QLG, V_tabs_QLG, CR_QLG = \
-            qlearning(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
-        print_results(Q, cycles, time, ALGORITHMS[0])
-        RMSE_tabs[0].append(RMSE_QLG)
-        CR_tabs[0].append(CR_QLG)
+    #  Q-learning with \u03B5-greedy Exporation Strategy  (MH-8)
+    print_header(ALGORITHMS[0])
+    Q, cycles, time, RMSE_QLG, times_QLG, V_tabs_QLG, CR_QLG = \
+        qlearning(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
+    print_results(Q, cycles, time, ALGORITHMS[0])
+    RMSE_tabs[0].append(RMSE_QLG)
+    CR_tabs[0].append(CR_QLG)
 
-        # Q-learning with Softmax Exploration Strategy (MH-9)
-        print_header(ALGORITHMS[1])
-        Q, cycles, time, RMSE_QLS, times_QLS, V_tabs_QLS, CR_QLS = \
-            qlearning(ice_world, gamma, -temperature, alpha, NUMBER_OF_GAMES, V_pi)
-        print_results(Q, cycles, time, ALGORITHMS[1])
-        RMSE_tabs[1].append(RMSE_QLS)
-        CR_tabs[1].append(CR_QLS)
+    # Q-learning with Softmax Exploration Strategy (MH-9)
+    print_header(ALGORITHMS[1])
+    Q, cycles, time, RMSE_QLS, times_QLS, V_tabs_QLS, CR_QLS = \
+        qlearning(ice_world, gamma, -temperature, alpha, NUMBER_OF_GAMES, V_pi)
+    print_results(Q, cycles, time, ALGORITHMS[1])
+    RMSE_tabs[1].append(RMSE_QLS)
+    CR_tabs[1].append(CR_QLS)
 
-        #  SARSA (MH-10)
-        print_header(ALGORITHMS[2])
-        Q, cycles, time, RMSE_SARSA, times_SARSA, CR_SARSA = \
-            sarsa(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
-        print_results(Q, cycles, time, ALGORITHMS[2])
-        RMSE_tabs[2].append(RMSE_SARSA)
-        CR_tabs[2].append(CR_SARSA)
+    #  SARSA (MH-10)
+    print_header(ALGORITHMS[2])
+    Q, cycles, time, RMSE_SARSA, times_SARSA, CR_SARSA = \
+        sarsa(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
+    print_results(Q, cycles, time, ALGORITHMS[2])
+    RMSE_tabs[2].append(RMSE_SARSA)
+    CR_tabs[2].append(CR_SARSA)
 
-        # Q-Learning (Eligibility Traces) (O-12)
-        print_header(ALGORITHMS[3])
-        Q, cycles, time, RMSE_QLE, times_QLE = \
-            qlearning_watkins(ice_world, gamma, epsilon, alpha, labda, NUMBER_OF_GAMES, V_pi)
-        print_results(Q, cycles, time, ALGORITHMS[3])
-        RMSE_tabs[3].append(RMSE_QLE)
+    # Q-Learning (Eligibility Traces) (O-12)
+    print_header(ALGORITHMS[3])
+    Q, cycles, time, RMSE_QLE, times_QLE = \
+        qlearning_watkins(ice_world, gamma, epsilon, alpha, labda, NUMBER_OF_GAMES, V_pi)
+    print_results(Q, cycles, time, ALGORITHMS[3])
+    RMSE_tabs[3].append(RMSE_QLE)
 
-        # Q-Learning (Dyna-Q) (O-11)
-        print_header(ALGORITHMS[4])
-        Q, cycles, time, RMSE_QLD, times_QLD, CR_QLD = \
-            dynaq(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi, PLANNING_STEPS)
-        print_results(Q, cycles, time, ALGORITHMS[4])
-        RMSE_tabs[4].append(RMSE_QLE)
+    # Q-Learning (Dyna-Q) (O-11)
+    print_header(ALGORITHMS[4])
+    Q, cycles, time, RMSE_QLD, times_QLD, CR_QLD = \
+        dynaq(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi, PLANNING_STEPS)
+    print_results(Q, cycles, time, ALGORITHMS[4])
+    RMSE_tabs[4].append(RMSE_QLE)
 
-        # Double Q-Learning with \u03B5-greedy Exploration Strategy (O-14)
-        print_header(ALGORITHMS[5])
-        Q, cycles, time, RMSE_DQLg, times_DQLg = doubleqlearning(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
-        print_results(Q, cycles, time, ALGORITHMS[5])
-        RMSE_tabs[5].append(RMSE_DQLg)
+    # Double Q-Learning with \u03B5-greedy Exploration Strategy (O-14)
+    print_header(ALGORITHMS[5])
+    Q, cycles, time, RMSE_DQLg, times_DQLg = doubleqlearning(ice_world, gamma, epsilon, alpha, NUMBER_OF_GAMES, V_pi)
+    print_results(Q, cycles, time, ALGORITHMS[5])
+    RMSE_tabs[5].append(RMSE_DQLg)
 
-        # Double Q-Learning with \u03B5-greedy Exploration Strategy (O-14)
-        print_header(ALGORITHMS[6])
-        Q, cycles, time, RMSE_DQLs, times_DQLs = doubleqlearning(ice_world, gamma, -temperature, alpha, NUMBER_OF_GAMES, V_pi)
-        print_results(Q, cycles, time, ALGORITHMS[6])
-        RMSE_tabs[6].append(RMSE_DQLs)
+    # Double Q-Learning with \u03B5-greedy Exploration Strategy (O-14)
+    print_header(ALGORITHMS[6])
+    Q, cycles, time, RMSE_DQLs, times_DQLs = doubleqlearning(ice_world, gamma, -temperature, alpha, NUMBER_OF_GAMES, V_pi)
+    print_results(Q, cycles, time, ALGORITHMS[6])
+    RMSE_tabs[6].append(RMSE_DQLs)
 
 RMSE_means = np.mean(RMSE_tabs, axis=1)
 CR_means = np.mean(CR_tabs, axis=1)
@@ -194,17 +204,19 @@ print(len(ALGORITHMS))
 print(len(RMSE_means))
 # visualise results
 
-create_plot("RMSE plot", len(ALGORITHMS) * [range(0, NUMBER_OF_GAMES)], 'Episode',
-            RMSE_means, 'RMSE, averaged over states', ALGORITHMS)
-create_plot("time plot", [times_QLG, times_QLS, times_SARSA, times_QLE, times_QLD, times_DQLg, times_DQLs],
-            'elapsed time (seconds)', RMSE_means, 'RMSE, averaged over states', ALGORITHMS)
+create_plot("RMSE plot", len(ALGORITHMS) * [range(0, 10000)], 'Episode',
+            RMSE_means[:,0:10000], 'RMSE, averaged over states', ALGORITHMS)
+create_time_plot("time plot", [times_QLG[0:10000], times_QLS[0:10000],
+                               times_SARSA[0:10000], times_QLE[0:10000], times_QLD[0:10000],
+                               times_DQLg[0:10000], times_DQLs[0:10000]],
+                 'elapsed time (seconds)', RMSE_means[:,0:10000], 'RMSE, averaged over states', ALGORITHMS)
 
 # Make a plot of the state value for state [3,1]
-create_state_plot(V_tabs_QLG, NUMBER_OF_GAMES, V_pi)
+create_state_plot("Value of the state above the start", V_tabs_QLG, NUMBER_OF_GAMES, V_pi)
 
 # Make plots of the Cumulative Reward over time for the first three algorithms
-create_plot("Cumulative Reward plot (QLG)", [times_QLG[0:1000], times_QLS[0:1000], times_SARSA[0:1000]], "Time",
+create_plot("Cumulative Reward (1000 episodes)", [times_QLG[0:1000], times_QLS[0:1000], times_SARSA[0:1000]], "Time",
             CR_means[:,0:1000], "Cumulative Reward", ALGORITHMS[0:3])
 
-create_plot("Cumulative Reward plot (QLG)", [times_QLG, times_QLS, times_SARSA], "Time",
-            CR_means, "Cumulative Reward", ALGORITHMS[0:3])
+create_plot("Cumulative Reward (10000 episodes)", [times_QLG[0:10000], times_QLS[0:10000], times_SARSA[0:10000]], "Time",
+            CR_means[:,0:10000], "Cumulative Reward", ALGORITHMS[0:3])

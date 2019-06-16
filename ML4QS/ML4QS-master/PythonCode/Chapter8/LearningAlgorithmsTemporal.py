@@ -401,6 +401,8 @@ class TemporalClassificationAlgorithms:
 #        plot.plot(train_y.index, pred_train_y_prob)
 #        plot.show()
 
+        # print y_train_result.idxmax(axis=1)
+
 
         return y_train_result.idxmax(axis=1), y_test_result.idxmax(axis=1), y_train_result, y_test_result
 
@@ -544,7 +546,15 @@ class TemporalRegressionAlgorithms:
     def recurrent_neural_network(self, train_X, train_y, test_X, test_y, n_hidden_neurons=50, iterations=100, gridsearch=False, gridsearch_training_frac=0.7, outputbias=False):
         # Simply apply the classification variant, but only consider the numerical predictions.
         tc = TemporalClassificationAlgorithms()
-        pred_train_y, pred_test_y, pred_train_y_val, pred_test_y_val = tc.recurrent_neural_network(train_X, train_y, test_X, test_y, n_hidden_neurons=n_hidden_neurons, iterations=iterations, gridsearch=gridsearch, gridsearch_training_frac=gridsearch_training_frac, outputbias=outputbias, error='mse')
+        pred_train_y, pred_test_y, pred_train_y_val, pred_test_y_val = tc.recurrent_neural_network(train_X, train_y,
+                                                                                                   test_X, test_y,
+                                                                                                   n_hidden_neurons=n_hidden_neurons,
+                                                                                                   iterations=iterations,
+                                                                                                   gridsearch=gridsearch,
+                                                                                                   gridsearch_training_frac=gridsearch_training_frac,
+                                                                                                   outputbias=outputbias,
+                                                                                                   error='mse')
+
         return pred_train_y_val, pred_test_y_val
 
     # Do a gridsearch for the time series.

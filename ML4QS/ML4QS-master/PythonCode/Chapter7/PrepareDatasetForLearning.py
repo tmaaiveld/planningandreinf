@@ -35,7 +35,7 @@ class PrepareDatasetForLearning:
         sum_values = dataset[labels].sum(axis=1)
         # Create a new 'class' column and set the value to the default class.
         dataset['class'] = self.default_label
-        for i in range(0, len(dataset.index)):
+        for i in range(1, len(dataset.index)):
             # If we have exactly one true class column, we can assign that value,
             # otherwise we keep the default class.
             if sum_values.ix[i,:] == 1:
@@ -54,16 +54,26 @@ class PrepareDatasetForLearning:
     # to make the split reproducible.
     def split_single_dataset_classification(self, dataset, class_labels, matching, training_frac, filter=True, temporal=False, random_state=0):
         # Create a single class column if we have the 'like' option.
+
         if matching == 'like':
             dataset = self.assign_label(dataset, class_labels)
             class_labels = self.class_col
         elif len(class_labels) == 1:
             class_labels = class_labels[0]
 
+        # print dataset
         # Filer NaN is desired and those for which we cannot determine the class should be removed.
         if filter:
-            dataset = dataset.dropna()
-            dataset = dataset[dataset['class'] != self.default_label]
+            dataset = dataset.dropna() # drop all missing predictor rows
+            dataset = dataset[dataset['class'] != self.default_label] # drop all 'undefined' class columns
+
+        else:         # Instead of letting NaN values be, we create a new label:
+
+            # dataset['labelUndefined'] = '0'
+
+            activity_labels = ['labelOnTable', 'labelSitting', 'labelWashingHands', 'labelWalking', 'labelStanding', 'labelDriving', 'labelEating', 'labelRunning','undefined']         # Yes, this can probably be done faster
+            # rows_with_missing_labels = dataset.loc[dataset[dataset[activity_labels].sum(axis=1) == 0,] :]           # dataset['labels'].isna()
+            # rows_with_two_labels = dataset.loc[dataset[dataset[activity_labels].sum(axis=1) == 2,] :]
 
         # The features are the ones not in the class label.
         features = [x for x in dataset.columns if x not in class_labels]
@@ -79,9 +89,17 @@ class PrepareDatasetForLearning:
             print test_set_y
         # For non temporal data we use a standard function to randomly split the dataset.
         else:
-            training_set_X, test_set_X, training_set_y, test_set_y = train_test_split(dataset.ix[:,features],
-                                                                                      dataset.ix[:,class_labels], test_size=(1-training_frac), stratify=dataset.ix[:,class_labels], random_state=random_state)
-        return training_set_X, test_set_X, training_set_y, test_set_y
+            # print 'isnull: ' + str(dataset['class_labels'].isnull().sum())
+            # print dataset.ix[:,class_labels]
+            training_set_X, test_set_X, training_set_y, test_set_y = train_test_split(dataset.ix[1:,features],
+                                                                                      dataset.ix[1:,class_labels], test_size=(1-training_frac), stratify=dataset.ix[1:,class_labels], random_state=random_state)
+            # print 'Nr of missing values training_X before:  '
+            # print training_set_X.isnull().sum().sum()
+            #
+            # print 'Nr of missing values training_X after:  '
+            # tr_X = training_set_X.fillna(method='ffill').fillna(method='bfill')
+            # print tr_X.isnull().sum().sum()
+        return training_set_X.fillna(method='ffill').fillna(method='bfill'), test_set_X.fillna(method='ffill').fillna(method='bfill'), training_set_y, test_set_y
 
     def split_single_dataset_regression_by_time(self, dataset, target, start_training, end_training, end_test):
         training_instances = dataset[start_training:end_training]
@@ -92,7 +110,7 @@ class PrepareDatasetForLearning:
         del train_X[target]
         test_X = test_instances
         del test_X[target]
-        return train_X, test_X, train_y, test_y
+        return train_X.fillna(method='ffill').fillna(method='bfill'), test_X.fillna(method='ffill').fillna(method='bfill'), train_y, test_y
 
 
     # Split a dataset of a single person for a regression with the specified targets. We can

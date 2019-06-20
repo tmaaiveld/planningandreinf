@@ -52,7 +52,7 @@ dataset.index = dataset.index.to_datetime()
 
 prepare = PrepareDatasetForLearning()
 
-train_X, test_X, train_y, test_y = prepare.split_single_dataset_classification_block(dataset, ['label'], 'like', 0.7, filter=True, temporal=False)
+train_X, test_X, train_y, test_y = prepare.split_single_dataset_classification(dataset, ['label'], 'like', 0.7, filter=True, temporal=False)
 #train_X, test_X, train_y, test_y = prepare.split_single_dataset_classification(dataset, ['label'], 'like', 0.01, filter=True, temporal=False)
 
 print 'Training set length is: ', len(train_X.index)
@@ -165,6 +165,9 @@ eval = ClassificationEvaluation()
 possible_feature_sets = [basic_features, features_after_chapter_3, features_after_chapter_4, features_after_chapter_5, selected_features]
 feature_names = ['initial set', 'Chapter 3', 'Chapter 4', 'Chapter 5', 'Selected features']
 
+output_predictions = pd.DataFrame()
+output_predictions['train_y'] = train_y
+output_predictions['test_y'] = test_y
 
 repeats = 5
 
@@ -188,14 +191,23 @@ for i in range(0, len(possible_feature_sets)):
         performance_tr_nn += eval.accuracy(train_y, class_train_y)
         performance_te_nn += eval.accuracy(test_y, class_test_y)
 
+        output_predictions['NN_train_pred_rep_' + str(repeat)] = class_train_y
+        output_predictions['NN_test_pred_rep_' + str(repeat)] = class_test_y
+        ''' raise ValueError('Length of values does not match length of ' 'index')  ValueError: Length of values does not match length of index'''
+
         class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.random_forest(selected_train_X, train_y, selected_test_X, gridsearch=True)
         performance_tr_rf += eval.accuracy(train_y, class_train_y)
         performance_te_rf += eval.accuracy(test_y, class_test_y)
+
+        output_predictions['RF_train_pred_rep_' + str(repeat)] = class_train_y
+        output_predictions['RF_test_pred_rep_' + str(repeat)] = class_test_y
 
         class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.support_vector_machine_with_kernel(selected_train_X, train_y, selected_test_X, gridsearch=True)
         performance_tr_svm += eval.accuracy(train_y, class_train_y)
         performance_te_svm += eval.accuracy(test_y, class_test_y)
 
+        output_predictions['SVM_train_pred_rep_' + str(repeat)] = class_train_y
+        output_predictions['SVM_test_pred_rep_' + str(repeat)] = class_test_y
 
     overall_performance_tr_nn = performance_tr_nn/repeats
     overall_performance_te_nn = performance_te_nn/repeats
@@ -211,13 +223,22 @@ for i in range(0, len(possible_feature_sets)):
     performance_tr_knn = eval.accuracy(train_y, class_train_y)
     performance_te_knn = eval.accuracy(test_y, class_test_y)
 
+    output_predictions['KNN_train_pred'] = class_train_y
+    output_predictions['KNN_test_pred'] = class_test_y
+
     class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.decision_tree(selected_train_X, train_y, selected_test_X, gridsearch=True)
     performance_tr_dt = eval.accuracy(train_y, class_train_y)
     performance_te_dt = eval.accuracy(test_y, class_test_y)
 
+    output_predictions['DT_train_pred'] = class_train_y
+    output_predictions['DT_test_pred'] = class_test_y
+
     class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.naive_bayes(selected_train_X, train_y, selected_test_X)
     performance_tr_nb = eval.accuracy(train_y, class_train_y)
     performance_te_nb = eval.accuracy(test_y, class_test_y)
+
+    output_predictions['NB_train_pred'] = class_train_y
+    output_predictions['NB_test_pred'] = class_test_y
 
     scores_with_sd = util.print_table_row_performances(feature_names[i], len(selected_train_X.index), len(selected_test_X.index), [
                                                                                                 (overall_performance_tr_nn, overall_performance_te_nn),
@@ -228,6 +249,8 @@ for i in range(0, len(possible_feature_sets)):
                                                                                                 (performance_tr_nb, performance_te_nb)])
     scores_over_all_algs.append(scores_with_sd)
 
+
+output_predictions.to_csv("predictions_ALL_EXERCISES.csv")
 DataViz.plot_performances_classification(['NN', 'RF', 'SVM', 'KNN', 'DT', 'NB'], feature_names, scores_over_all_algs)
 
 # And we study two promising ones in more detail. First let us consider the decision tree which works best with the selected
@@ -237,9 +260,22 @@ class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.dec
                                                                                            gridsearch=True,
                                                                                            print_model_details=True, export_tree_path=export_tree_path)
 
+output_predictions['DT_train_pred_selectedfeat']  = class_train_y
+output_predictions['DT_test_pred_selectedfeat']  = class_test_y
+
+
 class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.random_forest(train_X[selected_features], train_y, test_X[selected_features],
                                                                                            gridsearch=True, print_model_details=True)
 
+
+output_predictions['RF_train_pred_selectedfeat']  = class_train_y
+output_predictions['RF_test_pred_selectedfeat']  = class_test_y
+
+
+output_predictions.to_csv("predictions_ALL_EXERCISES.csv")
+
 test_cm = eval.confusion_matrix(test_y, class_test_y, class_train_prob_y.columns)
 
+
 DataViz.plot_confusion_matrix(test_cm, class_train_prob_y.columns, normalize=False)
+

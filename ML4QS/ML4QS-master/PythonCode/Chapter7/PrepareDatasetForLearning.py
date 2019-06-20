@@ -82,7 +82,6 @@ class PrepareDatasetForLearning:
             training_set_X, test_set_X, training_set_y, test_set_y = train_test_split(dataset.ix[:,features],
                                                                                       dataset.ix[:,class_labels], test_size=(1-training_frac), stratify=dataset.ix[:,class_labels], random_state=random_state)
         # print training_set_X, test_set_X, training_set_y, test_set_y
-        print test_set_y
         return training_set_X, test_set_X, training_set_y, test_set_y
 
     def split_single_dataset_classification_block(self, dataset, class_labels, matching, training_frac, filter=True, temporal=False, random_state=0):

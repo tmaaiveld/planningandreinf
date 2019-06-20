@@ -87,7 +87,7 @@ class NonHierarchicalClustering:
             return DM.create_instances_mean(temp_datasets)
 
     # Perform k-means over an individual dataset.
-    def k_means_over_instances(self, dataset, cols, k, distance_metric, max_iters, n_inits, p=1):
+    def k_means_over_instances(self, name, dataset, cols, k, distance_metric, max_iters, n_inits, p=1):
 
         # Take the appropriate columns.
         temp_dataset = dataset[cols]
@@ -110,7 +110,7 @@ class NonHierarchicalClustering:
         # Now apply the k-means algorithm
         kmeans = KMeans(n_clusters=k, max_iter=max_iters, n_init=n_inits, random_state=0).fit(temp_dataset)
         # Add the labels to the dataset
-        dataset['cluster'] = kmeans.labels_
+        dataset[name] = kmeans.labels_
         # Compute the solhouette and add it as well.
         silhouette_avg = silhouette_score(temp_dataset, kmeans.labels_)
         silhouette_per_inst = silhouette_samples(temp_dataset, kmeans.labels_)

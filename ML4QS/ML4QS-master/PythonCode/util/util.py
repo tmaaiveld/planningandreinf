@@ -50,6 +50,23 @@ def print_latex_table_statistics_two_datasets(dataset1, dataset2):
         print_table_cell(dataset1[col].max(), dataset2[col].max())
         print
 
+def print_latex_table_statistics_two_datasets(dataset1, dataset2):
+    print 'attribute, fraction missing values, mean, standard deviation, min, max'
+    dataset1_length = len(dataset1.index)
+    dataset2_length = len(dataset2.index)
+    for col in dataset1.columns:
+        print col, '&',
+        print_table_cell((float((dataset1_length - dataset1[col].count()))/dataset1_length)*100, (float((dataset2_length - dataset2[col].count()))/dataset2_length)*100)
+        print ' & ',
+        print_table_cell(dataset1[col].mean(), dataset2[col].mean())
+        print ' & ',
+        print_table_cell(dataset1[col].std(), dataset2[col].std())
+        print ' & ',
+        print_table_cell(dataset1[col].min(), dataset2[col].min())
+        print ' & ',
+        print_table_cell(dataset1[col].max(), dataset2[col].max())
+        print
+
 def print_latex_statistics_clusters(dataset, cluster_col, input_cols, label_col):
     label_cols = [c for c in dataset.columns if label_col == c[0:len(label_col)]]
 

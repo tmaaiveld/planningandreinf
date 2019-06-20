@@ -27,7 +27,7 @@ class FourierTransformation:
     def abstract_frequency(self, data_table, cols, window_size, sampling_rate):
 
         # Create new columns for the frequency data.
-        freqs = np.fft.rfftfreq(int(window_size)) *sampling_rate
+        freqs = np.fft.rfftfreq(int(window_size)) * sampling_rate
 
         for col in cols:
             data_table[col + '_max_freq'] = np.nan
@@ -38,6 +38,7 @@ class FourierTransformation:
 
         # Pass over the dataset (we cannot compute it when we do not have enough history)
         # and compute the values.
+        # freqs = np.append(freqs, 1.71717172) #bugfix
         for i in range(window_size, len(data_table.index)):
             for col in cols:
                 real_ampl, imag_ampl = self.find_fft_transformation(data_table[col][i-window_size:min(i+1, len(data_table.index))], sampling_rate)
@@ -47,6 +48,8 @@ class FourierTransformation:
                 # And select the dominant frequency. We only consider the positive frequencies for now.
 
                 data_table.ix[i, col + '_max_freq'] = freqs[np.argmax(real_ampl[0:len(real_ampl)])]
+                print freqs
+                print real_ampl
                 data_table.ix[i, col + '_freq_weighted'] = float(np.sum(freqs * real_ampl)) / np.sum(real_ampl)
                 PSD = np.divide(np.square(real_ampl),float(len(real_ampl)))
                 PSD_pdf = np.divide(PSD, np.sum(PSD))

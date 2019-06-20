@@ -119,7 +119,7 @@ class PrepareDatasetForLearning:
             test_set_X = pd.concat([data.ix[44:88, features], data.ix[133:, features]],axis=0)
             training_set_y = pd.concat([data.ix[0:44, class_labels], data.ix[88:133, class_labels]],axis=0)
             test_set_y = pd.concat([data.ix[44:88, class_labels], data.ix[133:, class_labels]],axis=0)
-        print training_set_X, test_set_X, training_set_y, test_set_y
+        # print training_set_X, test_set_X, training_set_y, test_set_y
         return training_set_X, test_set_X, training_set_y, test_set_y
 
     def split_single_dataset_regression_by_time(self, dataset, target, start_training, end_training, end_test):

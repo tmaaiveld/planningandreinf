@@ -54,9 +54,7 @@ prepare = PrepareDatasetForLearning()
 
 train_X, test_X, train_y, test_y = prepare.split_single_dataset_classification_block(dataset, ['label'], 'like', 0.7, filter=True, temporal=False)
 #train_X, test_X, train_y, test_y = prepare.split_single_dataset_classification(dataset, ['label'], 'like', 0.01, filter=True, temporal=False)
-
-# train_X = train_X[]
-
+ 
 print 'Training set length is: ', len(train_X.index)
 print 'Test set length is: ', len(test_X.index)
 
@@ -80,24 +78,25 @@ features_after_chapter_5 = list(set().union(basic_features, pca_features, time_f
 
 # First, let us consider the performance over a selection of features:
 
-# fs = FeatureSelectionClassification()
-#
-# features, ordered_features, ordered_scores = fs.forward_selection(50, train_X[features_after_chapter_5], train_y)
-# print ordered_scores
-# print ordered_features
+fs = FeatureSelectionClassification()
 
-# plot.plot(range(1, 51), ordered_scores)
-# plot.xlabel('number of features')
-# plot.ylabel('accuracy')
-# plot.show()
+features, ordered_features, ordered_scores = fs.forward_selection(50, train_X[features_after_chapter_5], train_y)
+print ordered_scores
+print ordered_features
+
+plot.plot(range(1, 51), ordered_scores)
+plot.xlabel('number of features')
+plot.ylabel('accuracy')
+plot.show()
 
 # Based on the plot we select the top 10 features.
 
-# selected_features  = ordered_features[0:20]
-# print 'These are the selected features ' + str(selected_features)
+selected_features  = ordered_features[0:20]
+print 'These are the selected features ' + str(selected_features)
 
 # We already checked for the best features and  here we copy paste and just run the code below
-selected_features = ['mag_phone_x_freq_0.0_Hz_ws_33', 'mag_phone_z_temp_mean_ws_100', 'pca_2_temp_mean_ws_100', 'mag_phone_y_freq_0.10101010101_Hz_ws_33', 'mag_phone_y_freq_1.61616161616_Hz_ws_33', 'gyr_phone_z_freq_0.909090909091_Hz_ws_33', 'acc_phone_z_freq_0.808080808081_Hz_ws_33', 'gyr_phone_z_freq_0.30303030303_Hz_ws_33', 'mag_phone_z_pse', 'mag_phone_z_freq_1.71717172_Hz_ws_33', 'acc_phone_z_freq_0.30303030303_Hz_ws_33', 'acc_phone_z_freq_0.40404040404_Hz_ws_33', 'acc_phone_z_freq_1.41414141414_Hz_ws_33', 'mag_phone_z_freq_weighted', 'gyr_phone_y_freq_0.909090909091_Hz_ws_33', 'mag_phone_y_freq_0.606060606061_Hz_ws_33', 'gyr_phone_y_freq_0.707070707071_Hz_ws_33', 'acc_phone_z_freq_0.10101010101_Hz_ws_33', 'gyr_phone_y_freq_1.41414141414_Hz_ws_33', 'acc_phone_x_freq_1.0101010101_Hz_ws_33']
+# selected_features = ['mag_phone_x_freq_0.0_Hz_ws_33']
+
 
 # Let us first study the impact of regularization and model complexity: does regularization prevent overfitting?
 
@@ -163,14 +162,17 @@ eval = ClassificationEvaluation()
 # So yes, it is important :) Therefore we perform grid searches over the most important parameters, and do so by means
 # of cross validation upon the training set.
 
-
 possible_feature_sets = [basic_features, features_after_chapter_3, features_after_chapter_4, features_after_chapter_5, selected_features]
 feature_names = ['initial set', 'Chapter 3', 'Chapter 4', 'Chapter 5', 'Selected features']
-
+ 
+output_predictions = pd.DataFrame()
+output_predictions['train_y'] = train_y
+output_predictions['test_y'] = test_y
 
 repeats = 5
 
 scores_over_all_algs = []
+
 
 for i in range(0, len(possible_feature_sets)):
     selected_train_X = train_X[possible_feature_sets[i]]
@@ -190,14 +192,22 @@ for i in range(0, len(possible_feature_sets)):
         performance_tr_nn += eval.accuracy(train_y, class_train_y)
         performance_te_nn += eval.accuracy(test_y, class_test_y)
 
+        output_predictions['NN_train_pred_rep_' + str(repeat)] = class_train_y
+        output_predictions['NN_test_pred_rep_' + str(repeat)] = class_test_y
+
         class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.random_forest(selected_train_X, train_y, selected_test_X, gridsearch=True)
         performance_tr_rf += eval.accuracy(train_y, class_train_y)
         performance_te_rf += eval.accuracy(test_y, class_test_y)
+
+        output_predictions['RF_train_pred_rep_' + str(repeat)] = class_train_y
+        output_predictions['RF_test_pred_rep_' + str(repeat)] = class_test_y
 
         class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.support_vector_machine_with_kernel(selected_train_X, train_y, selected_test_X, gridsearch=True)
         performance_tr_svm += eval.accuracy(train_y, class_train_y)
         performance_te_svm += eval.accuracy(test_y, class_test_y)
 
+        output_predictions['SVM_train_pred_rep_' + str(repeat)] = class_train_y
+        output_predictions['SVM_test_pred_rep_' + str(repeat)] = class_test_y
 
     overall_performance_tr_nn = performance_tr_nn/repeats
     overall_performance_te_nn = performance_te_nn/repeats
@@ -206,6 +216,7 @@ for i in range(0, len(possible_feature_sets)):
     overall_performance_tr_svm = performance_tr_svm/repeats
     overall_performance_te_svm = performance_te_svm/repeats
 
+
     # And we run our deterministic classifiers:
 
 
@@ -213,13 +224,23 @@ for i in range(0, len(possible_feature_sets)):
     performance_tr_knn = eval.accuracy(train_y, class_train_y)
     performance_te_knn = eval.accuracy(test_y, class_test_y)
 
+    output_predictions['KNN_train_pred'] = class_train_y
+    output_predictions['KNN_test_pred'] = class_test_y
+
+
     class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.decision_tree(selected_train_X, train_y, selected_test_X, gridsearch=True)
     performance_tr_dt = eval.accuracy(train_y, class_train_y)
     performance_te_dt = eval.accuracy(test_y, class_test_y)
 
+    output_predictions['DT_train_pred'] = class_train_y
+    output_predictions['DT_test_pred'] = class_test_y
+
     class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.naive_bayes(selected_train_X, train_y, selected_test_X)
     performance_tr_nb = eval.accuracy(train_y, class_train_y)
     performance_te_nb = eval.accuracy(test_y, class_test_y)
+
+    output_predictions['NB_train_pred'] = class_train_y
+    output_predictions['NB_test_pred'] = class_test_y
 
     scores_with_sd = util.print_table_row_performances(feature_names[i], len(selected_train_X.index), len(selected_test_X.index), [
                                                                                                 (overall_performance_tr_nn, overall_performance_te_nn),
@@ -230,6 +251,8 @@ for i in range(0, len(possible_feature_sets)):
                                                                                                 (performance_tr_nb, performance_te_nb)])
     scores_over_all_algs.append(scores_with_sd)
 
+
+
 DataViz.plot_performances_classification(['NN', 'RF', 'SVM', 'KNN', 'DT', 'NB'], feature_names, scores_over_all_algs)
 
 # And we study two promising ones in more detail. First let us consider the decision tree which works best with the selected
@@ -239,9 +262,21 @@ class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.dec
                                                                                            gridsearch=True,
                                                                                            print_model_details=True, export_tree_path=export_tree_path)
 
+output_predictions['DT_train_pred_selectedfeat']  = class_train_y
+output_predictions['DT_test_pred_selectedfeat']  = class_test_y
+
+
 class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.random_forest(train_X[selected_features], train_y, test_X[selected_features],
                                                                                            gridsearch=True, print_model_details=True)
+
+
+output_predictions['RF_train_pred_selectedfeat']  = class_train_y
+output_predictions['RF_test_pred_selectedfeat']  = class_test_y
+
+
 
 test_cm = eval.confusion_matrix(test_y, class_test_y, class_train_prob_y.columns)
 
 DataViz.plot_confusion_matrix(test_cm, class_train_prob_y.columns, normalize=False)
+
+output_predictions.to_csv("predictions_WALKINGRUNNING.csv")

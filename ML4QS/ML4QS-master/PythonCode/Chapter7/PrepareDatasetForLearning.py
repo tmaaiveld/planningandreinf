@@ -113,11 +113,19 @@ class PrepareDatasetForLearning:
         else:
             # training_set_X, test_set_X, training_set_y, test_set_y = train_test_split(dataset.ix[:,features],
             #                                                                           dataset.ix[:,class_labels], test_size=(1-training_frac), stratify=dataset.ix[:,class_labels], random_state=random_state)
+            muscle_data = pd.concat([dataset[dataset[class_labels] == 'labelsquat'],dataset[dataset[class_labels] == 'labelOP']],axis=0)
+            muscle_data2 = pd.concat([dataset[dataset[class_labels]=='labelDL'],dataset[dataset[class_labels] == 'labeldbpress']],axis=0)
             data = pd.concat([dataset[dataset[class_labels] == 'labelwalking'],dataset[dataset[class_labels] == 'labelrunning']],axis=0)
-            training_set_X = pd.concat([data.ix[0:44, features], data.ix[88:133, features]],axis=0)
-            test_set_X = pd.concat([data.ix[44:88, features], data.ix[133:, features]],axis=0)
-            training_set_y = pd.concat([data.ix[0:44, class_labels], data.ix[88:133, class_labels]],axis=0)
-            test_set_y = pd.concat([data.ix[44:88, class_labels], data.ix[133:, class_labels]],axis=0)
+            data2 = pd.concat([dataset[dataset[class_labels] == 'labelcycle'],dataset[dataset[class_labels] == 'labelrow']],axis=0)
+
+            training_set_X = pd.concat([muscle_data.ix[0:23, features], muscle_data.ix[42:58, features],muscle_data2.ix[0:25, features], muscle_data2.ix[45:68, features],
+                                        data.ix[0:44, features], data.ix[88:133, features],data2.ix[0:45, features],data2.ix[90:134,features]],axis=0)
+            test_set_X = pd.concat([muscle_data.ix[23:42, features], muscle_data.ix[58:, features],muscle_data2.ix[25:45, features], muscle_data2.ix[68:, features],
+                                    data.ix[44:88, features], data.ix[133:, features],data2.ix[45:90, features],data2.ix[134:,features]],axis=0)
+            training_set_y = pd.concat([muscle_data.ix[0:23, class_labels], muscle_data.ix[42:58, class_labels],muscle_data2.ix[0:25, class_labels], muscle_data2.ix[45:68, class_labels],
+                                        data.ix[0:44, class_labels], data.ix[88:133, class_labels],data2.ix[0:45, class_labels],data2.ix[90:134,class_labels]],axis=0)
+            test_set_y = pd.concat([muscle_data.ix[23:42, class_labels], muscle_data.ix[58:, class_labels],muscle_data2.ix[25:45, class_labels], muscle_data2.ix[68:, class_labels],
+                                    data.ix[44:88, class_labels], data.ix[133:, class_labels],data2.ix[45:90, class_labels],data2.ix[134:,class_labels]],axis=0)
         # print training_set_X, test_set_X, training_set_y, test_set_y
         return training_set_X, test_set_X, training_set_y, test_set_y
 

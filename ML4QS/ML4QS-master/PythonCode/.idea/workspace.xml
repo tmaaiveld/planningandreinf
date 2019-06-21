@@ -2,184 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b3d4e7f-f0c1-4bf5-ad44-5cbacf97c03f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/crowdsignals_ch2_gym.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crowdsignals_ch3_outliers_gym.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crowdsignals_ch3_rest_gym.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crowdsignals_ch4_gym.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crowdsignals_ch4_gym_previous.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crowdsignals_ch5_gym.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crowdsignals_ch7_classification_gym.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crowdsignals_ch7_classification_gym_BLOCKPREDICTION.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crowdsignals_ch8_REGRESSION_question2_THISSHOULDDOIT.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/crowdsignals_ch8_gym.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Agglom/hierchical_clustering_dendogram_gyro_k5.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Agglom/hierchical_clustering_dendogram_gyro_k5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Agglom/hierchical_clustering_silhouetteplot_gyro.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Agglom/hierchical_clustering_silhouetteplot_gyro.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Agglom/hierchical_clustering_silhouettescores_gyro.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Agglom/hierchical_clustering_silhouettescores_gyro.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Means/ch5_cs_gyro_kmeans_clusters_k5.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Means/ch5_cs_gyro_kmeans_clusters_k5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Means/ch5_cs_gyro_kmeans_silhouetteplot_k5.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Means/ch5_cs_gyro_kmeans_silhouetteplot_k5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Means/ch5_cs_gyro_kmeans_silhouettescores_differentks.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Means/ch5_cs_gyro_kmeans_silhouettescores_differentks.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Medoid/ch5_cs_gyro_kmedoids_2clusters.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Medoid/ch5_cs_gyro_kmedoids_2clusters.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Medoid/ch5_cs_gyro_kmedoids_silhouetteplot_2clusters.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Medoid/ch5_cs_gyro_kmedoids_silhouetteplot_2clusters.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Medoid/ch5_cs_gyro_kmedoids_silhouettescores_differentks_averagedover10iterations.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Medoid/ch5_cs_gyro_kmedoids_silhouettescores_differentks_averagedover10iterations.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Medoid/ch5_cs_gyro_kmedoids_silhouettescores_differentks_averagedover44iterations .eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Medoid/ch5_cs_gyro_kmedoids_silhouettescores_differentks_averagedover44iterations.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Medoid/ch5_cs_gyro_kmedoids_silhouettescores_differentks_run2.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/Medoid/ch5_cs_gyro_kmedoids_silhouettescores_differentks_run2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/kmedoids_Terminaloutput_44iterations.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch5_Q1_plots,output/terminaloutQ1_kmeans,kmedoids10iterations,agglom.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/DefaultCode_run_Output/accuracy_vs_min_num_points_per_leaf.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/DefaultCode_run_Output/accuracy_vs_min_num_points_per_leaf.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/DefaultCode_run_Output/accuracy_vs_min_num_points_per_leaf_finishedRun.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/DefaultCode_run_Output/accuracy_vs_min_num_points_per_leaf_finishedRun.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/DefaultCode_run_Output/accuracy_vs_nr_of_features.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/DefaultCode_run_Output/accuracy_vs_nr_of_features.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/DefaultCode_run_Output/accuracy_vs_regularizationparametervalue.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/DefaultCode_run_Output/accuracy_vs_regularizationparametervalue.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/DefaultCode_run_Output/confusionmatrix.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/DefaultCode_run_Output/confusionmatrix.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/DefaultCode_run_Output/terminaloutput_DefaultcodeRun.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q1/Q1_max10feat_accuracy_vs_min_num_points_per_leaf.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q1/Q1_max10feat_accuracy_vs_min_num_points_per_leaf.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q1/Q1_max10feat_accuracy_vs_regularizationparametervalue.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q1/Q1_max10feat_accuracy_vs_regularizationparametervalue.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q1/Q1_terminaloutput_CSdata_keepundefinedlabels_10maxfeat.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q1/accuracy_nrofFeatures_keepundefinedlabelsCSdata_10maxfeat.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q1/accuracy_nrofFeatures_keepundefinedlabelsCSdata_10maxfeat.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q1/confusionmarix_keepundefinedlabelsCSdata_10maxfeat.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q1/confusionmarix_keepundefinedlabelsCSdata_10maxfeat.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q1/performances_keepundefinedlabelsCSdata_10maxfeat.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q1/performances_keepundefinedlabelsCSdata_10maxfeat.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q3owndata/Q3_accuracy_forallalgos.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q3owndata/Q3_accuracy_forallalgos.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q3owndata/Q3_confusionmatrix.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q3owndata/Q3_max10feat_accuracy_vs_min_num_points_per_leaf.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q3owndata/Q3_max10feat_accuracy_vs_min_num_points_per_leaf.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q3owndata/Q3_max10feat_accuracy_vs_regularizationparametervalue.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q3owndata/Q3_max10feat_accuracy_vs_regularizationparametervalue.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q3owndata/Q4_confusionmatrix.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch7_plots/Q3owndata/ch7q3_terminaloutput.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_gyrophonex_owndata_all3algos_timestampschanged.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_gyrophonex_versionwithfuckeduptimestamps/ch8Q2_owndata_gyrphonex_MSE.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_gyrophonex_versionwithfuckeduptimestamps/ch8Q2_owndata_gyrphonex_MSE.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_gyrophonex_versionwithfuckeduptimestamps/ch8Q2_owndata_gyrphonex_TERMINALOUTPUT_completed.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_gyrophonex_versionwithfuckeduptimestamps/ch8Q2_owndata_gyrphonex_TERMINALOUTPUT_rnn_ts_failed_butgotselectedfeatures.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_gyrophonex_versionwithfuckeduptimestamps/ch8Q2_owndata_gyrphonex_actualvspredictedvalues.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_gyrophonex_versionwithfuckeduptimestamps/ch8Q2_owndata_gyrphonex_actualvspredictedvalues.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_gyrophonex_versionwithfuckeduptimestamps/ch8Q2_owndata_gyrphonex_autocorrelation.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_gyrophonex_versionwithfuckeduptimestamps/ch8Q2_owndata_gyrphonex_autocorrelation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_gyrophonex_versionwithfuckeduptimestamps/ch8Q2_owndata_gyrphonex_performance_EMPTY!.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_gyrophonex_versionwithfuckeduptimestamps/ch8Q2_owndata_gyrphonex_performance_EMPTY!.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_owndatagyrophonex_all3algos_AUTOCORRELATION.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_owndatagyrophonex_all3algos_AUTOCORRELATION.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_owndatagyrophonex_all3algos_MSE.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_owndatagyrophonex_all3algos_MSE.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_owndatagyrophonex_all3algos_PERFORMANCE_emptyagainwtf.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_owndatagyrophonex_all3algos_PERFORMANCE_emptyagainwtf.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_owndatagyrophonex_all3algos_REALvsPREDICTEDvalues_RESERVOIRCOMPUTING.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_owndatagyrophonex_all3algos_REALvsPREDICTEDvalues_RESERVOIRCOMPUTING.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_owndatagyrophonex_all3algos_REALvsPREDICTEDvalues_RNN.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_owndatagyrophonex_all3algos_REALvsPREDICTEDvalues_RNN.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_owndatagyrophonex_all3algos_REALvsPREDICTEDvalues_TIMESERIES.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8Q2_owndatagyrophonex_all3algos_REALvsPREDICTEDvalues_TIMESERIES.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/Ch8_Terminaloutput_default.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/autocorrelation_vs_lag.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/autocorrelation_vs_lag.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/heartrateprediction_Defaultcoderun.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/heartrateprediction_Defaultcoderun.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/heartrateprediction_Defaultcoderun_2ndoutput.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/heartrateprediction_Defaultcoderun_2ndoutput.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/heartrateprediction_Defaultcoderun_3rdoutput.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/heartrateprediction_Defaultcoderun_3rdoutput.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/mse_Res,RNN,TS_defaultcoderun.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/mse_Res,RNN,TS_defaultcoderun.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/performance_heart_rate_prediction_Defaultcoderun.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/performance_heart_rate_prediction_Defaultcoderun.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/performance_heart_rate_prediction_Defaultcoderun_2ndoutput.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/performance_heart_rate_prediction_Defaultcoderun_2ndoutput.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/performance_heart_rate_prediction_Defaultcoderun_3rdoutput.eps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures,output/Ch8_plots,output/Ch8crowdsignalsdefault/performance_heart_rate_prediction_Defaultcoderun_3rdoutput.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/Chauvenet/chauvenet_c001_moreoutliers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/Chauvenet/chauvenet_c01_1outlier.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/Chauvenet/chauvenet_c20_nooutliers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/Chauvenet/chauvenet_c2_nooutliers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/Local_outlier_factor/lof_k10_nooutliers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/Local_outlier_factor/lof_k1_nooutliers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/Local_outlier_factor/lof_k3_nooutliers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/Local_outlier_factor/lof_k5_nooutliers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/MixtureModel/gmm_k1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/MixtureModel/gmm_k10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/MixtureModel/gmm_k100.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/MixtureModel/gmm_k3_nooutliers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/Simple_distance_based/sda_001_099_nooutliers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/Simple_distance_based/sda_005_090.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/Simple_distance_based/sda_010_050.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/Simple_distance_based/sda_010_099.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/Simple_distance_based/sda_050_099_nooutliers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/rest/ch3_rest_figure_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/rest/ch3_rest_figure_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/rest/ch3_rest_figure_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/rest/ch3_rest_figure_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/rest/ch3_rest_figure_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/rest/ch3_rest_figure_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch3_plots_question2/rest/ch3_rest_figure_7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch4_plots/ch4_figure_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Ch4_plots/ch4_figure_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Figures_book_ch1-4/boxplot_crowdsignals_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Figures_book_ch1-4/dmin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Figures_book_ch1-4/example_outliers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Figures_book_ch1-4/first_pc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Figures_book_ch1-4/first_two_pc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Figures_book_ch1-4/outliers.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Figures_book_ch1-4/pca.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Figures_book_ch1-4/plots_crowdsignals_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/Figures_book_ch1-4/sinusoids.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/erik data visualisations/10000ms_boxplots.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/erik data visualisations/10000ms_graphs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/erik data visualisations/1000ms_boxplots.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/erik data visualisations/1000ms_graphs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/erik data visualisations/250ms_boxplots.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/erik data visualisations/250ms_graphs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/erik data visualisations/60s_boxplots.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/erik data visualisations/60s_graphs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Figures/erik data visualisations/latex_tabs.rtf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chapter2/CreateDataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chapter2/CreateDataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chapter2_vis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Chapter2_vis.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chapter3/DataTransformation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chapter3/DataTransformation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chapter3/ImputationMissingValues.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chapter3/ImputationMissingValues.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chapter3/KalmanFilters.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chapter3/KalmanFilters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chapter3/OutlierDetection.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chapter3/OutlierDetection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chapter4/FrequencyAbstraction.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chapter4/FrequencyAbstraction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chapter5/Clustering.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chapter5/Clustering.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chapter5/DistanceMetrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chapter5/DistanceMetrics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chapter7/Evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chapter7/Evaluation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chapter7/FeatureSelection.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chapter7/FeatureSelection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chapter7/LearningAlgorithms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chapter7/LearningAlgorithms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chapter7/PrepareDatasetForLearning.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chapter7/PrepareDatasetForLearning.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chapter8/LearningAlgorithmsTemporal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Chapter8/LearningAlgorithmsTemporal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch3_visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch3_visualization.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ch5_visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/ch5_visualization.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crowdsignals_ch2.py" beforeDir="false" afterPath="$PROJECT_DIR$/crowdsignals_ch2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crowdsignals_ch3_outliers.py" beforeDir="false" afterPath="$PROJECT_DIR$/crowdsignals_ch3_outliers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crowdsignals_ch3_rest.py" beforeDir="false" afterPath="$PROJECT_DIR$/crowdsignals_ch3_rest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crowdsignals_ch4.py" beforeDir="false" afterPath="$PROJECT_DIR$/crowdsignals_ch4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crowdsignals_ch5.py" beforeDir="false" afterPath="$PROJECT_DIR$/crowdsignals_ch5.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crowdsignals_ch7_classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/crowdsignals_ch7_classification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crowdsignals_ch7_classification_question1practical.py" beforeDir="false" afterPath="$PROJECT_DIR$/crowdsignals_ch7_classification_question1practical.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crowdsignals_ch7_regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/crowdsignals_ch7_regression.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crowdsignals_ch8_REGRESSION_question2.py" beforeDir="false" afterPath="$PROJECT_DIR$/crowdsignals_ch8_REGRESSION_question2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crowdsignals_ch8_regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/crowdsignals_ch8_regression.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/VisualizeDataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/VisualizeDataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../notebooks/ch3/nn_attempt_2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../notebooks/ch3/nn_attempt_2.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crowdsignals_ch7_classification_gym_WALKINGRUNNINGblockprediction.py" beforeDir="false" afterPath="$PROJECT_DIR$/crowdsignals_ch7_classification_gym_WALKINGRUNNINGblockprediction.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -195,29 +20,50 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crowdsignals_ch7_classification_gym.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="58" column="24" lean-forward="true" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/crowdsignals_ch3_outliers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="61" column="52" lean-forward="true" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
-              <folding>
-                <element signature="e#505#555#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="798">
+              <caret line="234" lean-forward="true" selection-start-line="234" selection-end-line="234" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/crowdsignals_ch7_classification_gym_BLOCKPREDICTION.py">
+        <entry file="file://$PROJECT_DIR$/Chapter7/LearningAlgorithms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="237" column="144" selection-start-line="237" selection-start-column="144" selection-end-line="237" selection-end-column="144" />
+            <state relative-caret-position="2129">
+              <caret line="327" column="144" selection-start-line="327" selection-start-column="144" selection-end-line="327" selection-end-column="144" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util/VisualizeDataset.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="366" column="25" selection-start-line="366" selection-start-column="13" selection-end-line="366" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/util/util.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="13">
+              <caret line="90" column="23" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/crowdsignals_ch7_classification_gym_WALKINGRUNNINGblockprediction.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2826">
+              <caret line="111" column="1" lean-forward="true" selection-start-line="111" selection-start-column="1" selection-end-line="111" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -225,8 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Chapter7/PrepareDatasetForLearning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="121" column="68" selection-start-line="121" selection-start-column="68" selection-end-line="121" selection-end-column="68" />
+            <state relative-caret-position="-12">
+              <caret line="105" column="70" lean-forward="true" selection-start-line="105" selection-start-column="70" selection-end-line="105" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -242,23 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>color</find>
-      <find>cluster</find>
-      <find>boxpl</find>
-      <find>datas</find>
-      <find>plot_datas</find>
-      <find>create_d</find>
-      <find>print_lat</find>
-      <find>hist</find>
-      <find>acc_phone_X</find>
-      <find>distance</find>
-      <find>exit()</find>
-      <find>exit</find>
-      <find>plot_d</find>
-      <find>save</find>
-      <find>float(0.5*60000)/milliseconds_per_instance)</find>
-      <find>int(float(0.5*60000)/milliseconds_per_instance)</find>
-      <find>(5*60000)/milliseconds_per_instance</find>
       <find>60000</find>
       <find>fs</find>
       <find>_kn</find>
@@ -272,6 +101,23 @@
       <find>these</find>
       <find>real_</find>
       <find>number</find>
+      <find>neural_n</find>
+      <find>accurac</find>
+      <find>NN</find>
+      <find>DT</find>
+      <find>test_y</find>
+      <find>train_y</find>
+      <find>output_predictions_truevalues</find>
+      <find>+</find>
+      <find>cluster'</find>
+      <find>THESE</find>
+      <find>output_pred</find>
+      <find>plot</find>
+      <find>OUTPUT</find>
+      <find>output</find>
+      <find>row_per</find>
+      <find>print</find>
+      <find>plot_perform</find>
     </findStrings>
     <replaceStrings>
       <replace>/</replace>
@@ -287,6 +133,11 @@
       <replace>gyr_phone_x</replace>
       <replace>acc_phone_X</replace>
       <replace>acc_phone_x</replace>
+      <replace>NB</replace>
+      <replace>SVM</replace>
+      <replace>RF</replace>
+      <replace>KNN</replace>
+      <replace>output_predictions</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -333,27 +184,18 @@
         <option value="$PROJECT_DIR$/crowdsignals_ch5_gym.py" />
         <option value="$PROJECT_DIR$/Chapter4/FrequencyAbstraction.py" />
         <option value="$PROJECT_DIR$/crowdsignals_ch4_gym.py" />
-        <option value="$PROJECT_DIR$/crowdsignals_ch7_classification_gym.py" />
         <option value="$PROJECT_DIR$/crowdsignals_ch7_classification_gym_BLOCKPREDICTION.py" />
+        <option value="$PROJECT_DIR$/crowdsignals_ch7_classification_gym.py" />
         <option value="$PROJECT_DIR$/Chapter7/PrepareDatasetForLearning.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/PythonCode.iml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/crowdsignals_ch7_classification_gym_WALKINGRUNNINGblockprediction.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
-    <option name="y" value="7" />
+    <option name="y" value="5" />
     <option name="width" value="1310" />
-    <option name="height" value="1039" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -371,22 +213,12 @@
             <path>
               <item name="PythonCode" type="b2602c69:ProjectViewProjectNode" />
               <item name="PythonCode" type="462c0819:PsiDirectoryNode" />
-              <item name="Chapter3" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PythonCode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PythonCode" type="462c0819:PsiDirectoryNode" />
-              <item name="Chapter4" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PythonCode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PythonCode" type="462c0819:PsiDirectoryNode" />
-              <item name="Chapter5" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PythonCode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PythonCode" type="462c0819:PsiDirectoryNode" />
               <item name="Chapter7" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PythonCode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PythonCode" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -396,6 +228,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -417,28 +250,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.crowdsignals_ch7_classification_gym_BLOCKPREDICTION">
-    <configuration name="FrequencyAbstraction" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="PythonCode" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Chapter4" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Chapter4/FrequencyAbstraction.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.crowdsignals_ch7_classification_gym_WALKINGRUNNINGblockprediction">
     <configuration name="PrepareDatasetForLearning" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="PythonCode" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -514,7 +326,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/crowdsignals_ch7_classification_gym_BLOCKPREDICTION.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\whitn\OneDrive\Documenten\Groupwork_TommyErik\ML4QS\ML4QS-master\PythonCode\crowdsignals_ch7_classification_gym_WORKING_BLOCKprediction.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="crowdsignals_ch7_classification_gym_WALKINGRUNNINGblockprediction" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="PythonCode" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/crowdsignals_ch7_classification_gym_WALKINGRUNNINGblockprediction.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -525,11 +358,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.crowdsignals_ch7_classification_gym_BLOCKPREDICTION" />
+        <item itemvalue="Python.crowdsignals_ch7_classification_gym_WALKINGRUNNINGblockprediction" />
         <item itemvalue="Python.crowdsignals_ch7_classification_gym" />
+        <item itemvalue="Python.crowdsignals_ch7_classification_gym_BLOCKPREDICTION" />
         <item itemvalue="Python.PrepareDatasetForLearning" />
         <item itemvalue="Python.crowdsignals_ch4_gym (1)" />
-        <item itemvalue="Python.FrequencyAbstraction" />
       </list>
     </recent_temporary>
   </component>
@@ -547,14 +380,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.792517" weight="0.1904762" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.792517" weight="0.2857143" />
       <window_info id="Structure" order="1" sideWeight="0.20882852" side_tool="true" weight="0.2281746" />
       <window_info id="Favorites" order="2" sideWeight="0.5007133" side_tool="true" weight="0.2281746" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32952926" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23680456" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.22253923" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.6704708" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.45221114" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -599,21 +432,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/crowdsignals_ch8_question3.py" />
-    <entry file="file://$PROJECT_DIR$/crowdsignals_ch7_regression.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Chapter7/FeatureSelection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="905">
-          <caret line="141" column="66" lean-forward="true" selection-start-line="141" selection-start-column="15" selection-end-line="141" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/crowdsignals_ch7_classification.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2142">
@@ -629,9 +447,7 @@
         <state relative-caret-position="-6461" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/perf_overview.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/perf_overview.png" />
     <entry file="file://$PROJECT_DIR$/crowdsignals_ch8_CLASSIFICATION_question2.py" />
     <entry file="file://$PROJECT_DIR$/crowdsignals_ch8_regression.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -639,16 +455,6 @@
           <caret line="181" column="105" selection-start-line="181" selection-start-column="105" selection-end-line="181" selection-end-column="105" />
           <folding>
             <element signature="e#505#555#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Chapter7/Evaluation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-25">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-          <folding>
-            <element signature="e#505#532#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -670,38 +476,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crowdsignals_ch8_REGRESSION_question2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#505#555#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/crowdsignals_ch8_REGRESSION_question2.py" />
     <entry file="file://$PROJECT_DIR$/ch5_visualization_edited.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1728" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crowdsignals_ch8_REGRESSION_question2_THISSHOULDDOIT.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2959">
-          <caret line="194" column="46" selection-start-line="194" selection-start-column="46" selection-end-line="194" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/crowdsignals_ch8_REGRESSION_question2_THISSHOULDDOIT.py" />
     <entry file="file://$PROJECT_DIR$/../../../../../Bureaublad/crowdsignals_ch5_Tommy_accelerom.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/crowdsignals_ch7_classification_question3practical.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/crowdsignals_ch7_classification_question3practical.py" />
     <entry file="file://$PROJECT_DIR$/crowdsignals_ch3_rest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-14">
@@ -713,16 +498,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="33" column="16" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/util/util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="67" column="13" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -762,16 +537,6 @@
         <state relative-caret-position="-594" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/util/VisualizeDataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="70" column="55" selection-start-line="70" selection-start-column="55" selection-end-line="71" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../PRL/Assignments_yay/Assignment1_Archived/main_assignment1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -799,20 +564,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crowdsignals_ch8_gym.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="109" selection-start-line="2" selection-start-column="109" selection-end-line="2" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/crowdsignals_ch4_gymTESTING.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-144">
-          <caret line="58" column="67" lean-forward="true" selection-start-line="65" selection-start-column="1" selection-end-line="69" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/crowdsignals_ch8_gym.py" />
+    <entry file="file://$PROJECT_DIR$/crowdsignals_ch4_gymTESTING.py" />
     <entry file="file://$PROJECT_DIR$/ch4_visualization.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -823,37 +576,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Chapter5/Clustering.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="116" column="27" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/crowdsignals_ch5_upgraded.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="62" selection-start-line="62" selection-end-line="64" selection-end-column="50" />
-          <folding>
-            <element signature="e#505#555#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/crowdsignals_ch5_gym.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/crowdsignals_ch7_classification_question1practical.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="178" selection-start-line="178" selection-end-line="179" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/crowdsignals_ch5_upgraded.py" />
+    <entry file="file://$PROJECT_DIR$/crowdsignals_ch7_classification_question1practical.py" />
     <entry file="file://$PROJECT_DIR$/crowdsignals_ch2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="326">
@@ -885,16 +609,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crowdsignals_ch3_outliers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="61" column="52" lean-forward="true" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
-          <folding>
-            <element signature="e#505#555#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/crowdsignals_ch2_gym.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -916,13 +630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Chapter7/LearningAlgorithms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/crowdsignals_ch4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -937,24 +644,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crowdsignals_ch7_classification_gym.py">
+    <entry file="file://$PROJECT_DIR$/crowdsignals_ch3_outliers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="58" column="24" lean-forward="true" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+        <state relative-caret-position="1008">
+          <caret line="61" column="52" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
+          <folding>
+            <element signature="e#505#555#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crowdsignals_ch7_classification_gym_WORKING_BLOCKprediction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="237" column="144" selection-start-line="237" selection-start-column="144" selection-end-line="237" selection-end-column="144" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Chapter7/FeatureSelection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="141" column="66" lean-forward="true" selection-start-line="141" selection-start-column="15" selection-end-line="141" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Chapter7/Evaluation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="18" column="15" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="15" />
+          <folding>
+            <element signature="e#505#532#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predictions_WALKINGRUNNING.csv" />
+    <entry file="file://$PROJECT_DIR$/crowdsignals_ch5_gym.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="64" column="58" selection-start-line="64" selection-start-column="57" selection-end-line="64" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Chapter5/Clustering.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1526">
+          <caret line="213" column="39" lean-forward="true" selection-start-line="213" selection-start-column="39" selection-end-line="213" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Chapter7/PrepareDatasetForLearning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="121" column="68" selection-start-line="121" selection-start-column="68" selection-end-line="121" selection-end-column="68" />
+        <state relative-caret-position="-12">
+          <caret line="105" column="70" lean-forward="true" selection-start-line="105" selection-start-column="70" selection-end-line="105" selection-end-column="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crowdsignals_ch7_classification_gym_BLOCKPREDICTION.py">
+    <entry file="file://$PROJECT_DIR$/crowdsignals_ch7_classification_gym_WALKINGRUNNINGblockprediction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="237" column="144" selection-start-line="237" selection-start-column="144" selection-end-line="237" selection-end-column="144" />
+        <state relative-caret-position="-2826">
+          <caret line="111" column="1" lean-forward="true" selection-start-line="111" selection-start-column="1" selection-end-line="111" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13">
+          <caret line="90" column="23" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crowdsignals_ch7_classification_gym.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="234" lean-forward="true" selection-start-line="234" selection-end-line="234" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util/VisualizeDataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="366" column="25" selection-start-line="366" selection-start-column="13" selection-end-line="366" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Chapter7/LearningAlgorithms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2129">
+          <caret line="327" column="144" selection-start-line="327" selection-start-column="144" selection-end-line="327" selection-end-column="144" />
         </state>
       </provider>
     </entry>

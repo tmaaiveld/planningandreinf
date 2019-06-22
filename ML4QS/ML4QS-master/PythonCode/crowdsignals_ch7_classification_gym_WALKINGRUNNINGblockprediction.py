@@ -189,21 +189,25 @@ for i in range(0, len(possible_feature_sets)):
     performance_te_svm = 0
 
     for repeat in range(0, repeats):
-        class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.feedforward_neural_network(selected_train_X, train_y, selected_test_X, gridsearch=True)
+
+        print '\n The best parameters for NN with the ' + feature_names[i]  + ' features in  repeat number ' + str(repeat) + ' are: '
+        class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.feedforward_neural_network(selected_train_X, train_y, selected_test_X, gridsearch=True, print_model_details=True)
         performance_tr_nn += eval.accuracy(train_y, class_train_y)
         performance_te_nn += eval.accuracy(test_y, class_test_y)
 
         # output_predictions['NN_train_pred_rep_' + str(repeat)] = class_train_y
         # output_predictions['NN_test_pred_rep_' + str(repeat)] = class_test_y
 
-        class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.random_forest(selected_train_X, train_y, selected_test_X, gridsearch=True)
+        print '\n The best parameters for RF with the ' + feature_names[i]  + ' features in  repeat number ' + str(repeat) + ' are: '
+        class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.random_forest(selected_train_X, train_y, selected_test_X, print_model_details=True, gridsearch=True)
         performance_tr_rf += eval.accuracy(train_y, class_train_y)
         performance_te_rf += eval.accuracy(test_y, class_test_y)
 
         # output_predictions['RF_train_pred_rep_' + str(repeat)] = class_train_y
         # output_predictions['RF_test_pred_rep_' + str(repeat)] = class_test_y
 
-        class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.support_vector_machine_with_kernel(selected_train_X, train_y, selected_test_X, gridsearch=True)
+        print '\n The best parameters for SVM with the ' + feature_names[i]  + ' features in  repeat number ' + str(repeat) + ' are: '
+        class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.support_vector_machine_with_kernel(selected_train_X, train_y, selected_test_X, gridsearch=True, print_model_details=True)
         performance_tr_svm += eval.accuracy(train_y, class_train_y)
         performance_te_svm += eval.accuracy(test_y, class_test_y)
 
@@ -221,7 +225,8 @@ for i in range(0, len(possible_feature_sets)):
     # And we run our deterministic classifiers:
 
 
-    class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.k_nearest_neighbor(selected_train_X, train_y, selected_test_X, gridsearch=True)
+    print '\n The best parameters for KNN with the ' + str(feature_names[i])  + ' features are: '
+    class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.k_nearest_neighbor(selected_train_X, train_y, selected_test_X, gridsearch=True, print_model_details=True)
     performance_tr_knn = eval.accuracy(train_y, class_train_y)
     performance_te_knn = eval.accuracy(test_y, class_test_y)
 
@@ -229,7 +234,8 @@ for i in range(0, len(possible_feature_sets)):
     # output_predictions['KNN_test_pred'] = class_test_y
 
 
-    class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.decision_tree(selected_train_X, train_y, selected_test_X, gridsearch=True)
+    print '\n The best parameters for DT with the ' + str(feature_names[i])  + ' features are: '
+    class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.decision_tree(selected_train_X, train_y, selected_test_X, print_model_details=True, gridsearch=True)
     performance_tr_dt = eval.accuracy(train_y, class_train_y)
     performance_te_dt = eval.accuracy(test_y, class_test_y)
     #
@@ -258,7 +264,7 @@ DataViz.plot_performances_classification(['NN', 'RF', 'SVM', 'KNN', 'DT', 'NB'],
 
 # And we study two promising ones in more detail. First let us consider the decision tree which works best with the selected
 # features.
-
+print 'Now we move on to studying DT and RF in more detail with only the selectedfeatures: '
 class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.decision_tree(train_X[selected_features], train_y, test_X[selected_features],
                                                                                            gridsearch=True,
                                                                                            print_model_details=True, export_tree_path=export_tree_path)

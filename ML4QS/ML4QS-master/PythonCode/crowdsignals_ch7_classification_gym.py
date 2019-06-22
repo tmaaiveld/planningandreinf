@@ -165,9 +165,9 @@ eval = ClassificationEvaluation()
 possible_feature_sets = [basic_features, features_after_chapter_3, features_after_chapter_4, features_after_chapter_5, selected_features]
 feature_names = ['initial set', 'Chapter 3', 'Chapter 4', 'Chapter 5', 'Selected features']
 
-output_predictions = pd.DataFrame()
-output_predictions['train_y'] = train_y
-output_predictions['test_y'] = test_y
+# output_predictions = pd.DataFrame()
+# output_predictions['train_y'] = train_y
+# output_predictions['test_y'] = test_y
 
 repeats = 5
 
@@ -187,27 +187,31 @@ for i in range(0, len(possible_feature_sets)):
     performance_te_svm = 0
 
     for repeat in range(0, repeats):
-        class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.feedforward_neural_network(selected_train_X, train_y, selected_test_X, gridsearch=True)
+
+        print '\n The best parameters for NN with the ' + feature_names[i]  + ' features in  repeat number ' + str(repeat) + ' are: '
+        class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.feedforward_neural_network(selected_train_X, train_y, selected_test_X, gridsearch=True, print_model_details=True)
         performance_tr_nn += eval.accuracy(train_y, class_train_y)
         performance_te_nn += eval.accuracy(test_y, class_test_y)
 
-        output_predictions['NN_train_pred_rep_' + str(repeat)] = class_train_y
-        output_predictions['NN_test_pred_rep_' + str(repeat)] = class_test_y
-        ''' raise ValueError('Length of values does not match length of ' 'index')  ValueError: Length of values does not match length of index'''
+        # output_predictions['NN_train_pred_rep_' + str(repeat)] = class_train_y
+        # output_predictions['NN_test_pred_rep_' + str(repeat)] = class_test_y
+        # ''' raise ValueError('Length of values does not match length of ' 'index')  ValueError: Length of values does not match length of index'''
 
-        class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.random_forest(selected_train_X, train_y, selected_test_X, gridsearch=True)
+        print '\n The best parameters for RF with the ' + str(feature_names[i])  + ' features in  repeat number ' + str(repeat) + ' are: '
+        class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.random_forest(selected_train_X, train_y, selected_test_X, print_model_details=True, gridsearch=True)
         performance_tr_rf += eval.accuracy(train_y, class_train_y)
         performance_te_rf += eval.accuracy(test_y, class_test_y)
 
-        output_predictions['RF_train_pred_rep_' + str(repeat)] = class_train_y
-        output_predictions['RF_test_pred_rep_' + str(repeat)] = class_test_y
+        # output_predictions['RF_train_pred_rep_' + str(repeat)] = class_train_y
+        # output_predictions['RF_test_pred_rep_' + str(repeat)] = class_test_y
 
-        class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.support_vector_machine_with_kernel(selected_train_X, train_y, selected_test_X, gridsearch=True)
+        print '\n The best parameters for SVM with the ' + str(feature_names[i])  + ' features in  repeat number ' + str(repeat) + ' are: '
+        class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.support_vector_machine_with_kernel(selected_train_X, train_y, selected_test_X, gridsearch=True, print_model_details=True)
         performance_tr_svm += eval.accuracy(train_y, class_train_y)
         performance_te_svm += eval.accuracy(test_y, class_test_y)
 
-        output_predictions['SVM_train_pred_rep_' + str(repeat)] = class_train_y
-        output_predictions['SVM_test_pred_rep_' + str(repeat)] = class_test_y
+        # output_predictions['SVM_train_pred_rep_' + str(repeat)] = class_train_y
+        # output_predictions['SVM_test_pred_rep_' + str(repeat)] = class_test_y
 
     overall_performance_tr_nn = performance_tr_nn/repeats
     overall_performance_te_nn = performance_te_nn/repeats
@@ -218,27 +222,28 @@ for i in range(0, len(possible_feature_sets)):
 
     # And we run our deterministic classifiers:
 
-
-    class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.k_nearest_neighbor(selected_train_X, train_y, selected_test_X, gridsearch=True)
+    print '\n The best parameters for KNN with the ' + str(feature_names[i])  + ' features are: '
+    class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.k_nearest_neighbor(selected_train_X, train_y, selected_test_X, gridsearch=True, print_model_details=True)
     performance_tr_knn = eval.accuracy(train_y, class_train_y)
     performance_te_knn = eval.accuracy(test_y, class_test_y)
 
-    output_predictions['KNN_train_pred'] = class_train_y
-    output_predictions['KNN_test_pred'] = class_test_y
+    # output_predictions['KNN_train_pred'] = class_train_y
+    # output_predictions['KNN_test_pred'] = class_test_y
 
-    class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.decision_tree(selected_train_X, train_y, selected_test_X, gridsearch=True)
+    print '\n The best parameters for DT with the ' + str(feature_names[i])  + ' features are: '
+    class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.decision_tree(selected_train_X, train_y, selected_test_X, print_model_details=True, gridsearch=True)
     performance_tr_dt = eval.accuracy(train_y, class_train_y)
     performance_te_dt = eval.accuracy(test_y, class_test_y)
 
-    output_predictions['DT_train_pred'] = class_train_y
-    output_predictions['DT_test_pred'] = class_test_y
+    # output_predictions['DT_train_pred'] = class_train_y
+    # output_predictions['DT_test_pred'] = class_test_y
 
     class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.naive_bayes(selected_train_X, train_y, selected_test_X)
     performance_tr_nb = eval.accuracy(train_y, class_train_y)
     performance_te_nb = eval.accuracy(test_y, class_test_y)
 
-    output_predictions['NB_train_pred'] = class_train_y
-    output_predictions['NB_test_pred'] = class_test_y
+    # output_predictions['NB_train_pred'] = class_train_y
+    # output_predictions['NB_test_pred'] = class_test_y
 
     scores_with_sd = util.print_table_row_performances(feature_names[i], len(selected_train_X.index), len(selected_test_X.index), [
                                                                                                 (overall_performance_tr_nn, overall_performance_te_nn),
@@ -250,29 +255,29 @@ for i in range(0, len(possible_feature_sets)):
     scores_over_all_algs.append(scores_with_sd)
 
 
-output_predictions.to_csv("predictions_ALL_EXERCISES.csv")
 DataViz.plot_performances_classification(['NN', 'RF', 'SVM', 'KNN', 'DT', 'NB'], feature_names, scores_over_all_algs)
 
 # And we study two promising ones in more detail. First let us consider the decision tree which works best with the selected
 # features.
 
+print 'Now we move on to studying DT and RF in more detail with only the selectedfeatures: '
 class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.decision_tree(train_X[selected_features], train_y, test_X[selected_features],
                                                                                            gridsearch=True,
                                                                                            print_model_details=True, export_tree_path=export_tree_path)
 
-output_predictions['DT_train_pred_selectedfeat']  = class_train_y
-output_predictions['DT_test_pred_selectedfeat']  = class_test_y
+# output_predictions['DT_train_pred_selectedfeat']  = class_train_y
+# output_predictions['DT_test_pred_selectedfeat']  = class_test_y
 
 
 class_train_y, class_test_y, class_train_prob_y, class_test_prob_y = learner.random_forest(train_X[selected_features], train_y, test_X[selected_features],
                                                                                            gridsearch=True, print_model_details=True)
 
 
-output_predictions['RF_train_pred_selectedfeat']  = class_train_y
-output_predictions['RF_test_pred_selectedfeat']  = class_test_y
+# output_predictions['RF_train_pred_selectedfeat']  = class_train_y
+# output_predictions['RF_test_pred_selectedfeat']  = class_test_y
 
 
-output_predictions.to_csv("predictions_ALL_EXERCISES.csv")
+# output_predictions.to_csv("predictions_ALL_EXERCISES.csv")
 
 test_cm = eval.confusion_matrix(test_y, class_test_y, class_train_prob_y.columns)
 
